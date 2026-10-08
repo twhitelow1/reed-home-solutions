@@ -38,6 +38,7 @@ export const site = {
     reviewUrl: '',
     mapsUrl: '',
   },
+  indexNowKey: '9367e5972f15c4736a26cc8318c1ad4d', // IndexNow (Bing/Copilot/ChatGPT search): key file lives at /<key>.txt
   sameAs: [] as string[], // TODO GBP, Facebook, Instagram, Houzz, Nextdoor URLs
   agency: { name: 'DubLow Digital', url: 'https://dublowdigital.com' },
   lastReviewed: '2026-10-08',

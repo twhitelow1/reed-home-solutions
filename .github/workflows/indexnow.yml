@@ -1,0 +1,42 @@
+# Tell IndexNow search engines (Bing → Copilot/ChatGPT search, Yandex, Seznam, Naver) about every URL
+# after a production deploy. Google does not use IndexNow; it reads the sitemap in Search Console.
+# Manual only until launch: the site is noindex and robots.txt blocks crawlers, so this check would fail.
+# At launch, set HOST to the real domain (same as site.url) and add:  push: { branches: [main] }
+name: Post-deploy SEO check + IndexNow ping
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    env:
+      HOST: vailhomeremodeling.com # TODO confirm production domain
+      KEY: 9367e5972f15c4736a26cc8318c1ad4d
+    steps:
+      - name: Wait for the Vercel production deploy
+        run: sleep 120
+      - name: Check the live site is open to search engines
+        run: |
+          set -euo pipefail
+          echo "--- robots.txt as served to Googlebot"
+          robots=$(curl -fsSL -A 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' "https://$HOST/robots.txt")
+          echo "$robots"
+          meta=$(curl -fsSL "https://$HOST/kitchen-remodeling" | grep -oE '<meta name="robots" content="[^"]*"' || true)
+          echo "--- /kitchen-remodeling: $meta"
+          for u in / /sitemap.xml /robots.txt /kitchen-remodeling "/$KEY.txt"; do
+            echo "$u -> $(curl -s -o /dev/null -w '%{http_code}' -A 'Googlebot/2.1' "https://$HOST$u")"
+          done
+          if echo "$robots" | grep -qx 'Disallow: /'; then echo "::error::robots.txt blocks all crawlers"; exit 1; fi
+          if echo "$meta" | grep -q noindex; then echo "::error::pages are noindex"; exit 1; fi
+      - name: Submit sitemap URLs
+        run: |
+          set -euo pipefail
+          urls=$(curl -fsSL "https://$HOST/sitemap.xml" | grep -oE '<loc>[^<]+' | sed 's/<loc>//' | sort -u)
+          echo "Submitting $(echo "$urls" | wc -l) URLs"
+          body=$(jq -n --arg host "$HOST" --arg key "$KEY" --arg loc "https://$HOST/$KEY.txt" \
+            --argjson list "$(echo "$urls" | jq -R . | jq -s .)" '{host:$host,key:$key,keyLocation:$loc,urlList:$list}')
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' -d "$body")
+          echo "IndexNow responded $code"
+          case "$code" in 200|202) ;; *) exit 1 ;; esac
