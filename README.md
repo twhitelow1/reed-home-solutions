@@ -42,3 +42,4 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 
 ## Build log
 - **2026-10-08:** No existing Reed codebase was found (GitHub, Vercel, Drive, Notion, artifacts all checked), so the site was built fresh from the Sep 25 onboarding call (services, service areas, brand colors, restoration/insurance differentiator). SEO audit: 0 issues. Checked at 1280px and 390px.
+- **2026-10-08:** Imported to Vercel (project `reed-home-solutions`, team twhitelow1). Live preview: https://reed-home-solutions.vercel.app (noindex, robots.txt disallow, canonicals to the future domain). Every push to `claude/eager-fermi-2vik0q` redeploys.
