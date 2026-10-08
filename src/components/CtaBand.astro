@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import { site, estimateHref, telHref } from '../data/site';
 interface Props { title?: string; text?: string; button?: string }
-const { title = 'Get a fast, free written estimate', text = 'Tell us about your project. Jace will walk the space, answer your questions and send a clear, line-item estimate fast.', button = 'Request a free estimate' } = Astro.props;
+const { title = 'Get a fast, free written estimate', text = 'Tell us about the project. Jace walks the space with you, answers questions on the spot and sends a written, line-item estimate. No pressure, no vague numbers.', button = 'Request a free estimate' } = Astro.props;
 ---
 <section class="section" aria-label={button}>
   <div class="wrap">

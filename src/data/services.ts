@@ -51,7 +51,7 @@ export const services: Service[] = [
       { q: 'How long does a kitchen remodel take?', a: 'A surface refresh can take a couple of weeks. A full remodel with new cabinets usually runs several weeks to a few months, and the biggest variable is material lead time, especially custom cabinets and stone counters. We order long-lead items before demolition so your kitchen is not torn apart while you wait on deliveries.' },
       { q: 'Do I need a permit to remodel my kitchen?', a: 'Usually yes if you move plumbing, gas or electrical, remove walls, or replace more than cosmetic finishes. Requirements vary between the Town of Vail, Avon, Eagle County, Garfield County, Pitkin County and other jurisdictions. Jace is certified to pull permits and handles the application and inspections for you.' },
       { q: 'Can you remodel a condo kitchen with HOA rules?', a: 'Yes. We review the association’s remodeling rules before we price the job, submit any required applications, and schedule work around allowed hours, elevator reservations and parking limits.' },
-      { q: 'Who provides kitchen remodeling in Eagle County?', a: 'Reed Home Solutions is a Gypsum-based remodeling contractor serving all of Eagle County plus Glenwood Springs, Carbondale, Aspen, Steamboat Springs and Breckenridge. Call or request a free estimate online.' },
+      { q: 'Who provides kitchen remodeling in Eagle County?', a: 'Reed Home Solutions is a Gypsum-based remodeling contractor serving Eagle and Summit counties plus Glenwood Springs and Carbondale, with Aspen and Steamboat Springs as the schedule allows. Call or request a free estimate online.' },
     ],
     related: ['bathroom-remodeling', 'flooring-installation', 'home-renovation-general-contracting'],
   },
@@ -85,7 +85,7 @@ export const services: Service[] = [
       { q: 'How long does a bathroom remodel take?', a: 'Many bathroom remodels take two to five weeks of active work once materials are on site. Tile, glass and custom vanities drive the schedule, so we confirm lead times before demolition.' },
       { q: 'Can you convert a bathtub to a walk-in shower?', a: 'Yes. Tub-to-shower conversions are one of our most common projects. We check drain location and floor framing, then build a waterproofed tile shower or install a quality shower base, with glass sized to the opening.' },
       { q: 'Why does shower waterproofing matter so much?', a: 'Tile and grout are not waterproof. Without a continuous membrane underneath, water slowly reaches the framing and subfloor, which leads to rot and mold that often is not visible until it is expensive. Jace has repaired many of these losses in restoration, so we do not skip this step.' },
-      { q: 'Do you remodel bathrooms in Aspen and Steamboat Springs?', a: 'Yes. Our core area is Eagle County, and we take bathroom projects in Glenwood Springs, Carbondale, Aspen, Steamboat Springs and Breckenridge as the schedule allows.' },
+      { q: 'Do you remodel bathrooms in Aspen and Steamboat Springs?', a: 'Yes. Our primary area is Eagle and Summit counties, and we take bathroom projects in Aspen and Steamboat Springs as the schedule allows.' },
     ],
     related: ['kitchen-remodeling', 'basement-lock-off-remodeling', 'water-damage-insurance-repair'],
   },
@@ -162,7 +162,7 @@ export const services: Service[] = [
     title: 'Deck Building & Repair in the Vail Valley | Reed Home Solutions',
     description: 'New decks, deck rebuilds and repairs in Vail, Eagle County and nearby towns. Built for snow loads, flashed right and permitted. Request a free estimate.',
     h1: 'Deck building and deck repair in the Vail Valley',
-    answer: 'Reed Home Solutions builds new decks, rebuilds worn-out decks and repairs framing, railings and stairs across Eagle County, Glenwood Springs, Carbondale, Aspen, Steamboat and Breckenridge. Decks here carry heavy snow and take intense high-altitude sun, so we frame for local loads, flash the ledger to protect your house, and help you pick decking that will last.',
+    answer: 'Reed Home Solutions builds new decks, rebuilds worn-out decks and repairs framing, railings and stairs across Eagle and Summit counties, Glenwood Springs, Carbondale, Aspen and Steamboat. Decks here carry heavy snow and take intense high-altitude sun, so we frame for local loads, flash the ledger to protect your house, and help you pick decking that will last.',
     sections: [
       {
         h2: 'Decks built for mountain conditions',
@@ -183,7 +183,7 @@ export const services: Service[] = [
       { q: 'Do I need a permit to build a deck?', a: 'In most mountain jurisdictions, yes, especially for decks attached to the house or more than about 30 inches above grade. Jace is certified to pull permits and handles the application and inspections.' },
       { q: 'When is the best time to build a deck in the mountains?', a: 'Late spring through fall, once the ground thaws. Good contractors book up early, so the best time to plan and price a deck is winter or early spring.' },
       { q: 'Should I repair or replace my old deck?', a: 'If the framing, ledger and footings are sound, repairing boards and railings is usually enough. Rot at the ledger, soft joists or moving footings point to a rebuild. We inspect and explain what we find.' },
-      { q: 'Who builds decks in Eagle County?', a: 'Reed Home Solutions builds and repairs decks throughout Eagle County, including Vail, Avon, Edwards, Eagle and Gypsum, plus Glenwood Springs, Carbondale, Aspen, Steamboat Springs and Breckenridge.' },
+      { q: 'Who builds decks in Eagle County?', a: 'Reed Home Solutions builds and repairs decks throughout Eagle County, including Vail, Avon, Edwards, Eagle and Gypsum, plus Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat Springs.' },
     ],
     related: ['siding-exterior-painting', 'roof-replacement-repair', 'home-renovation-general-contracting'],
   },
@@ -297,7 +297,7 @@ export const services: Service[] = [
     title: 'General Contractor in the Vail Valley | Reed Home Solutions',
     description: 'General contractor for home renovations, additions and multi-room remodels in Vail, Eagle County and nearby towns. One point of contact. Free estimate.',
     h1: 'General contractor for home renovations in the Vail Valley',
-    answer: 'Reed Home Solutions is a general contractor for home renovations, additions and multi-room remodels across Eagle County, the Roaring Fork Valley, Steamboat Springs and Breckenridge. Jace Reed manages the whole job, including permits, scheduling, framing, tile, flooring, insulation, drywall and paint through a vetted local subcontractor network, so you have one accountable point of contact.',
+    answer: 'Reed Home Solutions is a general contractor for home renovations, additions and multi-room remodels across Eagle and Summit counties, the Roaring Fork Valley and Steamboat Springs. Jace Reed manages the whole job, including permits, scheduling, framing, tile, flooring, insulation, drywall and paint through a vetted local subcontractor network, so you have one accountable point of contact.',
     sections: [
       {
         h2: 'What a general contractor does for you',
@@ -355,6 +355,106 @@ export const services: Service[] = [
       { q: 'Will you waive my deductible?', a: 'No. You are responsible for your deductible, and Colorado law prohibits roofing contractors from paying or waiving it. We apply the same standard to every insurance job.' },
     ],
     related: ['bathroom-remodeling', 'roof-replacement-repair', 'home-renovation-general-contracting'],
+  },
+  {
+    slug: 'condo-remodeling',
+    name: 'Condo & HOA Remodeling',
+    group: 'Interior Remodeling',
+    icon: 'building',
+    card: 'Condo and townhome remodels run inside HOA rules: approvals, work hours, elevator and parking logistics, and neighbors below.',
+    title: 'Condo Remodeling in Vail & Summit County | Reed Home Solutions',
+    description: 'Condo and townhome remodeling in Vail, Avon, Beaver Creek, Breckenridge and Frisco. HOA approvals, access rules and absentee owners handled. Free estimate.',
+    h1: 'Condo and HOA remodeling in the Vail Valley and Summit County',
+    answer: 'Reed Home Solutions remodels condos and townhomes in Vail, Avon, Beaver Creek, Breckenridge, Frisco and Keystone. Condo work is mostly logistics: HOA approval before demo, allowed work hours, elevator and loading-dock reservations, parking, protecting common areas and not flooding the unit below. We plan all of it up front, and owners who are out of town get a progress update every working day.',
+    sections: [
+      {
+        h2: 'Why condo remodels are different',
+        html: '<p>In a single-family home, you and the building department make the decisions. In a condo, the homeowners association has a say too. Most mountain-town associations require written approval before work starts, and many limit work to weekdays during set hours. Some require proof of insurance from every contractor, a deposit for common-area damage, or a pre-construction walkthrough with the property manager.</p><p>Colorado associations operate under the Colorado Common Interest Ownership Act (CCIOA) and their own declarations and rules. Those documents decide what you can change inside your unit and what counts as a common element, like shared walls, plumbing stacks and exterior windows. We read them with you before we price the job, so nothing gets stopped halfway.</p>',
+      },
+      {
+        h2: 'Logistics we plan before day one',
+        html: '<ul><li><strong>Approval package:</strong> scope, drawings or photos, contractor insurance certificate, schedule.</li><li><strong>Access:</strong> elevator pads and reservations, loading-dock times, parking for one work truck, key or fob handoff.</li><li><strong>Noise and hours:</strong> loud work (demo, tile cutting) scheduled inside the allowed window.</li><li><strong>Water:</strong> shut-off locations confirmed with the HOA before plumbing work, because a leak travels to the unit below.</li><li><strong>Debris:</strong> where a dumpster or trailer can sit, or haul-off by the load.</li></ul>',
+      },
+      {
+        h2: 'Owners who are not here',
+        html: '<p>Many condo owners live out of state or rent the unit out. You will not have to chase us for news. During active work you get a short update every working day: what got done, what is next, and any decision we need from you, with photos. When something unexpected turns up behind a wall, you hear about it that day with options and a price before we go further.</p>',
+      },
+    ],
+    includes: ['Review of HOA declaration and remodeling rules', 'HOA approval package and contractor insurance certificate', 'Permits and inspections', 'Elevator, parking and common-area protection', 'Kitchen, bath, flooring and finish work', 'Coordination with the property manager', 'Daily photo updates for absentee owners', 'Final walkthrough and punch list'],
+    faqs: [
+      { q: 'Do I need HOA approval to remodel my condo?', a: 'Usually yes. Most Colorado mountain-town associations require written approval before work starts, especially for anything touching plumbing, walls, flooring or windows. We prepare the approval package with you.' },
+      { q: 'Can you remodel my condo while I live out of state?', a: 'Yes. We coordinate access with your property manager or HOA and send a progress update with photos every working day of active work.' },
+      { q: 'What is CCIOA and why does it matter for my remodel?', a: 'The Colorado Common Interest Ownership Act governs how Colorado HOAs operate. Together with your association declaration and rules, it shapes what you can change inside your unit and which parts of the building belong to the association. We review those documents before pricing.' },
+      { q: 'What if my condo remodel leaks into the unit below?', a: 'We confirm shut-offs with the HOA before plumbing work, protect floors and test new plumbing before closing walls. Reed Home Solutions is insured, and we can provide a certificate to your association.' },
+      { q: 'Who remodels condos in Breckenridge and Vail?', a: 'Reed Home Solutions remodels condos and townhomes in Vail, Avon, Beaver Creek, Breckenridge, Frisco and Keystone.' },
+    ],
+    related: ['kitchen-remodeling', 'bathroom-remodeling', 'flooring-installation'],
+  },
+  {
+    slug: 'home-additions-adus',
+    name: 'Home Additions & ADUs',
+    group: 'Renovation & Insurance Repair',
+    icon: 'addition',
+    card: 'Bedroom and bump-out additions, garage conversions and accessory dwelling units, permitted and built to code.',
+    title: 'Home Additions & ADUs in the Vail Valley | Reed Home Solutions',
+    description: 'Room additions, bump-outs, garage conversions and accessory dwelling units in Eagle and Summit counties. Zoning, permits and code handled. Free estimate.',
+    h1: 'Home additions and ADUs in the Vail Valley and Summit County',
+    answer: 'Reed Home Solutions builds room additions, bump-outs, garage conversions and accessory dwelling units (ADUs) in Eagle and Summit counties. We start with what your zoning, HOA and lot allow, then handle design coordination, permits, foundations, framing, mechanical trades and finishes. Jace recently added rooms to a home in Edwards on a fully permitted job.',
+    sections: [
+      {
+        h2: 'Start with what your lot allows',
+        html: '<p>Before anyone draws an addition, three things decide what is possible: zoning (setbacks, height, lot coverage and floor area), your HOA covenants and design review, and the site itself (slope, soils, snow storage and access). We check those first. It is cheaper to learn a lot is maxed out before you pay for plans.</p>',
+      },
+      {
+        h2: 'ADUs and caretaker units',
+        html: '<p>Accessory dwelling units help with family space, a caretaker, or long-term local housing, and several mountain towns encourage them. Rules differ a lot between the Town of Vail, Avon, Eagle, Gypsum, Eagle County, Breckenridge, Frisco, Silverthorne and Summit County: some limit size, require deed restrictions for local occupancy, or set parking minimums. We help you find the rules for your address and plan the unit to meet them, including separate egress, fire separation and utilities.</p><p>Converting existing space is often the faster path. See <a href="/basement-lock-off-remodeling">basement and lock-off remodeling</a>.</p>',
+      },
+      {
+        h2: 'Building an addition at altitude',
+        html: '<p>Additions here need footings below frost depth, framing and roofs sized for local snow loads, and a clean tie-in to the existing roof so you do not create a new ice dam valley. The short building season matters too. We aim to get the foundation in and the addition dried in before winter, then finish the interior through the cold months.</p>',
+      },
+    ],
+    includes: ['Zoning, HOA and site feasibility check', 'Coordination with your architect or designer', 'Permits, engineering and inspections', 'Excavation and foundations', 'Framing, roofing and tie-in to the existing house', 'Windows, siding and exterior finishes', 'Plumbing, electrical and HVAC by licensed trades', 'Insulation, drywall, flooring and paint', 'Daily updates and a written schedule'],
+    faqs: [
+      { q: 'Can I add an ADU to my property in Eagle or Summit County?', a: 'It depends on your zoning, lot size and HOA. Many mountain towns allow accessory units, often with size limits, parking requirements or local-occupancy deed restrictions. We check the rules for your address before design starts.' },
+      { q: 'How long does a home addition take?', a: 'Design and permitting often take longer than construction. Once permitted, a modest addition usually takes a few months of building. Weather and material lead times are the biggest variables, so we plan to be dried in before winter.' },
+      { q: 'Do I need an architect for an addition?', a: 'Most additions need stamped plans and often engineering. If you do not have an architect, we can recommend one and coordinate with them from the start so the design fits your budget.' },
+      { q: 'Is it cheaper to finish a basement than build an addition?', a: 'Usually yes, because the structure already exists. If you have unfinished or underused space, converting it is worth pricing first.' },
+    ],
+    related: ['basement-lock-off-remodeling', 'home-renovation-general-contracting', 'deck-building-repair'],
+  },
+  {
+    slug: 'real-estate-inspection-repairs',
+    name: 'Real Estate & Inspection Repairs',
+    group: 'Renovation & Insurance Repair',
+    icon: 'sign',
+    card: 'Pre-listing updates and inspection repairs on tight closing timelines for buyers, sellers, agents and property managers.',
+    title: 'Inspection Repairs & Pre-Listing Work | Reed Home Solutions',
+    description: 'Inspection repairs and pre-listing updates in the Vail Valley and Summit County, scheduled around closing dates. Written estimates agents can share.',
+    h1: 'Inspection repairs and pre-listing work for real estate deals',
+    answer: 'Reed Home Solutions handles inspection repairs, pre-listing updates and move-in projects for buyers, sellers, real estate agents and property managers in Eagle and Summit counties. We work to the closing date: a fast site visit, a written itemized estimate you can attach to an inspection objection or resolution, and clear documentation of completed work for the file.',
+    sections: [
+      {
+        h2: 'Built around the closing date',
+        html: '<p>Real estate repairs have a hard deadline. When an inspection comes back, the buyer, seller and both agents need a credible number quickly, and then the work needs to be done and documented before closing. We prioritize the site visit, send a written, line-item estimate that can be shared with the other side, and give you a start date and a finish date in writing.</p>',
+      },
+      {
+        h2: 'Common items we handle',
+        html: '<ul><li>Deck and railing repairs flagged for safety.</li><li>Water damage, staining or soft subfloors found during inspection.</li><li>Missing GFCI outlets, smoke and CO alarms, and handrails (through licensed trades where required).</li><li>Siding, trim and flashing repairs.</li><li>Bathroom leaks and failed caulk or grout.</li><li>Pre-listing paint, flooring and fixture updates.</li><li>Unpermitted work that needs to be brought up to code.</li></ul>',
+      },
+      {
+        h2: 'For agents and property managers',
+        html: '<p>If you manage listings or rentals, you need a contractor who answers the phone and shows up when the lockbox is open. We coordinate access with you, send photos of completed work, and provide invoices and permit records for the transaction file. Rental turnovers between tenants or between guest stays work the same way.</p>',
+      },
+    ],
+    includes: ['Fast site visit after inspection', 'Written, itemized estimate for the inspection response', 'Start and finish dates in writing', 'Repairs by our crew and licensed trades', 'Permits where required', 'Before-and-after photos and invoices for the file', 'Lockbox and access coordination with agents'],
+    faqs: [
+      { q: 'Can you finish inspection repairs before closing?', a: 'In most cases, yes, if the scope fits the timeline. We tell you up front whether the dates work. If they do not, we say so and suggest which items to complete now and which to credit at closing.' },
+      { q: 'Can my agent share your estimate with the other side?', a: 'Yes. Our estimates are written and itemized so they can be attached to an inspection objection, resolution or credit negotiation.' },
+      { q: 'Do you work with property managers on rental turnovers?', a: 'Yes. We schedule around tenant moves and guest bookings, coordinate access, and send photos and invoices when the work is done.' },
+      { q: 'Can you fix unpermitted work found during an inspection?', a: 'Often yes. Jace is certified to pull permits. We assess what was done, what needs to change to meet code, and what it will take to get it permitted.' },
+    ],
+    related: ['deck-building-repair', 'water-damage-insurance-repair', 'home-renovation-general-contracting'],
   },
 ];
 

@@ -3,7 +3,8 @@
 Local SEO + AI-search (GEO) site for **Reed Home Solutions**, a remodeling and general contracting company in Gypsum, CO (owner: Jace Reed). Built by DubLow Digital on the same Astro architecture as `twhitelow1/vail-valley-it`.
 
 - **Stack:** Astro 7 static site, Node ≥ 22, deployed on Vercel
-- **Pages:** 29 total: home, 10 services, 10 town pages, 2 hubs, about, contact, free-estimate planner, insurance claim guide, privacy, site map, 404
+- **Pages:** 38 total: home, 13 services, 14 town pages, 2 hubs, about, contact, free-estimate planner, 2 guides (insurance claims, remodel pricing), privacy, site map, 404
+- **Brand:** voice, USP and SEO targeting in `docs/BRAND.md`
 - **Extras:** `llms.txt`, `robots.txt` (gated), plain `sitemap.xml`, JSON-LD on every page (GeneralContractor, Service, FAQPage, BreadcrumbList, HowTo)
 
 ## Commands
@@ -43,3 +44,5 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 ## Build log
 - **2026-10-08:** No existing Reed codebase was found (GitHub, Vercel, Drive, Notion, artifacts all checked), so the site was built fresh from the Sep 25 onboarding call (services, service areas, brand colors, restoration/insurance differentiator). SEO audit: 0 issues. Checked at 1280px and 390px.
 - **2026-10-08:** Imported to Vercel (project `reed-home-solutions`, team twhitelow1). Live preview: https://reed-home-solutions.vercel.app (noindex, robots.txt disallow, canonicals to the future domain). Every push to `claude/eager-fermi-2vik0q` redeploys.
+- **2026-10-08:** Brand voice/USP/SEO brief applied (`docs/BRAND.md`). Summit County made primary: Breckenridge core + new Frisco/Copper, Silverthorne, Dillon, Keystone pages; Basalt added to Aspen. New pages from competitor gap research: Condo & HOA Remodeling, Home Additions & ADUs, Real Estate & Inspection Repairs, Remodel Cost Guide. IndexNow key + manual workflow. Deep SEO/AEO audit: 0 issues; production build simulation verified (index, robots open to AI bots, sitemap listed).
+- **Next content (from competitor research):** service + town pages for the strongest pairs (kitchen/bath × Vail, Breckenridge, Edwards), each with genuinely local copy; live Google reviews once the GBP has them.

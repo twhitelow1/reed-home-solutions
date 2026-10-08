@@ -10,8 +10,8 @@ const cur = (p: string) => (path === p ? 'page' : undefined);
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar">
   <div class="wrap">
-    <span><Icon name="shield" />Permit-certified &amp; insured</span>
-    <span class="topbar-areas">Remodeling across Eagle County, Glenwood, Aspen, Steamboat &amp; Summit</span>
+    <span><Icon name="message" />Daily updates · Permit-certified &amp; insured</span>
+    <span class="topbar-areas">Remodeling across Eagle &amp; Summit counties, Steamboat &amp; Aspen</span>
     <a href={telHref}><Icon name="phone" />{site.phone}</a>
   </div>
 </div>
@@ -41,7 +41,16 @@ const cur = (p: string) => (path === p ? 'page' : undefined);
           <a class="all" href="/service-areas">All service areas</a>
         </div>
       </div>
-      <a href="/water-damage-insurance-claim-guide" aria-current={cur('/water-damage-insurance-claim-guide')}>Insurance Claims</a>
+      <div class="dd">
+        <button type="button" aria-haspopup="true">Guides <Icon name="chevron" /></button>
+        <div class="dd-panel dd-sm">
+          <div>
+            <h4>Plain-English guides</h4>
+            <a href="/water-damage-insurance-claim-guide" aria-current={cur('/water-damage-insurance-claim-guide')}>Water damage insurance claims</a>
+            <a href="/remodeling-cost-guide" aria-current={cur('/remodeling-cost-guide')}>How remodel pricing works</a>
+          </div>
+        </div>
+      </div>
       <a href="/about" aria-current={cur('/about')}>About</a>
       <a href="/contact" aria-current={cur('/contact')}>Contact</a>
     </nav>
@@ -55,6 +64,7 @@ const cur = (p: string) => (path === p ? 'page' : undefined);
         <a href="/services">Services</a>
         <a href="/service-areas">Service Areas</a>
         <a href="/water-damage-insurance-claim-guide">Insurance Claim Guide</a>
+        <a href="/remodeling-cost-guide">Remodel Cost Guide</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
         <a class="btn btn-primary" href={estimateHref}><Icon name="clipboard" />Get a free estimate</a>

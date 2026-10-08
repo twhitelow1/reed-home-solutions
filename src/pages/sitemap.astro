@@ -15,7 +15,7 @@ const sections: { icon: string; title: string; links: L[] }[] = [
   { icon: 'mountain', title: 'Company', links: [{ href: '/', label: 'Home' }, { href: '/about', label: 'About Reed Home Solutions' }, { href: '/free-estimate', label: 'Free estimate' }, { href: '/contact', label: 'Contact' }] },
   ...serviceGroups.map((g) => ({ icon: services.find((s) => s.group === g)!.icon, title: g, links: services.filter((s) => s.group === g).map((s) => ({ href: `/${s.slug}`, label: s.name })) })),
   { icon: 'pin', title: 'Service areas', links: [{ href: '/service-areas', label: 'All service areas' }, ...locations.map((l) => ({ href: `/${l.slug}`, label: `Remodeling contractor in ${l.town}, CO` }))] },
-  { icon: 'file', title: 'Guides & more', links: [{ href: '/services', label: 'All services' }, { href: '/water-damage-insurance-claim-guide', label: 'Water damage insurance claim guide' }, { href: '/privacy-policy', label: 'Privacy policy' }, { href: '/sitemap.xml', label: 'XML sitemap' }, { href: '/llms.txt', label: 'llms.txt (AI summary)' }] },
+  { icon: 'file', title: 'Guides & more', links: [{ href: '/services', label: 'All services' }, { href: '/water-damage-insurance-claim-guide', label: 'Water damage insurance claim guide' }, { href: '/remodeling-cost-guide', label: 'How remodel pricing works' }, { href: '/privacy-policy', label: 'Privacy policy' }, { href: '/sitemap.xml', label: 'XML sitemap' }, { href: '/llms.txt', label: 'llms.txt (AI summary)' }] },
 ];
 const list = { '@type': 'ItemList', name: 'Site map', itemListElement: sections.flatMap((s) => s.links).filter((l) => !/\.(xml|txt)$/.test(l.href)).map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}${l.href === '/' ? '/' : l.href}`, name: l.label })) };
 ---
@@ -23,7 +23,7 @@ const list = { '@type': 'ItemList', name: 'Site map', itemListElement: sections.
   <header class="page-head"><div class="wrap">
     <Breadcrumbs items={crumbs} />
     <h1>Site map</h1>
-    <p class="answer">Everything on the {site.name} website in one place: {services.length} services, {locations.length} service areas and our insurance claim guide.</p>
+    <p class="answer">Everything on the {site.name} website in one place: {services.length} services, {locations.length} service areas and our homeowner guides.</p>
   </div></header>
   <section class="section"><div class="wrap"><div class="smap">
     {sections.map((s) => (

@@ -7,11 +7,16 @@ Astro 7 static site (Node ≥ 22) on Vercel, built for local SEO and AI answer e
 - `npm run dev` — dev server on http://localhost:4321
 - `npm run build` — static build to `dist/`. Run before every push; it is the only check.
 
+## Brand voice — read first
+`docs/BRAND.md` holds the brand voice (plainspoken, steady, specific, accountable), the USP, the four differentiators
+(daily communication, insurance claim support, finishes the punch list, one GC across Eagle/Summit/Routt/Pitkin),
+audience segments and local SEO targeting. All copy follows it, including its insurance-claim compliance guardrail.
+
 ## Architecture
 Content lives in `src/data/`, not in templates:
 - `site.ts` — NAP, domain, phone, GHL links, tracking, credentials. Change the domain here only.
 - `services.ts` + `serviceExtras.ts` → service pages via `src/pages/[slug].astro`
-- `locations.ts` → town pages (`/remodeling-contractor-<town>-co`) via the same route
+- `locations.ts` → town pages (`/remodeling-contractor-<town>-co`) via the same route. `core: true` = primary area (Eagle + Summit counties, Glenwood, Carbondale); `false` = as schedule allows (Aspen, Steamboat)
 - `src/lib/schema.ts` — JSON-LD (GeneralContractor entity); `src/layouts/Base.astro` — head, meta, tracking
 - `llms.txt.ts`, `robots.txt.ts` — generated endpoints; `sitemap.xml` written by the hook in `astro.config.mjs`
 

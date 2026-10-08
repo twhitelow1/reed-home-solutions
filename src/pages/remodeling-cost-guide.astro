@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, estimateHref, telHref } from '../data/site';
+import { breadcrumbs, webPage, faqPage } from '../lib/schema';
+const path = '/remodeling-cost-guide';
+const title = 'How Remodel Pricing Works in Colorado Mountain Towns';
+const description = 'What drives remodeling costs in the Vail Valley and Summit County, how fixed-price and cost-plus contracts work, and how to compare contractor bids.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Remodeling Cost Guide', path }];
+const reviewed = new Date(site.lastReviewed + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+const faqs = [
+  { q: 'Why does remodeling cost more in Vail and Summit County than in Denver?', a: 'Skilled labor is scarce and expensive in resort towns, materials travel farther, the building season is short, and HOA rules on work hours and access add labor time. Permitting and design review can also take longer.' },
+  { q: 'What is the difference between a fixed-price and a cost-plus contract?', a: 'A fixed-price contract sets one price for a defined scope; changes are priced as change orders. Cost-plus bills actual costs plus an agreed fee, which is more flexible when the scope is uncertain but needs good tracking. We tell you which we are proposing for your job and why.' },
+  { q: 'What is an allowance in a remodeling estimate?', a: 'An allowance is a placeholder amount for items you have not picked yet, such as tile or light fixtures. If your final choice costs more or less, the price adjusts. Low allowances can make a bid look cheaper than it really is.' },
+  { q: 'How do I compare two remodeling bids?', a: 'Line them up item by item: scope, allowances, permits, demolition and disposal, who supplies materials, schedule, and what is excluded. The cheapest bid often leaves something out.' },
+  { q: 'Who pays for an insurance-funded remodel?', a: 'Your insurer pays for covered repairs based on the approved scope, minus your deductible, which you pay. Upgrades beyond like-kind-and-quality repair are paid by you and should be priced separately.' },
+  { q: 'Do you charge for estimates?', a: 'No. Site visits and written estimates are free.' },
+];
+const article = { '@type': 'Article', '@id': `${site.url}${path}#article`, headline: 'How remodel pricing works in Colorado mountain towns', author: { '@id': `${site.url}/about#jace-reed` }, publisher: { '@id': `${site.url}/#organization` }, dateModified: site.lastReviewed, mainEntityOfPage: `${site.url}${path}` };
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description), article, breadcrumbs(crumbs), faqPage(faqs, path)]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>How remodel pricing works in Colorado mountain towns</h1>
+    <p class="answer">Remodeling in the Vail Valley and Summit County costs more than on the Front Range because labor is scarce, materials travel farther, the building season is short and HOAs add rules. The price of any one project comes down to scope, finish level, what is behind the walls and the type of contract. This guide explains each piece in plain terms, so you can read an estimate and compare bids with confidence.</p>
+  </div></header>
+  <section class="section"><div class="wrap article">
+    <article class="prose">
+      <nav class="toc" aria-label="On this page"><b>On this page</b><ol><li><a href="#drivers">What drives the price</a></li><li><a href="#mountain">Mountain-town costs</a></li><li><a href="#contracts">Contract types</a></li><li><a href="#estimate">Reading an estimate</a></li><li><a href="#compare">Comparing bids</a></li><li><a href="#insurance">Insurance-funded work</a></li><li><a href="#faq">FAQ</a></li></ol></nav>
+
+      <h2 id="drivers">What drives the price of a remodel</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th scope="col">Factor</th><th scope="col">Why it moves the number</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Scope</strong></td><td>Refreshing surfaces costs far less than moving walls, plumbing or gas.</td></tr>
+          <tr><td><strong>Finish level</strong></td><td>Cabinets, counters, tile, fixtures and appliances span a wide range.</td></tr>
+          <tr><td><strong>Hidden conditions</strong></td><td>Old water damage, outdated wiring and code issues show up once walls open.</td></tr>
+          <tr><td><strong>Trades involved</strong></td><td>Each licensed trade (plumbing, electrical, HVAC) adds cost and scheduling.</td></tr>
+          <tr><td><strong>Permits and design review</strong></td><td>Fees, drawings, engineering and approval time.</td></tr>
+          <tr><td><strong>Access</strong></td><td>Condo elevators, steep driveways and limited parking slow every delivery.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="mountain">Why mountain-town remodels cost more</h2>
+      <ul>
+        <li><strong>Labor.</strong> Skilled trades are in short supply in resort towns, and many live down-valley.</li>
+        <li><strong>Materials and delivery.</strong> Most materials come from the Front Range or farther, and long-lead items like custom cabinets and windows need to be ordered early.</li>
+        <li><strong>The short season.</strong> Exterior work, foundations and roofing are squeezed into the warm months.</li>
+        <li><strong>HOA rules.</strong> Restricted hours, elevator reservations and deposits add labor time on condo jobs.</li>
+        <li><strong>Building for the climate.</strong> Snow loads, ice-dam protection, freeze-resistant plumbing and high-UV finishes cost more than lowland standards.</li>
+      </ul>
+
+      <h2 id="contracts">Contract types, in plain terms</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th scope="col">Type</th><th scope="col">How it works</th><th scope="col">Best for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Fixed price</strong></td><td>One price for a defined scope. Changes become written change orders.</td><td>Clear scope with selections made</td></tr>
+          <tr><td><strong>Cost-plus</strong></td><td>Actual costs plus an agreed fee, with open books.</td><td>Large or uncertain scope, like older homes</td></tr>
+          <tr><td><strong>Time and materials</strong></td><td>Hourly labor plus materials.</td><td>Small repairs and investigative work</td></tr>
+          <tr><td><strong>Insurance scope</strong></td><td>Price tied to the scope your adjuster approves, plus supplements for hidden damage.</td><td>Covered water, freeze or storm losses</td></tr>
+        </tbody>
+      </table></div>
+      <p>We tell you which approach we are proposing for your project and why, before you sign anything.</p>
+
+      <h2 id="estimate">What a good estimate shows</h2>
+      <ul class="included">
+        <li><Icon name="check" />Line items by phase: demo, framing, rough-ins, finishes</li>
+        <li><Icon name="check" />Allowances, clearly labeled, for anything not yet selected</li>
+        <li><Icon name="check" />Permits, disposal and cleanup</li>
+        <li><Icon name="check" />What is excluded</li>
+        <li><Icon name="check" />A schedule with a start date and a finish date</li>
+        <li><Icon name="check" />How change orders and payments work</li>
+      </ul>
+
+      <h2 id="compare">How to compare bids</h2>
+      <p>Put the bids side by side and check that they price the same scope. The most common differences are low allowances, missing permits, excluded demolition or disposal, and vague schedules. If one bid is far lower, ask what it leaves out. Then ask each contractor how often you will hear from them during the job. That answer tells you a lot.</p>
+
+      <h2 id="insurance">Insurance-funded remodels</h2>
+      <p>When a covered loss pays for part of the work, the approved insurance scope sets the budget for like-kind-and-quality repair. You pay your deductible and anything you choose to upgrade. We price upgrades separately so the claim stays clean, and we document hidden damage as supplements before doing the extra work. Read the <a href="/water-damage-insurance-claim-guide">water damage insurance claim guide</a> for the full process.</p>
+
+      <div style="margin-top:2.5rem"><Faq faqs={faqs} /></div>
+      <p class="meta byline">Written by <a href="/about">{site.owner.name}</a>, owner of {site.name} · Updated {reviewed}</p>
+    </article>
+    <aside class="aside">
+      <div class="box dark">
+        <h3>Get a real number</h3>
+        <p style="font-size:.95rem">A free site visit and a written, itemized estimate for your project.</p>
+        <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Request an estimate</a>
+        <a class="btn btn-ghost-light" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+      </div>
+      <div class="box">
+        <h3>Popular projects</h3>
+        <ul class="linklist">
+          <li><a href="/kitchen-remodeling">Kitchen remodeling<Icon name="chevron" /></a></li>
+          <li><a href="/bathroom-remodeling">Bathroom remodeling<Icon name="chevron" /></a></li>
+          <li><a href="/condo-remodeling">Condo &amp; HOA remodeling<Icon name="chevron" /></a></li>
+          <li><a href="/home-additions-adus">Home additions &amp; ADUs<Icon name="chevron" /></a></li>
+          <li><a href="/water-damage-insurance-repair">Water damage &amp; insurance repair<Icon name="chevron" /></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div></section>
+  <CtaBand />
+</Base>

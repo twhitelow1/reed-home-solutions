@@ -11,12 +11,14 @@ import { site, estimateHref, telHref } from '../data/site';
 import { faqPage, webPage, owner } from '../lib/schema';
 
 const title = 'Vail Valley Remodeling Contractor | Reed Home Solutions';
-const description = 'Gypsum-based remodeling contractor for the Vail Valley: kitchens, baths, basements, decks and insurance repairs. Permit-certified and insured. Free estimates.';
+const description = 'Remodeling contractor for Eagle and Summit counties: kitchens, baths, basements, decks and insurance-funded repairs. Daily updates. Free estimates.';
 const faqs = [
   { q: 'What does Reed Home Solutions do?', a: 'Reed Home Solutions is a remodeling and general contracting company in Gypsum, Colorado. We remodel kitchens, bathrooms, basements and lock-offs, build decks, manage siding, roofing, window and flooring projects, and rebuild homes after water damage.' },
-  { q: 'What areas do you serve?', a: 'All of Eagle County, including Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum and Dotsero, plus Glenwood Springs and Carbondale. We also take projects in Aspen, Steamboat Springs and Breckenridge as the schedule allows.' },
+  { q: 'What areas do you serve?', a: 'All of Eagle County, including Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum and Dotsero, and all of Summit County, including Breckenridge, Frisco, Copper, Silverthorne, Dillon and Keystone, plus Glenwood Springs and Carbondale. We also take projects in Aspen, Snowmass, Basalt and Steamboat Springs as the schedule allows.' },
   { q: 'Are you licensed and insured?', a: 'Reed Home Solutions is insured, and owner Jace Reed is certified to pull building permits. Colorado contractor licensing is handled by individual towns and counties, and we register where each project requires.' },
   { q: 'Can you help with an insurance claim for water damage?', a: 'Yes. Jace comes from water-damage restoration. He writes detailed, insurance-ready repair estimates and communicates directly with your adjuster, then handles the rebuild.' },
+  { q: 'How often will I hear from you during a project?', a: 'Every working day of active work. You get a short update with photos: what got done, what is next, and any decision we need from you. If something unexpected comes up, you hear about it the same day with options and a price.' },
+  { q: 'Do you work with second-home owners who are not in town?', a: 'Yes. Many of our clients live elsewhere. We coordinate access with your property manager or HOA and keep you updated daily, so you do not need to be on site.' },
   { q: 'How do I get an estimate?', a: 'Call, text or request a free estimate online. Jace will schedule a site visit, walk the project with you and send a written, itemized estimate.' },
 ];
 const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
@@ -25,9 +27,9 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div>
-        <span class="eyebrow">Gypsum-based · Serving the Vail Valley</span>
+        <span class="eyebrow">Eagle &amp; Summit counties · Steamboat · Aspen</span>
         <h1 id="hero-h">Vail Valley remodeling contractor for homes that <em>live in the mountains</em></h1>
-        <p class="lede">Reed Home Solutions remodels kitchens, bathrooms, basements and decks and rebuilds after water damage across Eagle County, Glenwood Springs and nearby mountain towns. Owner Jace Reed brings a restoration background, fast written estimates and one point of contact from the first walkthrough to the final inspection.</p>
+        <p class="lede">Reed Home Solutions is the mountain-town contractor who finishes what he starts. Owner Jace Reed remodels kitchens, baths, basements and decks, and rebuilds after water damage across Eagle and Summit counties. You get an update every working day, and if insurance is paying, we document the full scope with your adjuster so the approved repair matches the real damage.</p>
         <div class="btn-row">
           <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Get a free estimate</a>
           <a class="btn btn-outline" href={telHref}><Icon name="phone" />Call {site.phone}</a>
@@ -36,7 +38,7 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
           <li><Icon name="shield" />Certified to pull permits</li>
           <li><Icon name="check" />Insured</li>
           <li><Icon name="droplet" />Insurance-ready estimates</li>
-          <li><Icon name="pin" />Local to Eagle County</li>
+          <li><Icon name="message" />Daily updates</li>
         </ul>
       </div>
       <div class="hero-card">
@@ -79,13 +81,14 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Why Reed Home Solutions</span>
-        <h2 id="why-h">A contractor who answers, explains and shows up</h2>
+        <h2 id="why-h">No ghosting. No half-funded claims. No unfinished punch lists.</h2>
+        <p>Most people stuck in a remodel or a damage repair hit one of two problems: a contractor who disappears mid-project, or an insurance payout that doesn’t cover the real work. We built Reed Home Solutions around fixing both.</p>
       </div>
       <div class="pillars">
-        <div class="pillar"><Icon name="droplet" /><h3>Restoration background</h3><p>Years of water-damage restoration mean Jace knows what goes wrong inside walls, and how to build so it does not happen again.</p></div>
-        <div class="pillar"><Icon name="file" /><h3>Insurance-ready estimates</h3><p>He writes detailed repair estimates and talks directly with adjusters, something most general contractors do not do.</p></div>
-        <div class="pillar"><Icon name="clock" /><h3>Fast answers</h3><p>Quick estimate turnaround and clear communication through the job. Surprises come with options and prices before work proceeds.</p></div>
-        <div class="pillar"><Icon name="users" /><h3>Strong local network</h3><p>Vetted subcontractors for framing, tile, flooring, insulation, drywall, paint and roofing, coordinated under one schedule.</p></div>
+        <div class="pillar"><Icon name="message" /><h3>Daily communication</h3><p>Every working day you hear what got done, what’s next and what we need from you. Surprises come with options and a price the same day.</p></div>
+        <div class="pillar"><Icon name="file" /><h3>Insurance claim support</h3><p>Jace spent years writing water-loss estimates. We document the damage, write the full scope and walk it through with your adjuster.</p></div>
+        <div class="pillar"><Icon name="check" /><h3>We finish the punch list</h3><p>The job isn’t done when the big work is. It’s done when the last outlet cover is on and you say you’re happy.</p></div>
+        <div class="pillar"><Icon name="mountain" /><h3>One GC, four counties</h3><p>Eagle, Summit, Routt and Pitkin. One contractor and one vetted crew of trades, instead of starting over in every town.</p></div>
       </div>
     </div>
   </section>
@@ -101,8 +104,8 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
         <li><h3>Site visit</h3><p>We walk the space, measure and talk through what you want the project to do.</p></li>
         <li><h3>Written estimate</h3><p>Itemized, with inclusions, exclusions and open decisions spelled out.</p></li>
         <li><h3>Permits and orders</h3><p>Permits, HOA approvals and long-lead materials handled before demolition.</p></li>
-        <li><h3>Build</h3><p>Trades scheduled in the right order, regular updates, written change orders.</p></li>
-        <li><h3>Walkthrough</h3><p>Final inspection, punch list and cleanup. Done when you say it is done.</p></li>
+        <li><h3>Build</h3><p>Trades scheduled in the right order, an update every working day, written change orders.</p></li>
+        <li><h3>Walkthrough</h3><p>Final inspection and every punch-list item finished. Done when you say it is done.</p></li>
       </ol>
     </div>
   </section>
@@ -131,6 +134,21 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
     </div>
   </section>
 
+  <section class="section" aria-labelledby="who-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Who we work with</span>
+        <h2 id="who-h">Built for the jobs other contractors avoid</h2>
+      </div>
+      <div class="grid grid-2">
+        <article class="card"><Icon name="droplet" class="icon-lg" /><div><h3><a href="/water-damage-insurance-repair">Homeowners mid-claim</a></h3><p>Water, freeze or storm damage and an insurance claim in progress. We document the damage, write the full scope for your adjuster and rebuild.</p></div></article>
+        <article class="card"><Icon name="sign" class="icon-lg" /><div><h3><a href="/real-estate-inspection-repairs">Buyers, sellers and agents</a></h3><p>Inspection repairs and pre-listing work on a closing deadline, with written estimates you can share and photos for the file.</p></div></article>
+        <article class="card"><Icon name="building" class="icon-lg" /><div><h3><a href="/condo-remodeling">Second-home and condo owners</a></h3><p>Remodels run inside HOA rules while you’re out of town, with a photo update every working day.</p></div></article>
+        <article class="card"><Icon name="users" class="icon-lg" /><div><h3><a href="/home-renovation-general-contracting">Property managers and trade partners</a></h3><p>A general contractor who answers the phone, shows up when the unit is open and coordinates plumbing and mechanical partners.</p></div></article>
+      </div>
+    </div>
+  </section>
+
   <section class="section" aria-labelledby="area-h">
     <div class="wrap">
       <div class="section-head">
@@ -147,7 +165,7 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
               <td>{l.county}</td>
               <td>{l.zips.join(', ')}</td>
               <td>{l.driveFromGypsum === 'local' ? 'Home base' : l.driveFromGypsum}</td>
-              <td>{l.core ? 'Regular service area' : 'As schedule allows'}</td>
+              <td>{l.core ? 'Primary service area' : 'As schedule allows'}</td>
             </tr>
           ))}
         </tbody>
