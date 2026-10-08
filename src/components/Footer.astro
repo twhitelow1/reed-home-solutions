@@ -1,0 +1,50 @@
+---
+import Logo from './Logo.astro';
+import Ridge from './Ridge.astro';
+import { site, telHref, estimateHref } from '../data/site';
+import { services, serviceGroups } from '../data/services';
+import { locations } from '../data/locations';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <Ridge />
+  <div class="foot-bg">
+    <div class="wrap foot">
+      <div>
+        <a class="brand" href="/" aria-label={`${site.name} home`}><Logo light /></a>
+        <address class="nap">
+          <strong>{site.name}</strong><br />
+          {site.address.locality}, {site.address.region} {site.address.postalCode}<br />
+          <a href={telHref}>{site.phone}</a>
+          {site.email && <><br /><a href={`mailto:${site.email}`}>{site.email}</a></>}
+        </address>
+        <p>Remodeling and general contracting for Eagle County and nearby mountain towns. {site.credentials.join(' · ')}.</p>
+      </div>
+      {serviceGroups.map((g) => (
+        <div>
+          <h2>{g}</h2>
+          <ul>{services.filter((s) => s.group === g).map((s) => <li><a href={`/${s.slug}`}>{s.name}</a></li>)}</ul>
+        </div>
+      ))}
+      <div>
+        <h2>Service areas</h2>
+        <ul>{locations.map((l) => <li><a href={`/${l.slug}`}>{l.town} remodeling</a></li>)}</ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about">About Jace Reed</a></li>
+          <li><a href="/services">All services</a></li>
+          <li><a href="/service-areas">All service areas</a></li>
+          <li><a href="/water-damage-insurance-claim-guide">Insurance claim guide</a></li>
+          <li><a href={estimateHref}>Free estimate</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© {year} {site.legalName}. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy policy</a> &nbsp; <a href="/sitemap">Site map</a> &nbsp; Website by <a href={site.agency.url} rel="noopener">{site.agency.name}</a></span>
+    </div>
+  </div>
+</footer>

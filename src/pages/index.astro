@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Mark from '../components/Mark.astro';
+import Ridge from '../components/Ridge.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { services, serviceGroups } from '../data/services';
+import { locations } from '../data/locations';
+import { site, estimateHref, telHref } from '../data/site';
+import { faqPage, webPage, owner } from '../lib/schema';
+
+const title = 'Vail Valley Remodeling Contractor | Reed Home Solutions';
+const description = 'Gypsum-based remodeling contractor for the Vail Valley: kitchens, baths, basements, decks and insurance repairs. Permit-certified and insured. Free estimates.';
+const faqs = [
+  { q: 'What does Reed Home Solutions do?', a: 'Reed Home Solutions is a remodeling and general contracting company in Gypsum, Colorado. We remodel kitchens, bathrooms, basements and lock-offs, build decks, manage siding, roofing, window and flooring projects, and rebuild homes after water damage.' },
+  { q: 'What areas do you serve?', a: 'All of Eagle County, including Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum and Dotsero, plus Glenwood Springs and Carbondale. We also take projects in Aspen, Steamboat Springs and Breckenridge as the schedule allows.' },
+  { q: 'Are you licensed and insured?', a: 'Reed Home Solutions is insured, and owner Jace Reed is certified to pull building permits. Colorado contractor licensing is handled by individual towns and counties, and we register where each project requires.' },
+  { q: 'Can you help with an insurance claim for water damage?', a: 'Yes. Jace comes from water-damage restoration. He writes detailed, insurance-ready repair estimates and communicates directly with your adjuster, then handles the rebuild.' },
+  { q: 'How do I get an estimate?', a: 'Call, text or request a free estimate online. Jace will schedule a site visit, walk the project with you and send a written, itemized estimate.' },
+];
+const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
+---
+<Base title={title} description={description} path="/" schema={schema}>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Gypsum-based · Serving the Vail Valley</span>
+        <h1 id="hero-h">Vail Valley remodeling contractor for homes that <em>live in the mountains</em></h1>
+        <p class="lede">Reed Home Solutions remodels kitchens, bathrooms, basements and decks and rebuilds after water damage across Eagle County, Glenwood Springs and nearby mountain towns. Owner Jace Reed brings a restoration background, fast written estimates and one point of contact from the first walkthrough to the final inspection.</p>
+        <div class="btn-row">
+          <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Get a free estimate</a>
+          <a class="btn btn-outline" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+        </div>
+        <ul class="hero-proof">
+          <li><Icon name="shield" />Certified to pull permits</li>
+          <li><Icon name="check" />Insured</li>
+          <li><Icon name="droplet" />Insurance-ready estimates</li>
+          <li><Icon name="pin" />Local to Eagle County</li>
+        </ul>
+      </div>
+      <div class="hero-card">
+        <Mark size={64} />
+        <h2>How a free estimate works</h2>
+        <p>No pressure, no vague numbers.</p>
+        <ol>
+          <li><span><b>Tell us about the project</b>Call, text or use the 1-minute project planner.</span></li>
+          <li><span><b>Site visit with Jace</b>He measures, looks behind the obvious and answers questions on the spot.</span></li>
+          <li><span><b>Written, itemized estimate</b>What is included, what is not, and the decisions still open.</span></li>
+        </ol>
+        <a class="btn btn-primary" href={estimateHref}><Icon name="clipboard" />Start my estimate</a>
+      </div>
+    </div>
+    <div class="hero-scene" aria-hidden="true"><Ridge class="hero-ridge" /></div>
+  </section>
+
+  <section class="section" aria-labelledby="svc-h" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <h2 id="svc-h">Remodeling, exteriors and insurance repairs</h2>
+        <p class="lede">Interior remodels are our core work. Exterior and roofing projects run through trusted local trade partners we manage, so you still have one contractor accountable for the whole job.</p>
+      </div>
+      {serviceGroups.map((g) => (
+        <>
+          <h3 style="margin:1.6rem 0 1rem">{g}</h3>
+          <div class="grid grid-3">
+            {services.filter((s) => s.group === g).map((s) => (
+              <article class="card"><Icon name={s.icon} class="icon-lg" /><div><h3><a href={`/${s.slug}`}>{s.name}</a></h3><p>{s.card}</p><span class="more">{s.name}<Icon name="chevron" /></span></div></article>
+            ))}
+          </div>
+        </>
+      ))}
+    </div>
+  </section>
+
+  <Ridge />
+  <section class="band section" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why Reed Home Solutions</span>
+        <h2 id="why-h">A contractor who answers, explains and shows up</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><Icon name="droplet" /><h3>Restoration background</h3><p>Years of water-damage restoration mean Jace knows what goes wrong inside walls, and how to build so it does not happen again.</p></div>
+        <div class="pillar"><Icon name="file" /><h3>Insurance-ready estimates</h3><p>He writes detailed repair estimates and talks directly with adjusters, something most general contractors do not do.</p></div>
+        <div class="pillar"><Icon name="clock" /><h3>Fast answers</h3><p>Quick estimate turnaround and clear communication through the job. Surprises come with options and prices before work proceeds.</p></div>
+        <div class="pillar"><Icon name="users" /><h3>Strong local network</h3><p>Vetted subcontractors for framing, tile, flooring, insulation, drywall, paint and roofing, coordinated under one schedule.</p></div>
+      </div>
+    </div>
+  </section>
+  <Ridge flip />
+
+  <section class="section" aria-labelledby="proc-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Process</span>
+        <h2 id="proc-h">From first call to final walkthrough</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Site visit</h3><p>We walk the space, measure and talk through what you want the project to do.</p></li>
+        <li><h3>Written estimate</h3><p>Itemized, with inclusions, exclusions and open decisions spelled out.</p></li>
+        <li><h3>Permits and orders</h3><p>Permits, HOA approvals and long-lead materials handled before demolition.</p></li>
+        <li><h3>Build</h3><p>Trades scheduled in the right order, regular updates, written change orders.</p></li>
+        <li><h3>Walkthrough</h3><p>Final inspection, punch list and cleanup. Done when you say it is done.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section tint" aria-labelledby="ins-h">
+    <div class="wrap article" style="grid-template-columns:minmax(0,1fr) 330px">
+      <div class="prose">
+        <span class="eyebrow">Water damage &amp; insurance</span>
+        <h2 id="ins-h">Burst pipe, ice dam or leak? Rebuild with a contractor who knows claims</h2>
+        <p>Frozen pipes in second homes, ice-dam leaks and condo leaks between units are some of the most common losses in mountain towns. After the water is stopped and the space is dried, Reed Home Solutions documents the damage, writes an itemized estimate your adjuster can work with, and rebuilds drywall, cabinets, flooring, tile and paint.</p>
+        <p>We are your contractor, not a public adjuster, and we never offer to waive a deductible. We just make the paperwork and the rebuild a lot easier.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/water-damage-insurance-repair">Water damage &amp; insurance repair</a>
+          <a class="btn btn-outline" href="/water-damage-insurance-claim-guide">Read the claim guide</a>
+        </div>
+      </div>
+      <div class="box">
+        <h3>First hours after a leak</h3>
+        <ul class="signs" style="margin:0">
+          <li><Icon name="check" />Shut off the water and make the area safe</li>
+          <li><Icon name="check" />Photograph everything before cleanup</li>
+          <li><Icon name="check" />Call your insurer and a water mitigation company</li>
+          <li><Icon name="check" />Call us for the rebuild estimate</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="area-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Service areas</span>
+        <h2 id="area-h">Where we remodel</h2>
+        <p class="lede">Based in Gypsum, we work across Eagle County every week and take projects in the Roaring Fork Valley, Steamboat and Summit County as the schedule allows.</p>
+      </div>
+      <div class="tablewrap"><table>
+        <thead><tr><th scope="col">Town</th><th scope="col">County</th><th scope="col">ZIP</th><th scope="col">From Gypsum</th><th scope="col">Scheduling</th></tr></thead>
+        <tbody>
+          {locations.map((l) => (
+            <tr>
+              <td><a href={`/${l.slug}`}><strong>{l.town} remodeling contractor</strong></a></td>
+              <td>{l.county}</td>
+              <td>{l.zips.join(', ')}</td>
+              <td>{l.driveFromGypsum === 'local' ? 'Home base' : l.driveFromGypsum}</td>
+              <td>{l.core ? 'Regular service area' : 'As schedule allows'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table></div>
+      <p><a href="/service-areas">See all service areas</a></p>
+    </div>
+  </section>
+
+  <section class="section tint" aria-labelledby="about-h">
+    <div class="wrap article" style="grid-template-columns:minmax(0,1fr) 330px">
+      <div class="prose">
+        <span class="eyebrow">Meet the owner</span>
+        <h2 id="about-h">Jace Reed, owner</h2>
+        <p>Jace got into construction locally about a decade ago and spent years in water-damage restoration across the Vail Valley, writing insurance estimates for water losses and working with insurers, property managers and homeowners. He started Reed Home Solutions to bring that same responsiveness to remodeling: fast answers, clear estimates and work built to last.</p>
+        <p>He is certified to pull building permits, is insured, and recently completed a fully permitted renovation and room addition in Edwards.</p>
+        <p><a href="/about">More about Jace and Reed Home Solutions</a></p>
+      </div>
+      <div class="box">
+        <h3>Credentials</h3>
+        <ul class="included" style="margin:0">{site.credentials.map((c) => <li><Icon name="check" />{c}</li>)}<li><Icon name="check" />Restoration and insurance-estimate experience</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Frequently asked questions">
+    <div class="wrap narrow"><Faq faqs={faqs} /></div>
+  </section>
+
+  <CtaBand />
+</Base>

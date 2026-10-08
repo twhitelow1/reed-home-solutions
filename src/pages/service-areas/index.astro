@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { locations } from '../../data/locations';
+import { breadcrumbs, webPage } from '../../lib/schema';
+import { site } from '../../data/site';
+const path = '/service-areas';
+const title = 'Service Areas: Eagle County & Nearby Towns | Reed Home Solutions';
+const description = 'Reed Home Solutions remodels homes in Vail, Avon, Edwards, Eagle, Gypsum, Glenwood Springs and Carbondale, plus Aspen, Steamboat and Breckenridge.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Service Areas', path }];
+const list = { '@type': 'ItemList', name: 'Service areas', itemListElement: locations.map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}/${l.slug}`, name: `${l.town}, CO` })) };
+const core = locations.filter((l) => l.core);
+const extended = locations.filter((l) => !l.core);
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description, 'CollectionPage'), breadcrumbs(crumbs), list]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>Remodeling service areas</h1>
+    <p class="answer">Reed Home Solutions is based in Gypsum and remodels homes across Eagle County every week, from Vail to Dotsero, plus Glenwood Springs and Carbondale. We also take projects in Aspen, Steamboat Springs and Breckenridge as our schedule allows.</p>
+  </div></header>
+  <section class="section"><div class="wrap">
+    <h2>Regular service area</h2>
+    <div class="grid grid-3">
+      {core.map((l) => (
+        <article class="card"><Icon name="pin" class="icon-lg" /><div><h3><a href={`/${l.slug}`}>{l.town} remodeling contractor</a></h3><p>{l.neighborhoods.slice(0, 4).join(', ')}. {l.driveFromGypsum === 'local' ? 'Our home base.' : `About ${l.driveFromGypsum.replace('about ', '')} from Gypsum.`}</p></div></article>
+      ))}
+    </div>
+    <h2 style="margin-top:3rem">Extended service area</h2>
+    <p>Projects taken as the schedule allows. Call to discuss timing.</p>
+    <div class="grid grid-3">
+      {extended.map((l) => (
+        <article class="card"><Icon name="mountain" class="icon-lg" /><div><h3><a href={`/${l.slug}`}>{l.town} remodeling contractor</a></h3><p>{l.neighborhoods.slice(0, 4).join(', ')}. About {l.driveFromGypsum.replace('about ', '')} from Gypsum.</p></div></article>
+      ))}
+    </div>
+    <h2 style="margin-top:3rem">Coverage at a glance</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Town</th><th scope="col">County</th><th scope="col">ZIP</th><th scope="col">Access</th><th scope="col">From Gypsum</th></tr></thead>
+      <tbody>{locations.map((l) => <tr><td><a href={`/${l.slug}`}><strong>{l.town}</strong></a></td><td>{l.county}</td><td>{l.zips.join(', ')}</td><td>{l.access}</td><td>{l.driveFromGypsum === 'local' ? 'Home base' : l.driveFromGypsum}</td></tr>)}</tbody>
+    </table></div>
+  </div></section>
+  <CtaBand />
+</Base>

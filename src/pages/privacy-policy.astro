@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../data/site';
+import { breadcrumbs, webPage } from '../lib/schema';
+const path = '/privacy-policy';
+const title = 'Privacy Policy | Reed Home Solutions';
+const description = 'How Reed Home Solutions collects, uses and protects information you share through this website, by phone, by text or through our project planner.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Privacy Policy', path }];
+// TODO: have counsel review before launch.
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description), breadcrumbs(crumbs)]}>
+  <header class="page-head"><div class="wrap"><Breadcrumbs items={crumbs} /><h1>Privacy policy</h1><p class="meta">Last updated {site.lastReviewed}</p></div></header>
+  <section class="section"><div class="wrap prose">
+    <p>{site.name} ("we", "us") respects your privacy. This policy explains what information this website collects and how we use it.</p>
+    <h2>Information we collect</h2>
+    <p>When you call, text, email or use the project planner, we collect the details you provide, such as your name, phone number, email, property location and project description. The site may also collect basic, aggregated analytics such as pages visited, device type and how you found us.</p>
+    <h2>How we use it</h2>
+    <p>We use your information to respond to you, schedule site visits, prepare estimates and provide the services you request. We do not sell personal information.</p>
+    <h2>Text messages</h2>
+    <p>If you text us, we use your number to reply about your project. Message and data rates may apply. Reply STOP to opt out of further messages.</p>
+    <h2>Service providers</h2>
+    <p>We use trusted vendors for phone, messaging, scheduling, forms and analytics. They process information on our behalf under their own security and privacy commitments.</p>
+    <h2>Your choices</h2>
+    <p>You may ask us to access, correct or delete your information by calling {site.phone}{site.email ? ` or emailing ${site.email}` : ''}.</p>
+    <h2>Security</h2>
+    <p>We protect information with reasonable administrative, technical and physical safeguards.</p>
+  </div></section>
+</Base>

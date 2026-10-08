@@ -1,0 +1,8 @@
+---
+// Mountain ridgeline divider, the site's signature transition into dark bands and the footer.
+interface Props { flip?: boolean; class?: string }
+const { flip = false, class: cls = '' } = Astro.props;
+---
+<svg class={`ridge ${flip ? 'flip' : ''} ${cls}`} viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+  <path fill="currentColor" d="M0 80V60 L90 40 L150 52 L230 20 L290 44 L340 34 L420 62 L490 26 L540 42 L600 10 L660 36 L700 28 L780 56 L840 36 L890 48 L970 8 L1020 30 L1070 22 L1140 52 L1200 34 L1260 54 L1330 18 L1380 40 L1440 30 V80z"/>
+</svg>

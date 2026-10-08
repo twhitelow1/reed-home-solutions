@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, estimateHref, telHref } from '../data/site';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+import { breadcrumbs, webPage, owner } from '../lib/schema';
+const path = '/about';
+const title = 'About Jace Reed & Reed Home Solutions | Gypsum, CO';
+const description = 'Meet Jace Reed, owner of Reed Home Solutions: a Gypsum-based remodeling contractor with a water-damage restoration background, serving the Vail Valley.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'About', path }];
+// TODO add a real photo of Jace on a job site, plus finished-project photos (Edwards renovation, Vail condo roof).
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description, 'AboutPage'), owner(), breadcrumbs(crumbs)]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>About Reed Home Solutions</h1>
+    <p class="answer">Reed Home Solutions is a remodeling and general contracting company based in Gypsum, Colorado, owned and run by Jace Reed. Jace combines years of local construction and water-damage restoration experience with a simple goal: answer quickly, estimate clearly and build work that lasts in mountain conditions.</p>
+  </div></header>
+  <section class="section"><div class="wrap article">
+    <article class="prose">
+      <h2 id="jace-reed">Jace Reed, owner</h2>
+      <p>Jace got into construction in the valley roughly a decade ago and has worked across Eagle County ever since. Much of that time has been in water-damage restoration, covering territory from Vail to Glenwood Springs, Carbondale and Aspen: opening walls after leaks, writing insurance estimates for water losses, and working through scope with adjusters, property managers and homeowners.</p>
+      <p>Restoration teaches you how houses fail. Shower pans without waterproofing, decks without ledger flashing, supply lines in cold exterior walls. Those lessons are built into every Reed Home Solutions project.</p>
+      <h2>What we believe</h2>
+      <ul class="signs">
+        <li><Icon name="check" /><span><strong>Speed matters.</strong> Construction is not new to anyone. The contractor who answers questions quickly and turns estimates around fast is the one you want to work with.</span></li>
+        <li><Icon name="check" /><span><strong>Communication is the job.</strong> You hear about surprises the day we find them, with options and prices before work proceeds.</span></li>
+        <li><Icon name="check" /><span><strong>Do it permitted.</strong> Jace is certified to pull permits, and we build to code so the work counts when you sell or file a claim.</span></li>
+        <li><Icon name="check" /><span><strong>Use people you trust.</strong> Our subcontractor network for framing, tile, flooring, carpet, insulation, drywall, paint and roofing comes from years of working together.</span></li>
+      </ul>
+      <h2>Recent work</h2>
+      <p>Recent projects include a fully permitted renovation of a home in Edwards that added rooms and brought the house up to current code, a completed home renovation earlier this year, ongoing deck projects, and a flat-roof system on a condo building in Vail installed with our roofing partner. Project photos are coming soon.</p>
+      <h2>What we do</h2>
+      <ul class="towns">{services.map((s) => <li><a href={`/${s.slug}`}>{s.name}</a></li>)}</ul>
+      <h2>Where we work</h2>
+      <ul class="towns">{locations.map((l) => <li><a href={`/${l.slug}`}>{l.town}</a></li>)}</ul>
+    </article>
+    <aside class="aside">
+      <div class="box dark">
+        <h3>Talk to Jace</h3>
+        <p style="font-size:.95rem">Call or text about your project, or request a free estimate online.</p>
+        <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Free estimate</a>
+        <a class="btn btn-ghost-light" href={telHref}><Icon name="phone" />{site.phone}</a>
+      </div>
+      <div class="box">
+        <h3>Credentials</h3>
+        <ul class="included" style="margin:0">{site.credentials.map((c) => <li><Icon name="check" />{c}</li>)}</ul>
+        <p class="meta">Proof of insurance available on request.</p>
+      </div>
+    </aside>
+  </div></section>
+  <CtaBand />
+</Base>

@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+import { site, estimateHref, telHref } from '../data/site';
+interface Props { title?: string; text?: string; button?: string }
+const { title = 'Get a fast, free written estimate', text = 'Tell us about your project. Jace will walk the space, answer your questions and send a clear, line-item estimate fast.', button = 'Request a free estimate' } = Astro.props;
+---
+<section class="section" aria-label={button}>
+  <div class="wrap">
+    <div class="cta">
+      <Icon name="clipboard" class="cta-icon" />
+      <div>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />{button}</a>
+        <a class="btn btn-ghost-light" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

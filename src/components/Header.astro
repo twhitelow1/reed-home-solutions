@@ -1,0 +1,65 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { services, serviceGroups } from '../data/services';
+import { locations } from '../data/locations';
+import { site, estimateHref, telHref } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const cur = (p: string) => (path === p ? 'page' : undefined);
+---
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="wrap">
+    <span><Icon name="shield" />Permit-certified &amp; insured</span>
+    <span class="topbar-areas">Remodeling across Eagle County, Glenwood, Aspen, Steamboat &amp; Summit</span>
+    <a href={telHref}><Icon name="phone" />{site.phone}</a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label={`${site.name} home`}><Logo /></a>
+    <nav class="nav" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-haspopup="true">Services <Icon name="chevron" /></button>
+        <div class="dd-panel">
+          {serviceGroups.map((g) => (
+            <div>
+              <h4>{g}</h4>
+              {services.filter((s) => s.group === g).map((s) => <a href={`/${s.slug}`} aria-current={cur(`/${s.slug}`)}>{s.name}</a>)}
+            </div>
+          ))}
+          <a class="all" href="/services">All services</a>
+        </div>
+      </div>
+      <div class="dd">
+        <button type="button" aria-haspopup="true">Service Areas <Icon name="chevron" /></button>
+        <div class="dd-panel dd-sm">
+          <div>
+            <h4>Where we work</h4>
+            {locations.map((l) => <a href={`/${l.slug}`} aria-current={cur(`/${l.slug}`)}>{l.town}</a>)}
+          </div>
+          <a class="all" href="/service-areas">All service areas</a>
+        </div>
+      </div>
+      <a href="/water-damage-insurance-claim-guide" aria-current={cur('/water-damage-insurance-claim-guide')}>Insurance Claims</a>
+      <a href="/about" aria-current={cur('/about')}>About</a>
+      <a href="/contact" aria-current={cur('/contact')}>Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary" href={estimateHref}><Icon name="clipboard" />Free estimate</a>
+    </div>
+    <details class="mobile-nav">
+      <summary aria-label="Open menu"><Icon name="menu" size={28} /></summary>
+      <div class="mnav-panel">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/service-areas">Service Areas</a>
+        <a href="/water-damage-insurance-claim-guide">Insurance Claim Guide</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a class="btn btn-primary" href={estimateHref}><Icon name="clipboard" />Get a free estimate</a>
+        <a class="btn btn-outline" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+      </div>
+    </details>
+  </div>
+</header>

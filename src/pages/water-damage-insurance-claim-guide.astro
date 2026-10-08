@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, estimateHref, telHref } from '../data/site';
+import { breadcrumbs, webPage, faqPage } from '../lib/schema';
+const path = '/water-damage-insurance-claim-guide';
+const title = 'Water Damage Insurance Claim Guide for Colorado Homeowners';
+const description = 'What to do after a burst pipe, ice dam or leak in a Colorado mountain home: first steps, working with your adjuster, and choosing a rebuild contractor.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Insurance Claim Guide', path }];
+const reviewed = new Date(site.lastReviewed + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+const steps = [
+  { h: 'Stop the water and make it safe', p: 'Close the main shut-off or the fixture valve. If water is near outlets or the ceiling is sagging, turn off power to the area and stay out from under it.' },
+  { h: 'Document before you clean', p: 'Take wide and close-up photos and video of every affected room, the source of the leak, and damaged belongings. Keep failed parts such as a burst supply line.' },
+  { h: 'Notify your insurer', p: 'Report the loss promptly and write down your claim number, adjuster name and contact information. Ask what your policy requires you to do next.' },
+  { h: 'Start drying right away', p: 'Wet drywall, insulation and flooring can grow mold within days. A water mitigation company dries the structure and removes materials that cannot be saved. Keep their moisture logs and invoices.' },
+  { h: 'Get a detailed rebuild estimate', p: 'Once the structure is dry, a contractor documents the damage and writes an itemized estimate for the repairs. This is what your adjuster compares against their own scope.' },
+  { h: 'Review scope with the adjuster', p: 'Differences between the adjuster’s scope and the contractor’s estimate are normal. They are resolved line by line, with photos and measurements.' },
+  { h: 'Rebuild and supplement', p: 'During repairs, hidden damage sometimes turns up. The contractor documents it and submits a supplement to the insurer before doing the extra work.' },
+];
+const faqs = [
+  { q: 'How long do I have to file a water damage claim in Colorado?', a: 'Policies require prompt notice of a loss, and waiting can make it harder to show the damage was sudden. Report the loss as soon as you discover it and check your policy for specific deadlines.' },
+  { q: 'Does homeowners insurance cover a burst pipe?', a: 'Many policies cover sudden and accidental water damage from a burst pipe, but not gradual leaks or wear. Some policies limit freeze coverage if a home was left without heat. Your policy language and adjuster decide coverage.' },
+  { q: 'Can I choose my own contractor for an insurance repair?', a: 'Generally yes. You are the policyholder and can choose who repairs your home. Your insurer may suggest preferred vendors, but you are usually not required to use them.' },
+  { q: 'Can a contractor negotiate my claim for me?', a: 'A contractor can document damage, write an estimate and discuss repair scope with your adjuster. Negotiating the claim on your behalf is the role of a licensed public adjuster. Reed Home Solutions acts as your contractor.' },
+  { q: 'Should a contractor ever cover my deductible?', a: 'No. Your deductible is your responsibility under the policy. Colorado law prohibits roofing contractors from paying or waiving it, and an offer to do so on any claim is a red flag.' },
+  { q: 'What if the insurance payment does not cover everything?', a: 'Ask for the adjuster’s itemized scope and compare it with your contractor’s estimate. Missing items and hidden damage can be submitted as supplements with photos and measurements.' },
+];
+const article = { '@type': 'Article', '@id': `${site.url}${path}#article`, headline: 'Water damage insurance claim guide for Colorado homeowners', author: { '@id': `${site.url}/about#jace-reed` }, publisher: { '@id': `${site.url}/#organization` }, dateModified: site.lastReviewed, mainEntityOfPage: `${site.url}${path}` };
+const howto = { '@type': 'HowTo', name: 'What to do after water damage in your home', step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.h, text: s.p })) };
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description), article, howto, breadcrumbs(crumbs), faqPage(faqs, path)]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>Water damage insurance claim guide for Colorado homeowners</h1>
+    <p class="answer">After a burst pipe, ice-dam leak or appliance failure, stop the water, photograph everything, notify your insurer and start drying within the first day or two. Once the home is dry, get a detailed, itemized rebuild estimate and review it with your adjuster line by line. This guide walks through each step, written by Jace Reed from years in water-damage restoration.</p>
+  </div></header>
+  <section class="section"><div class="wrap article">
+    <article class="prose">
+      <nav class="toc" aria-label="On this page"><b>On this page</b><ol><li><a href="#steps">Step by step</a></li><li><a href="#mountain">Mountain-home risks</a></li><li><a href="#contractor">Choosing a contractor</a></li><li><a href="#red-flags">Red flags</a></li><li><a href="#faq">FAQ</a></li></ol></nav>
+      <h2 id="steps">What to do after water damage, step by step</h2>
+      <ol class="steps steps-2">{steps.map((s) => <li><h3>{s.h}</h3><p>{s.p}</p></li>)}</ol>
+
+      <h2 id="mountain">Why mountain homes are especially at risk</h2>
+      <ul>
+        <li><strong>Vacant second homes.</strong> A small leak can run for weeks before anyone notices. Smart leak detectors and automatic shut-off valves are worth considering.</li>
+        <li><strong>Frozen pipes.</strong> Supply lines in exterior walls, crawlspaces and garages freeze during cold snaps, especially if heat is set too low or fails.</li>
+        <li><strong>Ice dams.</strong> Heat loss through the roof melts snow that refreezes at the eaves and backs water into ceilings and walls.</li>
+        <li><strong>Condos.</strong> Leaks travel between units, which can involve the HOA’s master policy as well as each owner’s policy.</li>
+      </ul>
+
+      <h2 id="contractor">Choosing a rebuild contractor</h2>
+      <p>Look for a contractor who will:</p>
+      <ul class="included">
+        <li><Icon name="check" />Write an itemized estimate that matches how adjusters review scope</li>
+        <li><Icon name="check" />Photograph and measure damage, including areas behind finishes</li>
+        <li><Icon name="check" />Talk directly with your adjuster about repair scope</li>
+        <li><Icon name="check" />Submit supplements for hidden damage before doing extra work</li>
+        <li><Icon name="check" />Price any upgrades separately from the claim</li>
+        <li><Icon name="check" />Pull permits where the repair requires them</li>
+      </ul>
+      <p>That is how <a href="/water-damage-insurance-repair">Reed Home Solutions handles water damage and insurance repairs</a>. If the leak came from the roof, see <a href="/roof-replacement-repair">roof replacement and repair</a>; if a shower failed, see <a href="/bathroom-remodeling">bathroom remodeling</a>.</p>
+
+      <h2 id="red-flags">Red flags</h2>
+      <ul class="signs">
+        <li><Icon name="alert" />An offer to waive, rebate or cover your deductible</li>
+        <li><Icon name="alert" />Pressure to sign a contract or assignment of benefits on the spot</li>
+        <li><Icon name="alert" />A contractor who says they will negotiate your claim like a public adjuster</li>
+        <li><Icon name="alert" />No written, itemized estimate</li>
+        <li><Icon name="alert" />Large upfront payment demands before work is scheduled</li>
+      </ul>
+      <div class="callout"><p>This guide is general information, not legal or insurance advice. Your policy and your insurer determine coverage. Ask your agent about your specific policy.</p></div>
+
+      <div style="margin-top:2.5rem"><Faq faqs={faqs} /></div>
+      <p class="meta byline">Written by <a href="/about">{site.owner.name}</a>, owner of {site.name} · Updated {reviewed}</p>
+    </article>
+    <aside class="aside">
+      <div class="box dark">
+        <h3>Need a rebuild estimate?</h3>
+        <p style="font-size:.95rem">Jace documents the damage and writes an itemized estimate your adjuster can work with.</p>
+        <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Request an estimate</a>
+        <a class="btn btn-ghost-light" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+      </div>
+      <div class="box">
+        <h3>Related services</h3>
+        <ul class="linklist">
+          <li><a href="/water-damage-insurance-repair">Water damage &amp; insurance repair<Icon name="chevron" /></a></li>
+          <li><a href="/roof-replacement-repair">Roof replacement &amp; repair<Icon name="chevron" /></a></li>
+          <li><a href="/bathroom-remodeling">Bathroom remodeling<Icon name="chevron" /></a></li>
+          <li><a href="/flooring-installation">Flooring installation<Icon name="chevron" /></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div></section>
+  <CtaBand title="Rebuilding after water damage?" text="Get an itemized repair estimate from a contractor with a restoration background. We document the damage and work through scope with your adjuster." />
+</Base>

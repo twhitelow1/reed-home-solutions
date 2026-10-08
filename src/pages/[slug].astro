@@ -1,0 +1,193 @@
+---
+// Root-level pages: /<service-slug> and /remodeling-contractor-<town>-co
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { services, serviceBySlug, type Service } from '../data/services';
+import { locations, locationBySlug, type Location } from '../data/locations';
+import { extras } from '../data/serviceExtras';
+import { site, estimateHref, telHref } from '../data/site';
+import { breadcrumbs, faqPage, webPage, serviceSchema, localServiceSchema } from '../lib/schema';
+
+export function getStaticPaths() {
+  return [
+    ...services.map((s) => ({ params: { slug: s.slug }, props: { kind: 'service' as const, item: s } })),
+    ...locations.map((l) => ({ params: { slug: l.slug }, props: { kind: 'location' as const, item: l } })),
+  ];
+}
+
+type P = { kind: 'service'; item: Service } | { kind: 'location'; item: Location };
+const { kind, item } = Astro.props as P;
+const path = `/${item.slug}`;
+const reviewed = new Date(site.lastReviewed + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+const slugify = (t: string) => t.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const svc = kind === 'service' ? (item as Service) : null;
+const loc = kind === 'location' ? (item as Location) : null;
+const ex = svc ? extras[svc.slug] : undefined;
+const insurance = svc?.slug === 'water-damage-insurance-repair' || svc?.slug === 'roof-replacement-repair';
+
+let crumbs, schema;
+if (svc) {
+  crumbs = [{ name: 'Home', path: '/' }, { name: 'Services', path: '/services' }, { name: svc.name, path }];
+  schema = [webPage(path, svc.title, svc.description), serviceSchema(svc), breadcrumbs(crumbs), faqPage(svc.faqs, path)];
+} else {
+  crumbs = [{ name: 'Home', path: '/' }, { name: 'Service Areas', path: '/service-areas' }, { name: `${loc!.town} Remodeling`, path }];
+  schema = [webPage(path, loc!.title, loc!.description), localServiceSchema(loc!), breadcrumbs(crumbs), faqPage(loc!.faqs, path)];
+}
+---
+<Base title={item.title} description={item.description} path={path} schema={schema}>
+  <header class="page-head">
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      {svc && <span class="svc-badge"><Icon name={svc.icon} /></span>}
+      <h1>{item.h1}</h1>
+      <p class="answer">{item.answer}</p>
+      <div class="btn-row" style="margin-top:1.5rem">
+        <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Get a free estimate</a>
+        <a class="btn btn-outline" href={telHref}><Icon name="phone" />{site.phone}</a>
+      </div>
+      {ex && <dl class="facts">{ex.facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}
+      {loc && (
+        <dl class="facts">
+          <div><dt>County</dt><dd>{loc.county}</dd></div>
+          <div><dt>ZIP codes</dt><dd>{loc.zips.join(', ')}</dd></div>
+          <div><dt>From our Gypsum base</dt><dd>{loc.driveFromGypsum === 'local' ? 'Home base' : loc.driveFromGypsum}</dd></div>
+          <div><dt>Scheduling</dt><dd>{loc.core ? 'Regular service area' : 'As our schedule allows'}</dd></div>
+        </dl>
+      )}
+    </div>
+  </header>
+
+  <div class="section">
+    <div class="wrap article">
+      <article class="prose">
+        {svc && ex && (
+          <nav class="toc" aria-label="On this page">
+            <b>On this page</b>
+            <ol>
+              {svc.sections.map((s) => <li><a href={`#${slugify(s.h2)}`}>{s.h2}</a></li>)}
+              <li><a href="#signs">Signs you need it</a></li>
+              <li><a href="#process">How it works</a></li>
+              <li><a href="#included">What’s included</a></li>
+              <li><a href="#pricing">What affects the price</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ol>
+          </nav>
+        )}
+
+        {svc?.partner && <p class="partner"><Icon name="users" /><span>{svc.partner}</span></p>}
+
+        {svc && svc.sections.map((s) => (<><h2 id={slugify(s.h2)}>{s.h2}</h2><Fragment set:html={s.html} /></>))}
+
+        {svc && ex && (
+          <>
+            <h2 id="signs">Signs it’s time for {svc.name.toLowerCase()}</h2>
+            <ul class="signs">{ex.signs.map((x) => <li><Icon name="check" />{x}</li>)}</ul>
+            <p>If any of these sound familiar, <a href={estimateHref}>request a free estimate</a> or call <a href={telHref}>{site.phone}</a>.</p>
+
+            <h2 id="process">How our {svc.name.toLowerCase()} process works</h2>
+            <ol class="steps steps-2">{ex.process.map((st) => <li><h3>{st.h}</h3><p>{st.p}</p></li>)}</ol>
+
+            <h2 id="included">What’s included</h2>
+            <ul class="included cols">{svc.includes.map((i) => <li><Icon name="check" />{i}</li>)}</ul>
+
+            <h2 id="fit">Who it’s for</h2>
+            <ul class="fit">{ex.fit.map((f) => <li>{f}</li>)}</ul>
+
+            <h2 id="pricing">What affects the price</h2>
+            <p>Every estimate is written and itemized. These are the factors that move the number most:</p>
+            <div class="tablewrap"><table>
+              <thead><tr><th scope="col">Factor</th><th scope="col">Why it matters</th></tr></thead>
+              <tbody>{ex.pricing.map(([k, v]) => <tr><td><strong>{k}</strong></td><td>{v}</td></tr>)}</tbody>
+            </table></div>
+
+            <h2 id={slugify(ex.local.h2)}>{ex.local.h2}</h2>
+            <Fragment set:html={ex.local.html} />
+            <ul class="towns">{locations.map((l) => <li><a href={`/${l.slug}`}>{svc.name} in {l.town}</a></li>)}</ul>
+
+            {insurance && (
+              <div class="callout">
+                <p><strong>Dealing with an insurance claim?</strong> Read the <a href="/water-damage-insurance-claim-guide">step-by-step water damage insurance claim guide</a> before you sign anything.</p>
+              </div>
+            )}
+          </>
+        )}
+
+        {loc && (
+          <>
+            <h2>Remodeling in {loc.town}: what to know</h2>
+            <Fragment set:html={loc.localHtml} />
+
+            <h2>{loc.town} homes we work on</h2>
+            <div class="tablewrap"><table>
+              <thead><tr><th scope="col">Property type</th><th scope="col">Typical projects</th></tr></thead>
+              <tbody>{loc.homes.map((b) => <tr><td><strong>{b.name}</strong></td><td>{b.note}</td></tr>)}</tbody>
+            </table></div>
+
+            <h2>Popular remodeling services in {loc.town}</h2>
+            <div class="grid grid-2">
+              {loc.featured.map((s) => { const x = serviceBySlug[s]; return (
+                <article class="card"><Icon name={x.icon} class="icon-lg" /><div><h3><a href={`/${x.slug}`}>{x.name}</a></h3><p>{x.card}</p></div></article>
+              ); })}
+            </div>
+
+            <h3 style="margin-top:2rem">All services available in {loc.town}</h3>
+            <ul class="towns">{services.map((x) => <li><a href={`/${x.slug}`}>{x.name}</a></li>)}</ul>
+
+            <h2>Coverage details for {loc.town}, CO</h2>
+            <div class="tablewrap"><table><tbody>
+              <tr><th scope="row">Neighborhoods</th><td>{loc.neighborhoods.join(', ')}</td></tr>
+              <tr><th scope="row">ZIP codes</th><td>{loc.zips.join(', ')}</td></tr>
+              <tr><th scope="row">Access</th><td>{loc.access}</td></tr>
+              <tr><th scope="row">From our Gypsum base</th><td>{loc.driveFromGypsum === 'local' ? 'Local — Gypsum is our home base' : loc.driveFromGypsum}</td></tr>
+              <tr><th scope="row">Permits and design review</th><td>{loc.permits}</td></tr>
+              <tr><th scope="row">Scheduling</th><td>{loc.core ? 'Part of our regular service area' : 'Projects taken as our schedule allows; call to discuss timing'}</td></tr>
+            </tbody></table></div>
+          </>
+        )}
+
+        <div style="margin-top:2.5rem"><Faq faqs={item.faqs} /></div>
+        <p class="meta byline">Reviewed by <a href="/about">{site.owner.name}</a>, owner of {site.name} · Updated {reviewed}</p>
+      </article>
+
+      <aside class="aside" aria-label="Related">
+        <div class="box dark">
+          <h3>Free written estimate</h3>
+          <p style="font-size:.95rem">Jace walks the project with you, answers questions on the spot and sends a clear, itemized estimate.</p>
+          <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Request my estimate</a>
+          <a class="btn btn-ghost-light" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+        </div>
+        {svc && (
+          <div class="box">
+            <h3>Related services</h3>
+            <ul class="linklist">{svc.related.map((r) => <li><a href={`/${r}`}>{serviceBySlug[r].name}<Icon name="chevron" /></a></li>)}</ul>
+          </div>
+        )}
+        <div class="box">
+          <h3>{loc ? 'Nearby service areas' : 'Where we work'}</h3>
+          <ul class="linklist">
+            {(loc ? loc.nearby.map((n) => locationBySlug[n]) : locations).map((l) => <li><a href={`/${l.slug}`}>{l.town} remodeling<Icon name="chevron" /></a></li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  {svc && (
+    <section class="section tint" aria-labelledby="rel-h">
+      <div class="wrap">
+        <h2 id="rel-h">Related services</h2>
+        <div class="grid grid-3">
+          {svc.related.map((r) => { const x = serviceBySlug[r]; return (
+            <article class="card"><Icon name={x.icon} class="icon-lg" /><div><h3><a href={`/${x.slug}`}>{x.name}</a></h3><p>{x.card}</p><span class="more">See {x.name.toLowerCase()}<Icon name="chevron" /></span></div></article>
+          ); })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand title={loc ? `Planning a remodel in ${loc.town}?` : `Talk to us about ${svc!.name.toLowerCase()}`} />
+</Base>

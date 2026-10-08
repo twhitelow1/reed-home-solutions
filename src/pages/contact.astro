@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, telHref, smsHref } from '../data/site';
+import { locations } from '../data/locations';
+import { breadcrumbs, webPage } from '../lib/schema';
+const path = '/contact';
+const title = 'Contact Reed Home Solutions | Gypsum, CO Remodeling';
+const description = 'Contact Reed Home Solutions in Gypsum, CO. Call or text for a free remodeling or insurance repair estimate anywhere in the Vail Valley and nearby towns.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Contact', path }];
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description, 'ContactPage'), breadcrumbs(crumbs)]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>Contact Reed Home Solutions</h1>
+    <p class="answer">Call or text <a href={telHref}>{site.phone}</a> to reach Jace Reed directly, or use the <a href="/free-estimate">1-minute project planner</a> to send project details. We serve Eagle County, Glenwood Springs and Carbondale, and take projects in Aspen, Steamboat Springs and Breckenridge as the schedule allows.</p>
+  </div></header>
+  <section class="section"><div class="wrap article">
+    <div>
+      <h2>Ways to reach us</h2>
+      <div class="grid grid-2">
+        <article class="card"><Icon name="phone" class="icon-lg" /><div><h3><a href={telHref}>Call {site.phone}</a></h3><p>The fastest way to schedule a site visit.</p></div></article>
+        <article class="card"><Icon name="message" class="icon-lg" /><div><h3><a href={smsHref}>Text us</a></h3><p>Send a few photos and a quick description.</p></div></article>
+        {site.email && <article class="card"><Icon name="mail" class="icon-lg" /><div><h3><a href={`mailto:${site.email}`}>Email</a></h3><p>{site.email}</p></div></article>}
+        <article class="card"><Icon name="clipboard" class="icon-lg" /><div><h3><a href="/free-estimate">Project planner</a></h3><p>Answer a few questions and send them in one tap.</p></div></article>
+      </div>
+      {site.formEmbedUrl && (
+        <>
+          <h2 style="margin-top:2.5rem" id="form">Send us a message</h2>
+          <iframe data-attribution src={site.formEmbedUrl} title="Contact form" style="width:100%;min-height:720px;border:0" loading="lazy"></iframe>
+        </>
+      )}
+      <h2 style="margin-top:2.5rem">Have a water leak right now?</h2>
+      <p>Shut off the water, make the area safe and call your insurer and a water mitigation company first so drying starts right away. Then call us for the rebuild. The <a href="/water-damage-insurance-claim-guide">insurance claim guide</a> walks through each step.</p>
+      <p class="meta">See our <a href="/privacy-policy">privacy policy</a>.</p>
+    </div>
+    <aside class="aside">
+      <div class="box"><h3>{site.name}</h3>
+        <address class="nap" style="margin:0;color:var(--text)">{site.address.locality}, {site.address.region} {site.address.postalCode}<br /><a href={telHref}>{site.phone}</a>{site.email && <><br /><a href={`mailto:${site.email}`}>{site.email}</a></>}</address>
+        {site.hours.length > 0 && <p class="meta">Hours: {site.hours.map((h) => `${h.days[0].slice(0,3)}–${h.days[h.days.length-1].slice(0,3)} ${h.opens}–${h.closes}`).join(', ')}</p>}
+      </div>
+      <div class="box">
+        <h3>Service areas</h3>
+        <ul class="linklist">{locations.map((l) => <li><a href={`/${l.slug}`}>{l.town}<Icon name="chevron" /></a></li>)}</ul>
+      </div>
+    </aside>
+  </div></section>
+</Base>

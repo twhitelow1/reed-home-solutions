@@ -1,0 +1,9 @@
+---
+import Mark from './Mark.astro';
+interface Props { light?: boolean }
+const { light = false } = Astro.props;
+---
+<span class={`logo ${light ? 'logo-light' : ''}`}>
+  <Mark size={46} light={light} />
+  <span class="logo-text"><b>Reed Home Solutions</b><small>Remodeling &amp; General Contracting</small></span>
+</span>

@@ -1,0 +1,144 @@
+---
+// Lead magnet: 1-minute project planner. Builds a project summary the visitor sends by text or
+// email in one tap, and posts it to the GHL webhook when site.estimateWebhookUrl is set.
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import { site, telHref } from '../data/site';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+import { breadcrumbs, webPage, faqPage } from '../lib/schema';
+const path = '/free-estimate';
+const title = 'Free Remodeling Estimate | Vail Valley | Reed Home Solutions';
+const description = 'Request a free, written remodeling or insurance repair estimate in the Vail Valley. Answer five quick questions and send your project to Jace Reed.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Free Estimate', path }];
+const faqs = [
+  { q: 'Is the estimate really free?', a: 'Yes. The site visit and written estimate are free and carry no obligation.' },
+  { q: 'What happens after I send my project?', a: 'Jace reviews the details and photos, calls or texts to schedule a site visit, then sends a written, itemized estimate.' },
+  { q: 'What should I have ready?', a: 'A rough idea of what you want, photos of the space, any plans or inspiration images, your timeline, and your insurance claim number if it is a claim.' },
+  { q: 'Do you charge for insurance estimates?', a: 'No. We prepare repair estimates for insurance projects as part of quoting the rebuild.' },
+];
+const webApp = { '@type': 'WebApplication', name: 'Remodeling project planner', url: `${site.url}${path}`, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, provider: { '@id': `${site.url}/#organization` } };
+const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months', 'Just planning'];
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description), webApp, breadcrumbs(crumbs), faqPage(faqs, path)]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>Get a free remodeling estimate</h1>
+    <p class="answer">Answer five quick questions and send your project straight to Jace Reed by text or email. He will follow up to schedule a site visit and send a written, itemized estimate. Prefer to talk? Call <a href={telHref}>{site.phone}</a>.</p>
+  </div></header>
+  <section class="section"><div class="wrap article">
+    <div>
+      <form class="planner" id="planner" data-webhook={site.estimateWebhookUrl} data-phone={site.phoneE164} data-email={site.email} novalidate>
+        <fieldset>
+          <legend>1. What is the project?</legend>
+          <div class="choices">
+            {services.map((s, i) => <label><input type="radio" name="project" value={s.name} required checked={i === 0} /><span>{s.name}</span></label>)}
+            <label><input type="radio" name="project" value="Something else" /><span>Something else</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>2. Is this an insurance claim?</legend>
+          <div class="choices">
+            <label><input type="radio" name="insurance" value="No" checked /><span>No</span></label>
+            <label><input type="radio" name="insurance" value="Yes, claim filed" /><span>Yes, claim filed</span></label>
+            <label><input type="radio" name="insurance" value="Not sure yet" /><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>3. When do you want to start?</legend>
+          <div class="choices">
+            {timelines.map((t, i) => <label><input type="radio" name="timeline" value={t} checked={i === 1} /><span>{t}</span></label>)}
+          </div>
+        </fieldset>
+        <div class="field-row">
+          <div class="field">
+            <label for="town">4. Where is the property?</label>
+            <select id="town" name="town">
+              {locations.map((l) => <option>{l.town}</option>)}
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="name">5. Your name</label>
+            <input id="name" name="name" autocomplete="name" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="details">Anything else? (optional)</label>
+          <textarea id="details" name="details" rows="3" placeholder="Size of the space, what you want to change, HOA, claim number…"></textarea>
+        </div>
+        <button class="btn btn-copper" type="submit" data-track="planner_complete"><Icon name="clipboard" />Build my project summary</button>
+        <p class="meta" id="planner-err" role="alert" hidden>Please add your name and a phone number or email so we can reach you.</p>
+        <div class="planner-out" id="planner-out" hidden aria-live="polite">
+          <b>Your project summary</b>
+          <pre id="summary"></pre>
+          <div class="btn-row">
+            <a class="btn btn-primary" id="send-sms" href="#" data-track="lead_text"><Icon name="message" />Text it to Jace</a>
+            {site.email && <a class="btn btn-outline" id="send-mail" href="#" data-track="lead_email"><Icon name="mail" />Email it</a>}
+          </div>
+          <p class="meta" id="sent-note" hidden>Thanks! Your project was sent. Jace will follow up soon.</p>
+          <p class="meta">Tip: attach a few photos of the space to your text or email.</p>
+        </div>
+      </form>
+    </div>
+    <aside class="aside">
+      <div class="box dark">
+        <h3>Rather talk it through?</h3>
+        <p style="font-size:.95rem">Call Jace directly. Most site visits can be scheduled on the first call.</p>
+        <a class="btn btn-copper" href={telHref}><Icon name="phone" />Call {site.phone}</a>
+      </div>
+      <div class="box">
+        <h3>What happens next</h3>
+        <ol style="margin:0;padding-left:1.1rem;font-size:.95rem">
+          <li>Jace reviews your project</li>
+          <li>He schedules a site visit</li>
+          <li>You get a written, itemized estimate</li>
+        </ol>
+      </div>
+    </aside>
+  </div></section>
+  <section class="section tint"><div class="wrap narrow"><Faq faqs={faqs} /></div></section>
+  <script is:inline>
+  (function () {
+    var f = document.getElementById('planner'); if (!f) return;
+    var out = document.getElementById('planner-out'), err = document.getElementById('planner-err');
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = new FormData(f), v = function (k) { return (d.get(k) || '').toString().trim(); };
+      if (!v('name') || (!v('phone') && !v('email'))) { err.hidden = false; return; }
+      err.hidden = true;
+      var lines = ['Project: ' + v('project'), 'Insurance claim: ' + v('insurance'), 'Timeline: ' + v('timeline'), 'Location: ' + v('town'), 'Name: ' + v('name')];
+      if (v('phone')) lines.push('Phone: ' + v('phone'));
+      if (v('email')) lines.push('Email: ' + v('email'));
+      if (v('details')) lines.push('Details: ' + v('details'));
+      var text = 'Hi Jace, I would like a free estimate.\n' + lines.join('\n');
+      document.getElementById('summary').textContent = lines.join('\n');
+      document.getElementById('send-sms').href = 'sms:' + f.dataset.phone + '?&body=' + encodeURIComponent(text);
+      var m = document.getElementById('send-mail');
+      if (m) m.href = 'mailto:' + f.dataset.email + '?subject=' + encodeURIComponent('Free estimate request: ' + v('project') + ' in ' + v('town')) + '&body=' + encodeURIComponent(text);
+      out.hidden = false;
+      out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      var at = window.rhsAttribution || {}, la = at.last || {}, fi = at.first || {};
+      if (window.dataLayer) window.dataLayer.push({ event: 'planner_complete', project: v('project'), town: v('town'), insurance: v('insurance') });
+      if (f.dataset.webhook) {
+        var payload = { name: v('name'), phone: v('phone'), email: v('email'), project: v('project'), insurance_claim: v('insurance'), timeline: v('timeline'), town: v('town'), details: v('details'), lead_channel: la.channel || '', lead_source: la.utm_source || '', first_channel: fi.channel || '', landing_page: fi.landing_page || '' };
+        fetch(f.dataset.webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+          .then(function (r) { if (r.ok) { document.getElementById('sent-note').hidden = false; if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit' }); } })
+          .catch(function () {});
+      }
+    });
+  })();
+  </script>
+</Base>

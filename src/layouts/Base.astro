@@ -1,0 +1,97 @@
+---
+import Attribution from '../components/Attribution.astro';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { site, estimateHref, telHref } from '../data/site';
+import { graph, organization, website } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // canonical path, e.g. "/" or "/kitchen-remodeling"
+  schema?: object[];
+  ogImage?: string;
+  noindex?: boolean;
+}
+const { title, description, path, schema = [], ogImage = '/og-default.png', noindex = false } = Astro.props;
+const canonical = path === '/' ? `${site.url}/` : `${site.url}${path}`;
+// Indexable only when the production env flag is set AND the page allows it.
+const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
+// Analytics run on production only, never on previews.
+const prod = process.env.VERCEL_ENV === 'production' || import.meta.env.PUBLIC_SITE_INDEXABLE === 'true';
+const t = site.tracking;
+const ld = graph(organization(), website(), ...schema);
+---
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={indexable ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' : 'noindex, nofollow'} />
+    <meta name="geo.region" content="US-CO" />
+    <meta name="geo.placename" content={`${site.address.locality}, Colorado`} />
+    <meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
+    <meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lng}`} />
+    <meta name="theme-color" content="#2f5233" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.url}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site summary" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    {t.googleSiteVerification && <meta name="google-site-verification" content={t.googleSiteVerification} />}
+    {t.bingSiteVerification && <meta name="msvalidate.01" content={t.bingSiteVerification} />}
+    <Attribution />
+    {prod && t.gtmId && (
+      <script is:inline define:vars={{ id: t.gtmId }}>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',id);</script>
+    )}
+    {prod && t.ga4Id && !t.gtmId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${t.ga4Id}`}></script>
+        <script is:inline define:vars={{ id: t.ga4Id }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());var at=window.rhsAttribution||{},f=at.first||{},l=at.last||{};gtag('set','user_properties',{first_channel:f.channel||'',first_source:f.utm_source||''});gtag('config',id,{lead_channel:l.channel||'',first_channel:f.channel||''});</script>
+      </>
+    )}
+    {prod && t.clarityId && (
+      <script is:inline define:vars={{ id: t.clarityId }}>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",id);</script>
+    )}
+    <slot name="head" />
+  </head>
+  <body>
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
+    <nav class="mbar" aria-label="Quick actions">
+      <a class="btn btn-outline" href={telHref} data-track="call_click"><Icon name="phone" />Call</a>
+      <a class="btn btn-primary" href={estimateHref} data-track="estimate_click"><Icon name="clipboard" />Free estimate</a>
+    </nav>
+    <script is:inline>
+      // Conversion events: every phone, text and estimate click, plus any element with data-track.
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a,button'); if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var name = a.dataset.track || (href.indexOf('tel:') === 0 ? 'call_click' : href.indexOf('sms:') === 0 ? 'text_click' : (/free-estimate|leadconnector/.test(href) ? 'estimate_click' : ''));
+        if (!name) return;
+        var at = window.rhsAttribution || {}, la = at.last || {}, fi = at.first || {};
+        var p = { link_text: (a.textContent || '').trim().slice(0, 60), page_path: location.pathname, lead_channel: la.channel || '', lead_source: la.utm_source || '', first_channel: fi.channel || '' };
+        if (window.gtag) window.gtag('event', name, p);
+        if (window.dataLayer) window.dataLayer.push(Object.assign({ event: name }, p));
+      });
+    </script>
+  </body>
+</html>

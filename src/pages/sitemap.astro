@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { services, serviceGroups } from '../data/services';
+import { locations } from '../data/locations';
+import { site } from '../data/site';
+import { breadcrumbs, webPage } from '../lib/schema';
+const path = '/sitemap';
+const title = 'Site Map: All Pages | Reed Home Solutions';
+const description = 'Every page on the Reed Home Solutions website: remodeling services, service areas across Eagle County and nearby towns, guides and company pages.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Site map', path }];
+type L = { href: string; label: string };
+const sections: { icon: string; title: string; links: L[] }[] = [
+  { icon: 'mountain', title: 'Company', links: [{ href: '/', label: 'Home' }, { href: '/about', label: 'About Reed Home Solutions' }, { href: '/free-estimate', label: 'Free estimate' }, { href: '/contact', label: 'Contact' }] },
+  ...serviceGroups.map((g) => ({ icon: services.find((s) => s.group === g)!.icon, title: g, links: services.filter((s) => s.group === g).map((s) => ({ href: `/${s.slug}`, label: s.name })) })),
+  { icon: 'pin', title: 'Service areas', links: [{ href: '/service-areas', label: 'All service areas' }, ...locations.map((l) => ({ href: `/${l.slug}`, label: `Remodeling contractor in ${l.town}, CO` }))] },
+  { icon: 'file', title: 'Guides & more', links: [{ href: '/services', label: 'All services' }, { href: '/water-damage-insurance-claim-guide', label: 'Water damage insurance claim guide' }, { href: '/privacy-policy', label: 'Privacy policy' }, { href: '/sitemap.xml', label: 'XML sitemap' }, { href: '/llms.txt', label: 'llms.txt (AI summary)' }] },
+];
+const list = { '@type': 'ItemList', name: 'Site map', itemListElement: sections.flatMap((s) => s.links).filter((l) => !/\.(xml|txt)$/.test(l.href)).map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}${l.href === '/' ? '/' : l.href}`, name: l.label })) };
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description, 'CollectionPage'), breadcrumbs(crumbs), list]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>Site map</h1>
+    <p class="answer">Everything on the {site.name} website in one place: {services.length} services, {locations.length} service areas and our insurance claim guide.</p>
+  </div></header>
+  <section class="section"><div class="wrap"><div class="smap">
+    {sections.map((s) => (
+      <section class="smap-card"><h2><Icon name={s.icon} />{s.title}</h2><ul>{s.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul></section>
+    ))}
+  </div></div></section>
+</Base>
