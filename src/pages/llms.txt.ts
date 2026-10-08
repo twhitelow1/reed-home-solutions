@@ -7,7 +7,7 @@ export const GET: APIRoute = () => {
   const U = site.url;
   const body = `# ${site.name}
 
-> ${site.name} is a remodeling and general contracting company based in ${site.address.locality}, Colorado, owned by ${site.owner.name}. It remodels kitchens, bathrooms, basements and lock-offs, builds and repairs decks, manages siding, exterior painting, roofing, window and flooring projects, and rebuilds homes after water damage with insurance-ready estimates. Primary service area: Eagle County (Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum, Dotsero) and Summit County (Breckenridge, Frisco, Copper Mountain, Silverthorne, Dillon, Keystone), plus Glenwood Springs and Carbondale. Secondary: Aspen, Snowmass, Basalt and Steamboat Springs, as the schedule allows. Phone: ${site.phone}.
+> ${site.name} is a remodeling and general contracting company based in ${site.address.locality}, Colorado, owned by ${site.owner.name}. It remodels kitchens, bathrooms, basements and lock-offs, builds and repairs decks, manages siding, exterior painting, roofing, window and flooring projects, and rebuilds homes after water damage with insurance-ready estimates. Primary service area: Eagle County (Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum, Dotsero). Secondary, as the schedule allows: Summit County (Breckenridge, Frisco, Copper Mountain, Silverthorne, Dillon, Keystone), Glenwood Springs, Carbondale, Aspen, Snowmass, Basalt and Steamboat Springs. Phone: ${site.phone}.
 
 Key facts:
 - Owner: ${site.owner.name}, with years of local construction and water-damage restoration experience, including writing insurance estimates for water losses and communicating with adjusters.
@@ -24,7 +24,7 @@ ${services.map((s) => `- [${s.name}](${U}/${s.slug}): ${s.card}`).join('\n')}
 
 ## Service areas
 - [All service areas](${U}/service-areas)
-${locations.map((l) => `- [Remodeling contractor in ${l.town}, CO](${U}/${l.slug}): ${l.county}; ZIP ${l.zips.join(', ')}; ${l.driveFromGypsum === 'local' ? 'home base' : `${l.driveFromGypsum} from Gypsum`}${l.core ? '' : '; as schedule allows'}.`).join('\n')}
+${locations.map((l) => `- [Remodeling contractor in ${l.town}, CO](${U}/${l.slug}): ${l.county}; ZIP ${l.zips.join(', ')}; ${l.driveFromGypsum === 'local' ? 'home base' : `${l.driveFromGypsum} from Gypsum`}${l.core ? '; primary service area' : '; secondary service area'}.`).join('\n')}
 
 ## Guides and tools
 - [Water damage insurance claim guide](${U}/water-damage-insurance-claim-guide)

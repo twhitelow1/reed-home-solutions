@@ -11,10 +11,10 @@ import { site, estimateHref, telHref } from '../data/site';
 import { faqPage, webPage, owner } from '../lib/schema';
 
 const title = 'Vail Valley Remodeling Contractor | Reed Home Solutions';
-const description = 'Remodeling contractor for Eagle and Summit counties: kitchens, baths, basements, decks and insurance-funded repairs. Daily updates. Free estimates.';
+const description = 'Eagle County remodeling contractor based in Gypsum: kitchens, baths, basements, decks and insurance-funded repairs. Daily updates. Free estimates.';
 const faqs = [
   { q: 'What does Reed Home Solutions do?', a: 'Reed Home Solutions is a remodeling and general contracting company in Gypsum, Colorado. We remodel kitchens, bathrooms, basements and lock-offs, build decks, manage siding, roofing, window and flooring projects, and rebuild homes after water damage.' },
-  { q: 'What areas do you serve?', a: 'All of Eagle County, including Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum and Dotsero, and all of Summit County, including Breckenridge, Frisco, Copper, Silverthorne, Dillon and Keystone, plus Glenwood Springs and Carbondale. We also take projects in Aspen, Snowmass, Basalt and Steamboat Springs as the schedule allows.' },
+  { q: 'What areas do you serve?', a: 'Our primary service area is Eagle County: Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum and Dotsero. We also take projects in Summit County (Breckenridge, Frisco, Copper, Silverthorne, Dillon, Keystone), Glenwood Springs, Carbondale, Aspen, Snowmass, Basalt and Steamboat Springs as the schedule allows.' },
   { q: 'Are you licensed and insured?', a: 'Reed Home Solutions is insured, and owner Jace Reed is certified to pull building permits. Colorado contractor licensing is handled by individual towns and counties, and we register where each project requires.' },
   { q: 'Can you help with an insurance claim for water damage?', a: 'Yes. Jace comes from water-damage restoration. He writes detailed, insurance-ready repair estimates and communicates directly with your adjuster, then handles the rebuild.' },
   { q: 'How often will I hear from you during a project?', a: 'Every working day of active work. You get a short update with photos: what got done, what is next, and any decision we need from you. If something unexpected comes up, you hear about it the same day with options and a price.' },
@@ -27,9 +27,9 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div>
-        <span class="eyebrow">Eagle &amp; Summit counties · Steamboat · Aspen</span>
+        <span class="eyebrow">Gypsum-based · Serving Eagle County &amp; the high country</span>
         <h1 id="hero-h">Vail Valley remodeling contractor for homes that <em>live in the mountains</em></h1>
-        <p class="lede">Reed Home Solutions is the mountain-town contractor who finishes what he starts. Owner Jace Reed remodels kitchens, baths, basements and decks, and rebuilds after water damage across Eagle and Summit counties. You get an update every working day, and if insurance is paying, we document the full scope with your adjuster so the approved repair matches the real damage.</p>
+        <p class="lede">Reed Home Solutions is the mountain-town contractor who finishes what he starts. Owner Jace Reed remodels kitchens, baths, basements and decks, and rebuilds after water damage across Eagle County and nearby mountain towns. You get an update every working day, and if insurance is paying, we document the full scope with your adjuster so the approved repair matches the real damage.</p>
         <div class="btn-row">
           <a class="btn btn-copper" href={estimateHref}><Icon name="clipboard" />Get a free estimate</a>
           <a class="btn btn-outline" href={telHref}><Icon name="phone" />Call {site.phone}</a>
@@ -154,7 +154,7 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
       <div class="section-head">
         <span class="eyebrow">Service areas</span>
         <h2 id="area-h">Where we remodel</h2>
-        <p class="lede">Based in Gypsum, we work across Eagle County every week and take projects in the Roaring Fork Valley, Steamboat and Summit County as the schedule allows.</p>
+        <p class="lede">Based in Gypsum, we work across Eagle County every week. Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat are secondary areas we schedule as availability allows.</p>
       </div>
       <div class="tablewrap"><table>
         <thead><tr><th scope="col">Town</th><th scope="col">County</th><th scope="col">ZIP</th><th scope="col">From Gypsum</th><th scope="col">Scheduling</th></tr></thead>
@@ -165,7 +165,7 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
               <td>{l.county}</td>
               <td>{l.zips.join(', ')}</td>
               <td>{l.driveFromGypsum === 'local' ? 'Home base' : l.driveFromGypsum}</td>
-              <td>{l.core ? 'Primary service area' : 'As schedule allows'}</td>
+              <td>{l.core ? 'Primary' : 'Secondary'}</td>
             </tr>
           ))}
         </tbody>

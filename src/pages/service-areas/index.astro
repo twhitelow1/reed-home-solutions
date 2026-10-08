@@ -8,7 +8,7 @@ import { breadcrumbs, webPage } from '../../lib/schema';
 import { site } from '../../data/site';
 const path = '/service-areas';
 const title = 'Service Areas: Eagle County & Nearby Towns | Reed Home Solutions';
-const description = 'Remodeling across Eagle and Summit counties: Vail, Avon, Edwards, Eagle, Gypsum, Breckenridge, Frisco, Silverthorne, Dillon, Keystone, plus Glenwood, Aspen.';
+const description = 'Eagle County remodeling: Vail, Avon, Edwards, Eagle and Gypsum, plus Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat Springs.';
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'Service Areas', path }];
 const list = { '@type': 'ItemList', name: 'Service areas', itemListElement: locations.map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}/${l.slug}`, name: `${l.town}, CO` })) };
 const core = locations.filter((l) => l.core);
@@ -18,17 +18,17 @@ const extended = locations.filter((l) => !l.core);
   <header class="page-head"><div class="wrap">
     <Breadcrumbs items={crumbs} />
     <h1>Remodeling service areas</h1>
-    <p class="answer">Reed Home Solutions is based in Gypsum and remodels homes across Eagle County and Summit County, from Dotsero to Keystone, plus Glenwood Springs and Carbondale. We also take projects in Aspen, Snowmass, Basalt and Steamboat Springs as our schedule allows.</p>
+    <p class="answer">Reed Home Solutions is based in Gypsum and remodels homes across Eagle County every week, from Vail to Dotsero. That is our primary service area. We also take projects in Summit County, Glenwood Springs, Carbondale, Aspen, Snowmass, Basalt and Steamboat Springs, scheduled as availability allows.</p>
   </div></header>
   <section class="section"><div class="wrap">
-    <h2>Primary service area</h2>
+    <h2>Primary service area: Eagle County</h2>
     <div class="grid grid-3">
       {core.map((l) => (
         <article class="card"><Icon name="pin" class="icon-lg" /><div><h3><a href={`/${l.slug}`}>{l.town} remodeling contractor</a></h3><p>{l.neighborhoods.slice(0, 4).join(', ')}. {l.driveFromGypsum === 'local' ? 'Our home base.' : `About ${l.driveFromGypsum.replace('about ', '')} from Gypsum.`}</p></div></article>
       ))}
     </div>
-    <h2 style="margin-top:3rem">Extended service area</h2>
-    <p>Projects taken as the schedule allows. Call to discuss timing.</p>
+    <h2 style="margin-top:3rem">Secondary service areas</h2>
+    <p>Summit County, Garfield County, Aspen and Steamboat. Scheduled as availability allows; call to discuss timing.</p>
     <div class="grid grid-3">
       {extended.map((l) => (
         <article class="card"><Icon name="mountain" class="icon-lg" /><div><h3><a href={`/${l.slug}`}>{l.town} remodeling contractor</a></h3><p>{l.neighborhoods.slice(0, 4).join(', ')}. About {l.driveFromGypsum.replace('about ', '')} from Gypsum.</p></div></article>

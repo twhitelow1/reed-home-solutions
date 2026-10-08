@@ -50,11 +50,10 @@ scope matches the real damage. Never write "we negotiate your claim", "we fight 
 - Trade partners (plumbing, mechanical) who need a reliable GC
 
 ## Local SEO targeting
-- **Primary:** Eagle County (Vail, Avon, Edwards, Eagle, Gypsum) and Summit County (Breckenridge, Frisco, Dillon,
-  Silverthorne, Keystone, Copper).
-- **Secondary:** Routt County / Steamboat Springs and Pitkin County / Aspen (plus Snowmass, Basalt). Service-area
+- **Primary (confirmed by Todd 2026-10-08):** Eagle County only (Vail, Avon, Beaver Creek, Edwards, Eagle, Gypsum, Dotsero).
+- **Secondary:** Summit County (Breckenridge, Frisco, Dillon, Silverthorne, Keystone, Copper), Garfield County
+  (Glenwood Springs, Carbondale), Routt County / Steamboat Springs and Pitkin County / Aspen (plus Snowmass, Basalt). Service-area
   pages, not GBP targets — local pack ranking outside the home county is unrealistic without a physical presence.
-- **Also served (from the onboarding call):** Glenwood Springs and Carbondale (Garfield County).
 - **Core intents:** full home remodels, kitchen/bath remodels, water/storm-damage restoration remodels,
   insurance-claim-funded repairs, deck repair/build, interior finish work.
 - **Gap to own:** high-country remodel + insurance claim support. Vail/Summit competitors (Coleman Custom Homes,

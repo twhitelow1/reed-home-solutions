@@ -16,7 +16,7 @@ audience segments and local SEO targeting. All copy follows it, including its in
 Content lives in `src/data/`, not in templates:
 - `site.ts` — NAP, domain, phone, GHL links, tracking, credentials. Change the domain here only.
 - `services.ts` + `serviceExtras.ts` → service pages via `src/pages/[slug].astro`
-- `locations.ts` → town pages (`/remodeling-contractor-<town>-co`) via the same route. `core: true` = primary area (Eagle + Summit counties, Glenwood, Carbondale); `false` = as schedule allows (Aspen, Steamboat)
+- `locations.ts` → town pages (`/remodeling-contractor-<town>-co`) via the same route. `core: true` = primary area (Eagle County only); `false` = secondary, scheduled as availability allows (Summit, Glenwood, Carbondale, Aspen, Steamboat)
 - `src/lib/schema.ts` — JSON-LD (GeneralContractor entity); `src/layouts/Base.astro` — head, meta, tracking
 - `llms.txt.ts`, `robots.txt.ts` — generated endpoints; `sitemap.xml` written by the hook in `astro.config.mjs`
 

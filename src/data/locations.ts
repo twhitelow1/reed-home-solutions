@@ -7,7 +7,7 @@ export type Location = {
   slug: string;
   town: string;
   county: string;
-  core: boolean; // core = Eagle County, regularly scheduled; false = taken as the schedule allows
+  core: boolean; // true = primary service area (Eagle County); false = secondary (scheduled as availability allows)
   title: string;
   description: string;
   h1: string;
@@ -185,7 +185,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-glenwood-springs-co',
     town: 'Glenwood Springs',
     county: 'Garfield County',
-    core: true,
+    core: false,
     title: 'Glenwood Springs Remodeling Contractor | Reed Home Solutions',
     description: 'Remodeling contractor serving Glenwood Springs, CO: kitchens, bathrooms, basements, decks and water-damage repairs. About 30 minutes from Gypsum. Free estimate.',
     h1: 'Remodeling contractor in Glenwood Springs',
@@ -202,11 +202,11 @@ export const locations: Location[] = [
       { name: 'Townhomes and condos', note: 'Interior remodels and water-damage repairs' },
       { name: 'Rental properties', note: 'Between-tenant renovations' },
     ],
-    localHtml: '<p>Glenwood Springs has some of the oldest housing stock in the region, so renovations often uncover outdated wiring, plumbing and framing that need to be brought up to code. We plan for that in the estimate. Glenwood is a straight shot down I-70 from Gypsum, so it is part of our regular service area.</p>',
+    localHtml: '<p>Glenwood Springs has some of the oldest housing stock in the region, so renovations often uncover outdated wiring, plumbing and framing that need to be brought up to code. We plan for that in the estimate. Glenwood is a straight shot down I-70 from Gypsum, so we take projects here regularly.</p>',
     featured: ['home-renovation-general-contracting', 'kitchen-remodeling', 'bathroom-remodeling', 'basement-lock-off-remodeling'],
     nearby: ['remodeling-contractor-carbondale-co', 'remodeling-contractor-gypsum-co', 'remodeling-contractor-aspen-co'],
     faqs: [
-      { q: 'Do you serve Glenwood Springs?', a: 'Yes. Glenwood Springs is about 30 minutes from our base in Gypsum and is part of our regular service area.' },
+      { q: 'Do you serve Glenwood Springs?', a: 'Yes. Glenwood Springs is about 30 minutes from our base in Gypsum. It is outside our primary Eagle County area, but close enough that we take projects there regularly.' },
       { q: 'Who issues building permits in Glenwood Springs?', a: 'The City of Glenwood Springs for properties in city limits and Garfield County for unincorporated areas. We handle the applications.' },
       { q: 'Can you renovate an older Glenwood Springs home?', a: 'Yes. Older homes often need electrical, plumbing and framing updates once walls are open. We plan for likely code items in the estimate and show you options when we find surprises.' },
       { q: 'Do you repair water damage in Glenwood Springs?', a: 'Yes. We rebuild after leaks, frozen pipes and storm damage and can communicate directly with your insurance adjuster.' },
@@ -216,7 +216,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-carbondale-co',
     town: 'Carbondale',
     county: 'Garfield County',
-    core: true,
+    core: false,
     title: 'Remodeling Contractor in Carbondale, CO | Reed Home Solutions',
     description: 'Remodeling contractor serving Carbondale, CO and River Valley Ranch: kitchens, baths, decks, basements and exteriors. Insurance repairs too. Free estimate.',
     h1: 'Remodeling contractor in Carbondale, Colorado',
@@ -309,7 +309,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-breckenridge-co',
     town: 'Breckenridge',
     county: 'Summit County',
-    core: true,
+    core: false,
     title: 'Remodeling Contractor in Breckenridge, CO | Reed Home Solutions',
     description: 'Remodeling and insurance repair contractor for Breckenridge and Summit County homes and condos: kitchens, baths, decks and rebuilds. Free written estimate.',
     h1: 'Remodeling contractor in Breckenridge and Summit County',
@@ -330,7 +330,7 @@ export const locations: Location[] = [
     featured: ['kitchen-remodeling', 'bathroom-remodeling', 'water-damage-insurance-repair', 'deck-building-repair'],
     nearby: ['remodeling-contractor-frisco-co', 'remodeling-contractor-keystone-co', 'remodeling-contractor-vail-co'],
     faqs: [
-      { q: 'Do you take projects in Breckenridge?', a: 'Yes. Summit County is part of our primary service area. Breckenridge is about an hour and fifteen minutes from Gypsum over Vail Pass, and we schedule Summit work in blocks to keep crews on site, not on the road.' },
+      { q: 'Do you take projects in Breckenridge?', a: 'Yes. Summit County is part of our secondary service area. Breckenridge is about an hour and fifteen minutes from Gypsum over Vail Pass, and we schedule Summit work in blocks to keep crews on site, not on the road.' },
       { q: 'Can you remodel a short-term rental condo in Breckenridge?', a: 'Yes. We schedule work to fit between bookings and coordinate with the HOA and property manager.' },
       { q: 'Are there extra rules for the Historic District?', a: 'Yes. Properties in Breckenridge’s Historic District follow additional design standards, mainly for exterior changes. We confirm requirements with the Town before work starts.' },
       { q: 'Do you serve other Summit County towns?', a: 'Yes. We also remodel homes and condos in Frisco, Copper Mountain, Silverthorne, Dillon and Keystone.' },
@@ -340,7 +340,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-frisco-co',
     town: 'Frisco',
     county: 'Summit County',
-    core: true,
+    core: false,
     title: 'Remodeling Contractor in Frisco, CO | Reed Home Solutions',
     description: 'Remodeling contractor in Frisco and Copper Mountain, CO: condo and home remodels, kitchens, baths, decks and water-damage rebuilds. Free written estimate.',
     h1: 'Remodeling contractor in Frisco and Copper Mountain',
@@ -362,7 +362,7 @@ export const locations: Location[] = [
     nearby: ['remodeling-contractor-breckenridge-co', 'remodeling-contractor-silverthorne-co', 'remodeling-contractor-dillon-co'],
     faqs: [
       { q: 'Do you remodel condos at Copper Mountain?', a: 'Yes. We remodel condos at Copper Mountain and in Frisco and work within each association’s rules for approvals, access and work hours.' },
-      { q: 'How far is Frisco from your base?', a: 'About an hour and five minutes from Gypsum over Vail Pass. Summit County is part of our primary service area, and we schedule work in blocks so crews spend their time on site.' },
+      { q: 'How far is Frisco from your base?', a: 'About an hour and five minutes from Gypsum over Vail Pass. Summit County is part of our secondary service area, and we schedule work in blocks so crews spend their time on site.' },
       { q: 'Who issues building permits in Frisco?', a: 'Planning and zoning for in-town properties go through the Town of Frisco, and Copper Mountain is unincorporated Summit County. We confirm the right office for your address and handle the application.' },
       { q: 'Can you manage my Frisco remodel while I am out of town?', a: 'Yes. You get a progress update with photos every working day, and we coordinate access with your property manager or HOA.' },
     ],
@@ -371,7 +371,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-silverthorne-co',
     town: 'Silverthorne',
     county: 'Summit County',
-    core: true,
+    core: false,
     title: 'Remodeling Contractor in Silverthorne, CO | Reed Home Solutions',
     description: 'Remodeling contractor in Silverthorne, CO: kitchens, baths, basements, additions, decks and insurance repairs in Wildernest, Eagles Nest and town.',
     h1: 'Remodeling contractor in Silverthorne, Colorado',
@@ -394,7 +394,7 @@ export const locations: Location[] = [
     faqs: [
       { q: 'Do you build additions in Silverthorne?', a: 'Yes. We check zoning, HOA covenants and site conditions first, then handle permits and construction for additions and ADUs.' },
       { q: 'Do you work in Wildernest?', a: 'Yes. Wildernest is unincorporated Summit County, and many homes and condos there have HOA rules we follow on every project.' },
-      { q: 'How far is Silverthorne from your base?', a: 'About an hour and ten minutes from Gypsum. Summit County is part of our primary service area.' },
+      { q: 'How far is Silverthorne from your base?', a: 'About an hour and ten minutes from Gypsum. Summit County is part of our secondary service area, and we schedule work there in blocks.' },
       { q: 'Can you finish my basement in Silverthorne?', a: 'Yes, including egress windows for bedrooms, radon testing recommendations and permits.' },
     ],
   },
@@ -402,7 +402,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-dillon-co',
     town: 'Dillon',
     county: 'Summit County',
-    core: true,
+    core: false,
     title: 'Remodeling Contractor in Dillon, CO | Reed Home Solutions',
     description: 'Remodeling contractor in Dillon, CO and Dillon Valley: condo, townhome and home remodels, kitchens, baths, decks and insurance repairs. Free written estimate.',
     h1: 'Remodeling contractor in Dillon and Dillon Valley',
@@ -425,7 +425,7 @@ export const locations: Location[] = [
     faqs: [
       { q: 'Do you remodel condos in Dillon Valley?', a: 'Yes. We remodel condos and townhomes in Dillon Valley and the Town of Dillon and prepare the HOA approval package with you.' },
       { q: 'Can you repair a leak between condo units in Dillon?', a: 'Yes. After the water is stopped and the area is dried, we document the damage, write an itemized repair estimate for your adjuster, and rebuild.' },
-      { q: 'How far is Dillon from your base?', a: 'About an hour and ten minutes from Gypsum. Summit County is part of our primary service area.' },
+      { q: 'How far is Dillon from your base?', a: 'About an hour and ten minutes from Gypsum. Summit County is part of our secondary service area, and we schedule work there in blocks.' },
       { q: 'Is Dillon Valley in the Town of Dillon?', a: 'No. Dillon Valley is unincorporated Summit County, so permitting can differ from in-town Dillon. We confirm the right office for your address.' },
     ],
   },
@@ -433,7 +433,7 @@ export const locations: Location[] = [
     slug: 'remodeling-contractor-keystone-co',
     town: 'Keystone',
     county: 'Summit County',
-    core: true,
+    core: false,
     title: 'Remodeling Contractor in Keystone, CO | Reed Home Solutions',
     description: 'Remodeling contractor in Keystone, CO: ski condo and home remodels, kitchens, baths, flooring, decks and water-damage rebuilds for absentee owners.',
     h1: 'Remodeling contractor in Keystone, Colorado',
@@ -456,7 +456,7 @@ export const locations: Location[] = [
     faqs: [
       { q: 'Who issues building permits in Keystone?', a: 'Keystone is unincorporated, so building permits come from Summit County. Your condo association or resort community may also require approval.' },
       { q: 'Can you remodel my Keystone condo between rental seasons?', a: 'Yes. We plan the schedule around your bookings, order long-lead materials early, and keep the unit out of service for as little time as possible.' },
-      { q: 'How far is Keystone from your base?', a: 'About an hour and twenty minutes from Gypsum. Summit County is part of our primary service area.' },
+      { q: 'How far is Keystone from your base?', a: 'About an hour and twenty minutes from Gypsum. Summit County is part of our secondary service area, and we schedule work there in blocks.' },
       { q: 'Do you send updates if I am not in Keystone?', a: 'Yes. Every working day of active work you get a short update with photos: what got done, what is next, and anything we need from you.' },
     ],
   },

@@ -55,7 +55,7 @@ if (svc) {
           <div><dt>County</dt><dd>{loc.county}</dd></div>
           <div><dt>ZIP codes</dt><dd>{loc.zips.join(', ')}</dd></div>
           <div><dt>From our Gypsum base</dt><dd>{loc.driveFromGypsum === 'local' ? 'Home base' : loc.driveFromGypsum}</dd></div>
-          <div><dt>Scheduling</dt><dd>{loc.core ? 'Primary service area' : 'As our schedule allows'}</dd></div>
+          <div><dt>Scheduling</dt><dd>{loc.core ? 'Primary service area' : 'Secondary service area'}</dd></div>
         </dl>
       )}
     </div>
@@ -144,7 +144,7 @@ if (svc) {
               <tr><th scope="row">Access</th><td>{loc.access}</td></tr>
               <tr><th scope="row">From our Gypsum base</th><td>{loc.driveFromGypsum === 'local' ? 'Local — Gypsum is our home base' : loc.driveFromGypsum}</td></tr>
               <tr><th scope="row">Permits and design review</th><td>{loc.permits}</td></tr>
-              <tr><th scope="row">Scheduling</th><td>{loc.core ? 'Part of our primary service area' : 'Projects taken as our schedule allows; call to discuss timing'}</td></tr>
+              <tr><th scope="row">Scheduling</th><td>{loc.core ? 'Primary service area (Eagle County)' : 'Secondary service area; scheduled as availability allows, call to discuss timing'}</td></tr>
             </tbody></table></div>
           </>
         )}
