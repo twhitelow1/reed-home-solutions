@@ -6,3 +6,6 @@ dist/
 !.env.example
 .DS_Store
 .vercel
+
+# Generated single-file previews (tools/preview_bundle.py)
+*preview.html
