@@ -9,6 +9,10 @@ import { services, serviceGroups } from '../data/services';
 import { locations } from '../data/locations';
 import { site, estimateHref, telHref } from '../data/site';
 import { faqPage, webPage, owner } from '../lib/schema';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { projects } from '../data/projects';
+const featured = projects[0];
+const featuredPhotos = ['open-living-room-and-kitchen', 'kitchen-island-and-dining', 'primary-bath-navy-vanity', 'living-room-fireplace', 'primary-bath-tile-shower', 'kitchen-white-shaker-cabinets'].map((n) => ({ project: featured, photo: featured.photos.find((p) => p.name === n)! }));
 
 const title = 'Vail Valley Remodeling Contractor | Reed Home Solutions';
 const description = 'Eagle County remodeling contractor based in Gypsum: kitchens, baths, basements, decks and insurance-funded repairs. Daily updates. Free estimates.';
@@ -73,6 +77,18 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
           </div>
         </>
       ))}
+    </div>
+  </section>
+
+  <section class="section tint" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Recent work</span>
+        <h2 id="work-h">Home renovation and room addition in Edwards</h2>
+        <p class="lede">A fully permitted renovation that added rooms and brought the house up to current code, run by Jace from permits to the last punch-list item.</p>
+      </div>
+      <PhotoGrid items={featuredPhotos} />
+      <p><a class="btn btn-outline" href={`/projects/${featured.slug}`}>See all {featured.photos.length} project photos<Icon name="chevron" /></a></p>
     </div>
   </section>
 
@@ -180,7 +196,7 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
         <span class="eyebrow">Meet the owner</span>
         <h2 id="about-h">Jace Reed, owner</h2>
         <p>Jace got into construction locally about a decade ago and spent years in water-damage restoration across the Vail Valley, writing insurance estimates for water losses and working with insurers, property managers and homeowners. He started Reed Home Solutions to bring that same responsiveness to remodeling: fast answers, clear estimates and work built to last.</p>
-        <p>He is certified to pull building permits, is insured, and recently completed a fully permitted renovation and room addition in Edwards.</p>
+        <p>He is certified to pull building permits, is insured, and recently completed a fully permitted <a href="/projects/edwards-home-renovation">renovation and room addition in Edwards</a>.</p>
         <p><a href="/about">More about Jace and Reed Home Solutions</a></p>
       </div>
       <div class="box">

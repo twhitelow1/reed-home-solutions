@@ -7,11 +7,14 @@ import { site, estimateHref, telHref } from '../data/site';
 import { services } from '../data/services';
 import { locations } from '../data/locations';
 import { breadcrumbs, webPage, owner } from '../lib/schema';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { projects } from '../data/projects';
+const edwards = projects[0];
 const path = '/about';
 const title = 'About Jace Reed & Reed Home Solutions | Gypsum, CO';
 const description = 'Meet Jace Reed, owner of Reed Home Solutions: a Gypsum-based remodeling contractor with a water-damage restoration background, serving the Vail Valley.';
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'About', path }];
-// TODO add a real photo of Jace on a job site, plus finished-project photos (Edwards renovation, Vail condo roof).
+// TODO add a real photo of Jace on a job site and Vail condo roof photos.
 ---
 <Base title={title} description={description} path={path} schema={[webPage(path, title, description, 'AboutPage'), owner(), breadcrumbs(crumbs)]}>
   <header class="page-head"><div class="wrap">
@@ -34,7 +37,10 @@ const crumbs = [{ name: 'Home', path: '/' }, { name: 'About', path }];
         <li><Icon name="check" /><span><strong>Use people you trust.</strong> Our subcontractor network for framing, tile, flooring, carpet, insulation, drywall, paint and roofing comes from years of working together.</span></li>
       </ul>
       <h2>Recent work</h2>
-      <p>Recent projects include a fully permitted renovation of a home in Edwards that added rooms and brought the house up to current code, a completed home renovation earlier this year, ongoing deck projects, and a flat-roof system on a condo building in Vail installed with our roofing partner. Project photos are coming soon.</p>
+      <p>Recent projects include a fully permitted renovation of a home in Edwards that added rooms and brought the house up to current code, a completed home renovation earlier this year, ongoing deck projects, and a flat-roof system on a condo building in Vail installed with our roofing partner.</p>
+      <h3>Home renovation and room addition in Edwards</h3>
+      <PhotoGrid items={edwards.photos.slice(0, 4).map((photo) => ({ project: edwards, photo }))} />
+      <p><a href={`/projects/${edwards.slug}`}>See all {edwards.photos.length} photos from the Edwards project</a></p>
       <h2>What we do</h2>
       <ul class="towns">{services.map((s) => <li><a href={`/${s.slug}`}>{s.name}</a></li>)}</ul>
       <h2>Where we work</h2>

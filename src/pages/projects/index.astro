@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { projects, photoSrc } from '../../data/projects';
+import { site } from '../../data/site';
+import { breadcrumbs, webPage } from '../../lib/schema';
+const path = '/projects';
+const title = 'Remodeling Projects & Photos | Reed Home Solutions';
+const description = 'Photos of completed remodeling projects by Reed Home Solutions in Eagle County, Colorado, including a permitted home renovation and addition in Edwards.';
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Projects', path }];
+const list = { '@type': 'ItemList', name: 'Projects', itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}/projects/${p.slug}`, name: p.title })) };
+---
+<Base title={title} description={description} path={path} schema={[webPage(path, title, description, 'CollectionPage'), breadcrumbs(crumbs), list]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>Our projects</h1>
+    <p class="answer">Real photos of finished work by {site.name}. Every photo on this site is from a job we built; we add new projects as they wrap up.</p>
+  </div></header>
+  <section class="section"><div class="wrap">
+    <div class="grid grid-2">
+      {projects.map((p) => (
+        <article class="card project-card">
+          <img src={photoSrc(p, p.photos[0], true)} width="480" height="320" alt={p.photos[0].alt} loading="eager" />
+          <div><h2 style="font-size:1.35rem"><a href={`/projects/${p.slug}`}>{p.title}</a></h2><p>{p.summary}</p><span class="more">See {p.photos.length} photos<Icon name="chevron" /></span></div>
+        </article>
+      ))}
+    </div>
+  </div></section>
+  <CtaBand />
+</Base>

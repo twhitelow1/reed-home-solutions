@@ -8,6 +8,8 @@ import CtaBand from '../components/CtaBand.astro';
 import { services, serviceBySlug, type Service } from '../data/services';
 import { locations, locationBySlug, type Location } from '../data/locations';
 import { extras } from '../data/serviceExtras';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { photosForService, photosForTown } from '../data/projects';
 import { site, estimateHref, telHref } from '../data/site';
 import { breadcrumbs, faqPage, webPage, serviceSchema, localServiceSchema } from '../lib/schema';
 
@@ -27,6 +29,8 @@ const slugify = (t: string) => t.toLowerCase().replace(/&/g, 'and').replace(/[^a
 const svc = kind === 'service' ? (item as Service) : null;
 const loc = kind === 'location' ? (item as Location) : null;
 const ex = svc ? extras[svc.slug] : undefined;
+const photos = svc ? photosForService(svc.slug) : photosForTown(loc!.slug);
+const photoProject = photos[0]?.project;
 const insurance = svc?.slug === 'water-damage-insurance-repair' || svc?.slug === 'roof-replacement-repair';
 
 let crumbs, schema;
@@ -69,6 +73,7 @@ if (svc) {
             <b>On this page</b>
             <ol>
               {svc.sections.map((s) => <li><a href={`#${slugify(s.h2)}`}>{s.h2}</a></li>)}
+              {photos.length > 0 && <li><a href="#our-work">Photos from our work</a></li>}
               <li><a href="#signs">Signs you need it</a></li>
               <li><a href="#process">How it works</a></li>
               <li><a href="#included">What’s included</a></li>
@@ -81,6 +86,14 @@ if (svc) {
         {svc?.partner && <p class="partner"><Icon name="users" /><span>{svc.partner}</span></p>}
 
         {svc && svc.sections.map((s) => (<><h2 id={slugify(s.h2)}>{s.h2}</h2><Fragment set:html={s.html} /></>))}
+
+        {svc && photoProject && (
+          <>
+            <h2 id="our-work">Photos from our work</h2>
+            <p>From our <a href={`/projects/${photoProject.slug}`}>{photoProject.title.charAt(0).toLowerCase() + photoProject.title.slice(1)}</a>, a permitted project we ran from permits to final punch list.</p>
+            <PhotoGrid items={photos} />
+          </>
+        )}
 
         {svc && ex && (
           <>
@@ -120,6 +133,15 @@ if (svc) {
           <>
             <h2>Remodeling in {loc.town}: what to know</h2>
             <Fragment set:html={loc.localHtml} />
+
+            {photoProject && (
+              <>
+                <h2>Recent work in {loc.town}</h2>
+                <p>Photos from our <a href={`/projects/${photoProject.slug}`}>{photoProject.title.charAt(0).toLowerCase() + photoProject.title.slice(1)}</a>.</p>
+                <PhotoGrid items={photos} />
+                <p><a href={`/projects/${photoProject.slug}`}>See all {photoProject.photos.length} photos</a></p>
+              </>
+            )}
 
             <h2>{loc.town} homes we work on</h2>
             <div class="tablewrap"><table>

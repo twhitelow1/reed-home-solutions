@@ -1,0 +1,25 @@
+---
+// Responsive photo grid. Each tile links to the full 1600 px image.
+import { photoSrc, type Photo, type Project } from '../data/projects';
+interface Props { items: { project: Project; photo: Photo }[]; eager?: number; caption?: boolean }
+const { items, eager = 0, caption = false } = Astro.props;
+---
+<ul class="photo-grid">
+  {items.map(({ project, photo }, i) => (
+    <li class={photo.h > photo.w ? 'tall' : undefined}>
+      <a href={photoSrc(project, photo)}>
+        <img
+          src={photoSrc(project, photo, true)}
+          srcset={`${photoSrc(project, photo, true)} 480w, ${photoSrc(project, photo)} 1600w`}
+          sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"
+          width={480}
+          height={Math.round((480 * photo.h) / photo.w)}
+          alt={photo.alt}
+          loading={i < eager ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      </a>
+      {caption && <span class="photo-cap">{photo.alt}</span>}
+    </li>
+  ))}
+</ul>

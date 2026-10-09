@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import PhotoGrid from '../../components/PhotoGrid.astro';
+import { projects, photoSrc, type Project } from '../../data/projects';
+import { serviceBySlug } from '../../data/services';
+import { locationBySlug } from '../../data/locations';
+import { site, estimateHref, telHref } from '../../data/site';
+import { breadcrumbs, webPage, ORG_ID } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+const { project } = Astro.props as { project: Project };
+const path = `/projects/${project.slug}`;
+const title = `${project.town} Home Renovation & Addition | Reed Home Solutions`;
+const description = `Photos of a permitted home renovation and room addition in ${project.town}, Colorado by Reed Home Solutions: kitchen, bathrooms, living areas and bedrooms.`;
+const crumbs = [{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }, { name: project.title, path }];
+const town = locationBySlug[project.locationSlug];
+const gallery = {
+  '@type': 'ImageGallery',
+  '@id': `${site.url}${path}#gallery`,
+  name: project.title,
+  description: project.summary,
+  url: `${site.url}${path}`,
+  author: { '@id': ORG_ID },
+  contentLocation: { '@type': 'Place', name: `${project.town}, Colorado` },
+  image: project.photos.map((ph) => ({
+    '@type': 'ImageObject',
+    contentUrl: `${site.url}${photoSrc(project, ph)}`,
+    thumbnailUrl: `${site.url}${photoSrc(project, ph, true)}`,
+    width: ph.w,
+    height: ph.h,
+    caption: ph.alt,
+  })),
+};
+const items = project.photos.map((photo) => ({ project, photo }));
+---
+<Base title={title} description={description} path={path} ogImage={photoSrc(project, project.photos[0])} ogSize={[project.photos[0].w, project.photos[0].h]} schema={[webPage(path, title, description, 'CollectionPage'), gallery, breadcrumbs(crumbs)]}>
+  <header class="page-head"><div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <h1>{project.title}</h1>
+    <p class="answer">{project.summary}</p>
+    <dl class="facts">
+      <div><dt>Location</dt><dd><a href={`/${town.slug}`}>{project.town}, Eagle County</a></dd></div>
+      <div><dt>Project type</dt><dd>Renovation and room addition</dd></div>
+      <div><dt>Permits</dt><dd>Pulled and inspected</dd></div>
+      <div><dt>Photos</dt><dd>{project.photos.length}</dd></div>
+    </dl>
+  </div></header>
+
+  <section class="section" style="padding-top:2rem"><div class="wrap">
+    <PhotoGrid items={items} eager={3} caption />
+  </div></section>
+
+  <section class="section tint"><div class="wrap article">
+    <div class="prose">
+      <h2>How we ran this project</h2>
+      <p>Adding rooms means meeting every code requirement that comes with them: egress windows, smoke and CO alarms, insulation and inspections at each stage. We pulled the permits, scheduled the trades in order and kept the homeowner updated every working day until the last punch-list item was done.</p>
+      <p>Planning something similar in {project.town} or anywhere in Eagle County? <a href={estimateHref}>Request a free estimate</a> or call <a href={telHref}>{site.phone}</a>.</p>
+    </div>
+    <aside class="box">
+      <h3>Services on this job</h3>
+      <ul class="linklist">{project.services.map((s) => <li><a href={`/${s}`}>{serviceBySlug[s].name}<Icon name="chevron" /></a></li>)}</ul>
+    </aside>
+  </div></section>
+
+  <CtaBand title={`Planning a remodel in ${project.town}?`} />
+</Base>

@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { services, serviceGroups } from '../data/services';
 import { locations } from '../data/locations';
 import { site } from '../data/site';
+import { projects } from '../data/projects';
 import { breadcrumbs, webPage } from '../lib/schema';
 const path = '/sitemap';
 const title = 'Site Map: All Pages | Reed Home Solutions';
@@ -12,7 +13,7 @@ const description = 'Every page on the Reed Home Solutions website: remodeling s
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'Site map', path }];
 type L = { href: string; label: string };
 const sections: { icon: string; title: string; links: L[] }[] = [
-  { icon: 'mountain', title: 'Company', links: [{ href: '/', label: 'Home' }, { href: '/about', label: 'About Reed Home Solutions' }, { href: '/free-estimate', label: 'Free estimate' }, { href: '/contact', label: 'Contact' }] },
+  { icon: 'mountain', title: 'Company', links: [{ href: '/', label: 'Home' }, { href: '/about', label: 'About Reed Home Solutions' }, { href: '/projects', label: 'Projects' }, ...projects.map((p) => ({ href: `/projects/${p.slug}`, label: p.title })), { href: '/free-estimate', label: 'Free estimate' }, { href: '/contact', label: 'Contact' }] },
   ...serviceGroups.map((g) => ({ icon: services.find((s) => s.group === g)!.icon, title: g, links: services.filter((s) => s.group === g).map((s) => ({ href: `/${s.slug}`, label: s.name })) })),
   { icon: 'pin', title: 'Service areas', links: [{ href: '/service-areas', label: 'All service areas' }, ...locations.map((l) => ({ href: `/${l.slug}`, label: `Remodeling contractor in ${l.town}, CO` }))] },
   { icon: 'file', title: 'Guides & more', links: [{ href: '/services', label: 'All services' }, { href: '/water-damage-insurance-claim-guide', label: 'Water damage insurance claim guide' }, { href: '/remodeling-cost-guide', label: 'How remodel pricing works' }, { href: '/privacy-policy', label: 'Privacy policy' }, { href: '/sitemap.xml', label: 'XML sitemap' }, { href: '/llms.txt', label: 'llms.txt (AI summary)' }] },

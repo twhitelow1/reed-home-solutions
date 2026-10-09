@@ -37,7 +37,10 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 - [ ] **GoHighLevel:** calendar URL, estimate form embed, planner webhook.
 - [ ] **GA4 / Clarity** IDs.
 - [ ] **Logo:** replace the placeholder circle mark (`src/components/Mark.astro`, `public/favicon.svg`, `logo.png`) with the approved design.
-- [ ] **Photos:** Jace portrait, Edwards renovation, Vail condo roof, deck jobs. Add to About and service pages.
+- [x] **Edwards renovation photos:** 33 photos in `public/images/projects/edwards/`, wired up via `src/data/projects.ts` (project page, home, About, service and Edwards pages).
+- [ ] **Photo permission:** the Edwards photos look like listing photos (Century 21, agent Jamie Salyer). Get written OK to use them and add a credit if required.
+- [ ] **Edwards scope:** ask Jace which rooms were added and what was replaced, then add a scope list to the project page.
+- [ ] **More photos:** Jace portrait, Vail condo roof, deck jobs. Add each job as a new entry in `src/data/projects.ts`.
 - [ ] **Reviews:** add verbatim Google reviews to `reviews` in `site.ts` once they exist.
 - [ ] Privacy policy legal review.
 

@@ -15,9 +15,10 @@ interface Props {
   path: string; // canonical path, e.g. "/" or "/kitchen-remodeling"
   schema?: object[];
   ogImage?: string;
+  ogSize?: [number, number];
   noindex?: boolean;
 }
-const { title, description, path, schema = [], ogImage = '/og-default.png', noindex = false } = Astro.props;
+const { title, description, path, schema = [], ogImage = '/og-default.png', ogSize = [1200, 630], noindex = false } = Astro.props;
 const canonical = path === '/' ? `${site.url}/` : `${site.url}${path}`;
 // Indexable only when the production env flag is set AND the page allows it.
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
@@ -47,8 +48,8 @@ const ld = graph(organization(), website(), ...schema);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={`${site.url}${ogImage}`} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content={String(ogSize[0])} />
+    <meta property="og:image:height" content={String(ogSize[1])} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

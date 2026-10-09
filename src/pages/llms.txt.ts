@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { site } from '../data/site';
 import { services } from '../data/services';
 import { locations } from '../data/locations';
+import { projects } from '../data/projects';
 // llms.txt: a plain-language map of the site for LLM crawlers (llmstxt.org format).
 export const GET: APIRoute = () => {
   const U = site.url;
@@ -25,6 +26,10 @@ ${services.map((s) => `- [${s.name}](${U}/${s.slug}): ${s.card}`).join('\n')}
 ## Service areas
 - [All service areas](${U}/service-areas)
 ${locations.map((l) => `- [Remodeling contractor in ${l.town}, CO](${U}/${l.slug}): ${l.county}; ZIP ${l.zips.join(', ')}; ${l.driveFromGypsum === 'local' ? 'home base' : `${l.driveFromGypsum} from Gypsum`}${l.core ? '; primary service area' : '; secondary service area'}.`).join('\n')}
+
+## Projects
+- [All projects](${U}/projects)
+${projects.map((p) => `- [${p.title}](${U}/projects/${p.slug}): ${p.summary} ${p.photos.length} photos.`).join('\n')}
 
 ## Guides and tools
 - [Water damage insurance claim guide](${U}/water-damage-insurance-claim-guide)
