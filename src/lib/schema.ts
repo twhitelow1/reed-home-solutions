@@ -27,7 +27,7 @@ export function organization() {
     '@id': ORG_ID,
     name: site.name,
     ...(site.legalName !== site.name ? { legalName: site.legalName } : {}),
-    slogan: 'Remodeling and insurance repair across the Vail Valley, with an update every working day and the punch list finished.',
+    slogan: 'Remodeling and water damage repair across the Vail Valley, with an update every working day and the punch list finished.',
     description: 'Reed Home Solutions is a remodeling and general contracting company based in Gypsum, Colorado, owned by Jace Reed. It remodels kitchens, bathrooms, basements and lock-offs, builds decks, manages siding, roofing, window and flooring projects, and rebuilds homes after water damage with insurance-ready estimates, serving Eagle County as its primary area, plus Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat Springs.',
     url: `${U}/`,
     logo: `${U}/logo.png`,
