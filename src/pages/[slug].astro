@@ -31,7 +31,7 @@ const loc = kind === 'location' ? (item as Location) : null;
 const ex = svc ? extras[svc.slug] : undefined;
 const photos = svc ? photosForService(svc.slug) : photosForTown(loc!.slug);
 const photoProject = photos[0]?.project;
-const insurance = svc?.slug === 'water-damage-insurance-repair' || svc?.slug === 'roof-replacement-repair';
+const insurance = svc?.slug === 'water-damage-insurance-repair-vail-co' || svc?.slug === 'roof-replacement-repair-vail-co';
 
 let crumbs, schema;
 if (svc) {

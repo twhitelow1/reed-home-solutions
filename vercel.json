@@ -42,6 +42,71 @@
       "source": "/sitemap-index.xml",
       "destination": "/sitemap.xml",
       "permanent": true
+    },
+    {
+      "source": "/kitchen-remodeling",
+      "destination": "/kitchen-remodeling-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/bathroom-remodeling",
+      "destination": "/bathroom-remodeling-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/basement-lock-off-remodeling",
+      "destination": "/basement-lock-off-remodeling-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-installation",
+      "destination": "/flooring-installation-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/deck-building-repair",
+      "destination": "/deck-building-repair-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/siding-exterior-painting",
+      "destination": "/siding-exterior-painting-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/roof-replacement-repair",
+      "destination": "/roof-replacement-repair-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/window-replacement",
+      "destination": "/window-replacement-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/home-renovation-general-contracting",
+      "destination": "/home-renovation-general-contracting-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/water-damage-insurance-repair",
+      "destination": "/water-damage-insurance-repair-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/condo-remodeling",
+      "destination": "/condo-remodeling-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/home-additions-adus",
+      "destination": "/home-additions-adus-vail-co",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-inspection-repairs",
+      "destination": "/real-estate-inspection-repairs-vail-co",
+      "permanent": true
     }
   ]
 }

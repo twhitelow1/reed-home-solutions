@@ -30,7 +30,7 @@ export const projects: Project[] = [
     summary:
       'A fully permitted renovation of a home in Edwards, Colorado that added rooms and brought the house up to current code. Reed Home Solutions ran the job as general contractor, from permits through the final punch list.',
     // TODO ask Jace for the room-by-room scope (which rooms were added, what was replaced) before adding a scope list.
-    services: ['home-renovation-general-contracting', 'home-additions-adus', 'kitchen-remodeling', 'bathroom-remodeling', 'flooring-installation'],
+    services: ['home-renovation-general-contracting-vail-co', 'home-additions-adus-vail-co', 'kitchen-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'flooring-installation-vail-co'],
     photos: [
       { name: 'open-living-room-and-kitchen', alt: 'Open living room and kitchen with a high ceiling, corner fireplace and wood-look plank floors', w: 1600, h: L, tags: ['living', 'kitchen', 'flooring'] },
       { name: 'kitchen-island-and-dining', alt: 'Remodeled kitchen with white shaker cabinets, a center island, stainless range and a dining area by the windows', w: 1600, h: L, tags: ['kitchen', 'flooring'] },
@@ -76,11 +76,11 @@ export const photoSrc = (p: Project, ph: Photo, thumb = false) =>
 
 // Photos for a service page, best first. Empty array means the page shows none.
 const serviceTags: Record<string, Tag[]> = {
-  'kitchen-remodeling': ['kitchen'],
-  'bathroom-remodeling': ['bath'],
-  'flooring-installation': ['flooring'],
-  'home-renovation-general-contracting': ['living', 'kitchen', 'bath'],
-  'home-additions-adus': ['bedroom', 'living'],
+  'kitchen-remodeling-vail-co': ['kitchen'],
+  'bathroom-remodeling-vail-co': ['bath'],
+  'flooring-installation-vail-co': ['flooring'],
+  'home-renovation-general-contracting-vail-co': ['living', 'kitchen', 'bath'],
+  'home-additions-adus-vail-co': ['bedroom', 'living'],
 };
 
 export function photosForService(slug: string, limit = 6) {

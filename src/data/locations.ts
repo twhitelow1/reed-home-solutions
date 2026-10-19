@@ -48,7 +48,7 @@ export const locations: Location[] = [
       { name: 'Condo buildings', note: 'Flat-roof systems, unit-to-unit leak repairs, common-area work' },
     ],
     localHtml: '<p>Most Vail remodels happen inside condo associations, which usually set work hours, elevator reservations, parking and dumpster rules, and require approval before work starts. Exterior changes in town generally go through the Town of Vail’s design review process. We build those approvals into the schedule from the start.</p><p>Vail also has a lot of second homes and rental units, so many owners are not here during the project. We send photo updates and keep decisions moving without needing you on site.</p>',
-    featured: ['bathroom-remodeling', 'kitchen-remodeling', 'basement-lock-off-remodeling', 'roof-replacement-repair'],
+    featured: ['bathroom-remodeling-vail-co', 'kitchen-remodeling-vail-co', 'basement-lock-off-remodeling-vail-co', 'roof-replacement-repair-vail-co'],
     nearby: ['remodeling-contractor-avon-co', 'remodeling-contractor-edwards-co', 'remodeling-contractor-breckenridge-co'],
     faqs: [
       { q: 'Who does condo remodeling in Vail, CO?', a: 'Reed Home Solutions remodels condos in Vail Village, Lionshead, East Vail and West Vail, including kitchens, bathrooms and flooring, and coordinates HOA approvals, elevator reservations and work-hour rules.' },
@@ -79,7 +79,7 @@ export const locations: Location[] = [
       { name: 'Rental properties', note: 'Quick-turn updates and water-damage rebuilds between bookings' },
     ],
     localHtml: '<p>Wildridge’s steep lots and big views make decks a big part of Avon-area work, and access for materials and equipment shapes the schedule. Beaver Creek and Bachelor Gulch properties sit within resort communities that have their own design review and contractor rules on top of county permits. We confirm those requirements before pricing.</p>',
-    featured: ['deck-building-repair', 'kitchen-remodeling', 'bathroom-remodeling', 'water-damage-insurance-repair'],
+    featured: ['deck-building-repair-vail-co', 'kitchen-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'water-damage-insurance-repair-vail-co'],
     nearby: ['remodeling-contractor-edwards-co', 'remodeling-contractor-vail-co', 'remodeling-contractor-eagle-co'],
     faqs: [
       { q: 'Do you work in Beaver Creek?', a: 'Yes. We remodel homes and condos in Beaver Creek and Bachelor Gulch and follow the resort community’s design review and contractor requirements in addition to Eagle County permits.' },
@@ -110,7 +110,7 @@ export const locations: Location[] = [
       { name: 'Investment properties', note: 'Permitted renovations and pre-sale updates' },
     ],
     localHtml: '<p>Edwards is unincorporated, so building permits come from Eagle County rather than a town. Most neighborhoods, from Singletree to Cordillera, also have HOA covenants and design review for exterior work. Our recent Edwards renovation added rooms and was fully permitted, so we know the county process well.</p>',
-    featured: ['home-renovation-general-contracting', 'basement-lock-off-remodeling', 'kitchen-remodeling', 'deck-building-repair'],
+    featured: ['home-renovation-general-contracting-vail-co', 'basement-lock-off-remodeling-vail-co', 'kitchen-remodeling-vail-co', 'deck-building-repair-vail-co'],
     nearby: ['remodeling-contractor-avon-co', 'remodeling-contractor-eagle-co', 'remodeling-contractor-vail-co'],
     faqs: [
       { q: 'Who issues building permits in Edwards, CO?', a: 'Edwards is unincorporated, so building permits are issued by Eagle County. Many Edwards neighborhoods also require HOA design review for exterior changes.' },
@@ -141,7 +141,7 @@ export const locations: Location[] = [
       { name: 'Rural and hillside properties', note: 'Decks, additions and exterior work' },
     ],
     localHtml: '<p>Eagle is close to our Gypsum base, so we can respond fast, check on jobs daily and turn estimates around quickly. Many Eagle homes, especially in Eagle Ranch, were built in the 2000s and are now due for kitchen and bath updates, basement finishes and deck replacements.</p>',
-    featured: ['kitchen-remodeling', 'basement-lock-off-remodeling', 'deck-building-repair', 'bathroom-remodeling'],
+    featured: ['kitchen-remodeling-vail-co', 'basement-lock-off-remodeling-vail-co', 'deck-building-repair-vail-co', 'bathroom-remodeling-vail-co'],
     nearby: ['remodeling-contractor-gypsum-co', 'remodeling-contractor-edwards-co', 'remodeling-contractor-avon-co'],
     faqs: [
       { q: 'Who is a local remodeling contractor in Eagle, CO?', a: 'Reed Home Solutions is based about ten minutes away in Gypsum and remodels homes throughout Eagle, including Eagle Ranch and downtown.' },
@@ -172,7 +172,7 @@ export const locations: Location[] = [
       { name: 'Rentals and investment homes', note: 'Pre-sale and between-tenant renovations' },
     ],
     localHtml: '<p>Gypsum is home base. That means the shortest response times, the quickest site visits and the easiest scheduling of anywhere we work. Many Gypsum homes have unfinished basements, which makes adding a bedroom or family room one of the most cost-effective upgrades in town.</p>',
-    featured: ['basement-lock-off-remodeling', 'kitchen-remodeling', 'deck-building-repair', 'siding-exterior-painting'],
+    featured: ['basement-lock-off-remodeling-vail-co', 'kitchen-remodeling-vail-co', 'deck-building-repair-vail-co', 'siding-exterior-painting-vail-co'],
     nearby: ['remodeling-contractor-eagle-co', 'remodeling-contractor-glenwood-springs-co', 'remodeling-contractor-edwards-co'],
     faqs: [
       { q: 'Is Reed Home Solutions based in Gypsum?', a: 'Yes. Reed Home Solutions is a Gypsum-based remodeling and general contractor serving Eagle County and nearby mountain towns.' },
@@ -203,7 +203,7 @@ export const locations: Location[] = [
       { name: 'Rental properties', note: 'Between-tenant renovations' },
     ],
     localHtml: '<p>Glenwood Springs has some of the oldest housing stock in the region, so renovations often uncover outdated wiring, plumbing and framing that need to be brought up to code. We plan for that in the estimate. Glenwood is a straight shot down I-70 from Gypsum, so we take projects here regularly.</p>',
-    featured: ['home-renovation-general-contracting', 'kitchen-remodeling', 'bathroom-remodeling', 'basement-lock-off-remodeling'],
+    featured: ['home-renovation-general-contracting-vail-co', 'kitchen-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'basement-lock-off-remodeling-vail-co'],
     nearby: ['remodeling-contractor-carbondale-co', 'remodeling-contractor-gypsum-co', 'remodeling-contractor-aspen-co'],
     faqs: [
       { q: 'Do you serve Glenwood Springs?', a: 'Yes. Glenwood Springs is about 30 minutes from our base in Gypsum. It is outside our primary Eagle County area, but close enough that we take projects there regularly.' },
@@ -234,7 +234,7 @@ export const locations: Location[] = [
       { name: 'Rural properties', note: 'Additions and exterior work' },
     ],
     localHtml: '<p>Carbondale sits between Glenwood Springs and Aspen, and many homeowners here want quality work without Aspen pricing. Neighborhoods like River Valley Ranch and Aspen Glen have HOA design review for exterior changes, and we prepare those submittals.</p>',
-    featured: ['kitchen-remodeling', 'deck-building-repair', 'bathroom-remodeling', 'siding-exterior-painting'],
+    featured: ['kitchen-remodeling-vail-co', 'deck-building-repair-vail-co', 'bathroom-remodeling-vail-co', 'siding-exterior-painting-vail-co'],
     nearby: ['remodeling-contractor-glenwood-springs-co', 'remodeling-contractor-aspen-co', 'remodeling-contractor-gypsum-co'],
     faqs: [
       { q: 'Do you remodel homes in River Valley Ranch?', a: 'Yes. We take interior remodels, decks and exterior projects in River Valley Ranch and handle the HOA design review submittals.' },
@@ -265,7 +265,7 @@ export const locations: Location[] = [
       { name: 'Single-family homes', note: 'Decks, interiors and insurance repairs' },
     ],
     localHtml: '<p>Aspen has some of the most detailed permitting in the state, including construction management plans for many projects and Historic Preservation review for designated properties. High-end second homes also sit vacant for long stretches, which is when frozen pipes and slow leaks do the most damage. Our restoration background makes Aspen insurance rebuilds a natural fit.</p>',
-    featured: ['water-damage-insurance-repair', 'bathroom-remodeling', 'kitchen-remodeling', 'deck-building-repair'],
+    featured: ['water-damage-insurance-repair-vail-co', 'bathroom-remodeling-vail-co', 'kitchen-remodeling-vail-co', 'deck-building-repair-vail-co'],
     nearby: ['remodeling-contractor-carbondale-co', 'remodeling-contractor-glenwood-springs-co', 'remodeling-contractor-vail-co'],
     faqs: [
       { q: 'Do you take projects in Aspen?', a: 'Yes, as our schedule allows. Aspen is about an hour and twenty minutes from our Gypsum base. Call to discuss your project and timing.' },
@@ -296,7 +296,7 @@ export const locations: Location[] = [
       { name: 'Vacation rentals', note: 'Between-season updates and insurance rebuilds' },
     ],
     localHtml: '<p>Steamboat gets heavy snow and long winters, so decks, roofs and ice-dam damage are common projects. Building permits for both the city and unincorporated Routt County run through the Routt County Regional Building Department. Our flooring partner also works in Steamboat, which helps with material sourcing.</p>',
-    featured: ['water-damage-insurance-repair', 'deck-building-repair', 'kitchen-remodeling', 'flooring-installation'],
+    featured: ['water-damage-insurance-repair-vail-co', 'deck-building-repair-vail-co', 'kitchen-remodeling-vail-co', 'flooring-installation-vail-co'],
     nearby: ['remodeling-contractor-vail-co', 'remodeling-contractor-edwards-co', 'remodeling-contractor-avon-co'],
     faqs: [
       { q: 'Do you take projects in Steamboat Springs?', a: 'Yes, as our schedule allows. Steamboat is about an hour and forty-five minutes from Gypsum via Wolcott and CO-131. Call to discuss your project and timing.' },
@@ -327,7 +327,7 @@ export const locations: Location[] = [
       { name: 'Short-term rentals', note: 'Fast between-season updates and insurance repairs' },
     ],
     localHtml: '<p>Breckenridge sits above 9,000 feet, with heavy snow, a short building season and many short-term rentals. Historic District properties follow additional design standards, and most condo associations limit work hours and access. We schedule Breckenridge projects in blocks to keep travel over Vail Pass efficient.</p>',
-    featured: ['kitchen-remodeling', 'bathroom-remodeling', 'water-damage-insurance-repair', 'deck-building-repair'],
+    featured: ['kitchen-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'water-damage-insurance-repair-vail-co', 'deck-building-repair-vail-co'],
     nearby: ['remodeling-contractor-frisco-co', 'remodeling-contractor-keystone-co', 'remodeling-contractor-vail-co'],
     faqs: [
       { q: 'Do you take projects in Breckenridge?', a: 'Yes. Summit County is part of our secondary service area. Breckenridge is about an hour and fifteen minutes from Gypsum over Vail Pass, and we schedule Summit work in blocks to keep crews on site, not on the road.' },
@@ -358,7 +358,7 @@ export const locations: Location[] = [
       { name: 'Second homes and rentals', note: 'Between-season updates with daily photo reports' },
     ],
     localHtml: '<p>Frisco sits at the center of Summit County, so it is our first stop over Vail Pass. Many Frisco and Copper owners live elsewhere or rent their units, which makes communication the whole job: you get a short update with photos every working day, and decisions are made with you, not around you.</p><p>Copper Mountain is unincorporated and its condo associations set their own construction rules. We read them before pricing.</p>',
-    featured: ['condo-remodeling', 'kitchen-remodeling', 'bathroom-remodeling', 'deck-building-repair'],
+    featured: ['condo-remodeling-vail-co', 'kitchen-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'deck-building-repair-vail-co'],
     nearby: ['remodeling-contractor-breckenridge-co', 'remodeling-contractor-silverthorne-co', 'remodeling-contractor-dillon-co'],
     faqs: [
       { q: 'Do you remodel condos at Copper Mountain?', a: 'Yes. We remodel condos at Copper Mountain and in Frisco and work within each association’s rules for approvals, access and work hours.' },
@@ -389,7 +389,7 @@ export const locations: Location[] = [
       { name: 'Full-time local homes', note: 'Additions and ADUs for growing families' },
     ],
     localHtml: '<p>Silverthorne has more full-time residents than many Summit County towns, so a lot of projects here are about living space: another bedroom, a finished lower level, a bigger kitchen. Hillside neighborhoods like Wildernest and Eagles Nest bring steep lots, heavy snow and HOA design review, which shape decks, additions and exterior work.</p>',
-    featured: ['kitchen-remodeling', 'home-additions-adus', 'basement-lock-off-remodeling', 'deck-building-repair'],
+    featured: ['kitchen-remodeling-vail-co', 'home-additions-adus-vail-co', 'basement-lock-off-remodeling-vail-co', 'deck-building-repair-vail-co'],
     nearby: ['remodeling-contractor-dillon-co', 'remodeling-contractor-frisco-co', 'remodeling-contractor-keystone-co'],
     faqs: [
       { q: 'Do you build additions in Silverthorne?', a: 'Yes. We check zoning, HOA covenants and site conditions first, then handle permits and construction for additions and ADUs.' },
@@ -420,7 +420,7 @@ export const locations: Location[] = [
       { name: 'Rental units', note: 'Turnover repairs and between-season updates' },
     ],
     localHtml: '<p>Dillon and Dillon Valley are full of condos and townhomes built from the 1970s on. Those buildings often need the same things: dated kitchens and baths, worn flooring, tired decks and the occasional leak between units. We know how to work inside an association’s rules and keep the neighbors below dry.</p>',
-    featured: ['condo-remodeling', 'bathroom-remodeling', 'flooring-installation', 'water-damage-insurance-repair'],
+    featured: ['condo-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'flooring-installation-vail-co', 'water-damage-insurance-repair-vail-co'],
     nearby: ['remodeling-contractor-silverthorne-co', 'remodeling-contractor-keystone-co', 'remodeling-contractor-frisco-co'],
     faqs: [
       { q: 'Do you remodel condos in Dillon Valley?', a: 'Yes. We remodel condos and townhomes in Dillon Valley and the Town of Dillon and prepare the HOA approval package with you.' },
@@ -451,7 +451,7 @@ export const locations: Location[] = [
       { name: 'Short-term rentals', note: 'Fast turnarounds scheduled around bookings' },
     ],
     localHtml: '<p>Keystone is unincorporated Summit County, so building permits come from the county while condo associations and the resort community set construction rules on top. Most units are second homes or rentals, so we plan around booking calendars and keep owners updated every working day.</p>',
-    featured: ['condo-remodeling', 'kitchen-remodeling', 'bathroom-remodeling', 'water-damage-insurance-repair'],
+    featured: ['condo-remodeling-vail-co', 'kitchen-remodeling-vail-co', 'bathroom-remodeling-vail-co', 'water-damage-insurance-repair-vail-co'],
     nearby: ['remodeling-contractor-dillon-co', 'remodeling-contractor-breckenridge-co', 'remodeling-contractor-silverthorne-co'],
     faqs: [
       { q: 'Who issues building permits in Keystone?', a: 'Keystone is unincorporated, so building permits come from Summit County. Your condo association or resort community may also require approval.' },
