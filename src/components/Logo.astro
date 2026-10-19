@@ -1,9 +1,6 @@
 ---
-import Mark from './Mark.astro';
-interface Props { light?: boolean }
-const { light = false } = Astro.props;
+// Jace's approved horizontal logo (mountains, roofline, REED HOME SOLUTIONS). Other cuts: public/logo-stacked.webp, logo.png, mark.webp.
+interface Props { footer?: boolean }
+const { footer = false } = Astro.props;
 ---
-<span class={`logo ${light ? 'logo-light' : ''}`}>
-  <Mark size={46} light={light} />
-  <span class="logo-text"><b>Reed Home Solutions</b><small>Remodeling &amp; General Contracting</small></span>
-</span>
+<img class="logo" src="/logo-horizontal.webp" width="996" height="180" alt="Reed Home Solutions: remodel, renovate, build" decoding="async" loading={footer ? 'lazy' : 'eager'} fetchpriority={footer ? 'auto' : 'high'} />

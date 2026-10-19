@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import Mark from '../components/Mark.astro';
 import Ridge from '../components/Ridge.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -46,7 +45,7 @@ const schema = [webPage('/', title, description), owner(), faqPage(faqs, '/')];
         </ul>
       </div>
       <div class="hero-card">
-        <Mark size={64} />
+        <img class="mark" src="/mark.webp" width="360" height="107" alt="" />
         <h2>How a free estimate works</h2>
         <p>No pressure, no vague numbers.</p>
         <ol>

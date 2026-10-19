@@ -36,7 +36,7 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 - [ ] **Google Business Profile:** add place ID, review link and maps URL; add `sameAs` social links.
 - [ ] **GoHighLevel:** calendar URL, estimate form embed, planner webhook.
 - [ ] **GA4 / Clarity** IDs.
-- [ ] **Logo:** replace the placeholder circle mark (`src/components/Mark.astro`, `public/favicon.svg`, `logo.png`) with the approved design.
+- [x] **Logo:** Jace's logo is in `public/` (`logo-horizontal.webp` header/footer, `logo-stacked.webp` + `logo.png` schema, `mark.webp`, favicons, `og-default.png`). Open question: shift the site palette from green/copper toward the logo's navy/gold?
 - [x] **Edwards renovation photos:** 33 photos in `public/images/projects/edwards/`, wired up via `src/data/projects.ts` (project page, home, About, service and Edwards pages).
 - [ ] **Photo permission:** the Edwards photos look like listing photos (Century 21, agent Jamie Salyer). Get written OK to use them and add a credit if required.
 - [ ] **Edwards scope:** ask Jace which rooms were added and what was replaced, then add a scope list to the project page.
