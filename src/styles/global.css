@@ -134,6 +134,7 @@ strong { color: var(--ink); font-weight: 700; }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-stack .card { flex-direction: column; gap: .8rem; }
 .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; gap: 1.1rem; align-items: flex-start; position: relative; transition: border-color .15s, box-shadow .15s; }
 .card .icon-lg { flex: none; width: 46px; height: 46px; padding: 10px; border-radius: 12px; background: var(--sage); color: var(--green); }
 .card h3 { margin-bottom: .35rem; }
@@ -336,3 +337,6 @@ tbody th { color: var(--ink); width: 34%; }
 .project-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; }
 .project-card { padding: 0; flex-direction: column; overflow: hidden; }
 .project-card > div { padding: 1.25rem 1.5rem 1.5rem; }
+
+/* Estimate prompt tile that fills the last slot of a service group */
+.card-cta { background: var(--sage); border-style: dashed; }

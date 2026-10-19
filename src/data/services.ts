@@ -359,7 +359,7 @@ export const services: Service[] = [
   {
     slug: 'condo-remodeling',
     name: 'Condo & HOA Remodeling',
-    group: 'Interior Remodeling',
+    group: 'Renovation & Insurance Repair',
     icon: 'building',
     card: 'Condo and townhome remodels run inside HOA rules: approvals, work hours, elevator and parking logistics, and neighbors below.',
     title: 'Condo Remodeling in Vail & Summit County | Reed Home Solutions',

@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import OtherProjectCard from '../../components/OtherProjectCard.astro';
 import { services, serviceGroups } from '../../data/services';
 import { breadcrumbs, webPage } from '../../lib/schema';
 import { site } from '../../data/site';
@@ -26,6 +27,7 @@ const list = { '@type': 'ItemList', name: 'Remodeling services', itemListElement
           {services.filter((s) => s.group === g).map((s) => (
             <article class="card"><Icon name={s.icon} class="icon-lg" /><div><h3><a href={`/${s.slug}`}>{s.name}</a></h3><p>{s.card}</p><span class="more">{s.name}<Icon name="chevron" /></span></div></article>
           ))}
+          {services.filter((s) => s.group === g).length % 2 === 1 && <OtherProjectCard />}
         </div>
       </div>
     </section>

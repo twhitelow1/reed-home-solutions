@@ -1,0 +1,6 @@
+---
+// Fills the last grid slot in a service group with an estimate prompt instead of leaving a gap.
+import Icon from './Icon.astro';
+import { estimateHref } from '../data/site';
+---
+<article class="card card-cta"><Icon name="clipboard" class="icon-lg" /><div><h3><a href={estimateHref}>Something else in mind?</a></h3><p>Repairs, punch lists, custom builds and projects that don’t fit a category. Tell us what you need and we’ll tell you straight if it’s a fit.</p><span class="more">Request a free estimate<Icon name="chevron" /></span></div></article>
