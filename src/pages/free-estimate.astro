@@ -11,11 +11,11 @@ import { locations } from '../data/locations';
 import { breadcrumbs, webPage, faqPage } from '../lib/schema';
 const path = '/free-estimate';
 const title = 'Free Remodeling Estimate | Vail Valley | Reed Home Solutions';
-const description = 'Request a free, written remodeling or insurance repair estimate in the Vail Valley. Answer five quick questions and send your project to Jace Reed.';
+const description = 'Request a free, written remodeling or insurance repair estimate in the Vail Valley. Answer five quick questions and send your project to our team.';
 const crumbs = [{ name: 'Home', path: '/' }, { name: 'Free Estimate', path }];
 const faqs = [
   { q: 'Is the estimate really free?', a: 'Yes. The site visit and written estimate are free and carry no obligation.' },
-  { q: 'What happens after I send my project?', a: 'Jace reviews the details and photos, calls or texts to schedule a site visit, then sends a written, itemized estimate.' },
+  { q: 'What happens after I send my project?', a: 'We review the details and photos, call or text to schedule a site visit, then send a written, itemized estimate.' },
   { q: 'What should I have ready?', a: 'A rough idea of what you want, photos of the space, any plans or inspiration images, your timeline, and your insurance claim number if it is a claim.' },
   { q: 'Do you charge for insurance estimates?', a: 'No. We prepare repair estimates for insurance projects as part of quoting the rebuild.' },
 ];
@@ -26,7 +26,7 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
   <header class="page-head"><div class="wrap">
     <Breadcrumbs items={crumbs} />
     <h1>Get a free remodeling estimate</h1>
-    <p class="answer">Answer five quick questions and send your project straight to Jace Reed by text or email. He will follow up to schedule a site visit and send a written, itemized estimate. Prefer to talk? Call <a href={telHref}>{site.phone}</a>.</p>
+    <p class="answer">Answer five quick questions and send your project straight to our team by text or email. We will follow up to schedule a site visit and send a written, itemized estimate. Prefer to talk? Call <a href={telHref}>{site.phone}</a>.</p>
   </div></header>
   <section class="section"><div class="wrap article">
     <div>
@@ -86,10 +86,10 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
           <b>Your project summary</b>
           <pre id="summary"></pre>
           <div class="btn-row">
-            <a class="btn btn-primary" id="send-sms" href="#" data-track="lead_text"><Icon name="message" />Text it to Jace</a>
+            <a class="btn btn-primary" id="send-sms" href="#" data-track="lead_text"><Icon name="message" />Text it to us</a>
             {site.email && <a class="btn btn-outline" id="send-mail" href="#" data-track="lead_email"><Icon name="mail" />Email it</a>}
           </div>
-          <p class="meta" id="sent-note" hidden>Thanks! Your project was sent. Jace will follow up soon.</p>
+          <p class="meta" id="sent-note" hidden>Thanks! Your project was sent. We will follow up soon.</p>
           <p class="meta">Tip: attach a few photos of the space to your text or email.</p>
         </div>
       </form>
@@ -97,14 +97,14 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
     <aside class="aside">
       <div class="box dark">
         <h3>Rather talk it through?</h3>
-        <p style="font-size:.95rem">Call Jace directly. Most site visits can be scheduled on the first call.</p>
+        <p style="font-size:.95rem">Call us directly. Most site visits can be scheduled on the first call.</p>
         <a class="btn btn-copper" href={telHref}><Icon name="phone" />Call {site.phone}</a>
       </div>
       <div class="box">
         <h3>What happens next</h3>
         <ol style="margin:0;padding-left:1.1rem;font-size:.95rem">
-          <li>Jace reviews your project</li>
-          <li>He schedules a site visit</li>
+          <li>We review your project</li>
+          <li>We schedule a site visit</li>
           <li>You get a written, itemized estimate</li>
         </ol>
       </div>
@@ -124,7 +124,7 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
       if (v('phone')) lines.push('Phone: ' + v('phone'));
       if (v('email')) lines.push('Email: ' + v('email'));
       if (v('details')) lines.push('Details: ' + v('details'));
-      var text = 'Hi Jace, I would like a free estimate.\n' + lines.join('\n');
+      var text = 'Hi, I would like a free estimate.\n' + lines.join('\n');
       document.getElementById('summary').textContent = lines.join('\n');
       document.getElementById('send-sms').href = 'sms:' + f.dataset.phone + '?&body=' + encodeURIComponent(text);
       var m = document.getElementById('send-mail');

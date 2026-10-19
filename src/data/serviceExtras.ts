@@ -9,7 +9,7 @@ export type Extra = {
   local: { h2: string; html: string };
 };
 
-const visit = { h: 'Site visit', p: 'Jace walks the space with you, takes measurements and photos, and asks what you want the finished project to do for you.' };
+const visit = { h: 'Site visit', p: 'We walk the space with you, take measurements and photos, and ask what you want the finished project to do for you.' };
 const estimate = { h: 'Written estimate', p: 'You get a line-item estimate with what is included, what is not, and the decisions still open. We aim to turn it around fast.' };
 const permits = { h: 'Permits and ordering', p: 'We submit permits and HOA applications and order long-lead materials before demolition so the job does not stall.' };
 const build = { h: 'Build and updates', p: 'Our crew and trade partners do the work in the right order. You get an update every working day, and written change orders before anything extra happens.' };
@@ -18,7 +18,7 @@ const std = [visit, estimate, permits, build, close];
 
 export const extras: Record<string, Extra> = {
   'kitchen-remodeling': {
-    facts: [['Typical project', 'Refresh to full renovation'], ['Permits', 'Pulled and managed by us'], ['Point of contact', 'Jace Reed, owner'], ['Service area', 'Eagle County + nearby towns']],
+    facts: [['Typical project', 'Refresh to full renovation'], ['Permits', 'Pulled and managed by us'], ['Point of contact', 'One project lead, start to finish'], ['Service area', 'Eagle County + nearby towns']],
     signs: ['Cabinets are failing, sagging or water-damaged under the sink', 'Counter space and storage do not fit how you cook', 'Wiring, lighting or outlets are outdated or overloaded', 'The layout blocks traffic between kitchen, dining and living areas', 'You are preparing a home for sale or a rental season'],
     process: std,
     fit: ['Full-time residents updating an older Vail Valley home', 'Second-home owners who want the work managed while they are away', 'Condo owners working within HOA remodeling rules', 'Investors renovating before a sale or long-term rental'],

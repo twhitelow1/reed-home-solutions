@@ -30,7 +30,7 @@ export const services: Service[] = [
     title: 'Kitchen Remodeling in the Vail Valley | Reed Home Solutions',
     description: 'Kitchen remodeling across Vail, Eagle County, Aspen and Steamboat. Layout, cabinets, counters, tile and permits handled by one local contractor. Free estimate.',
     h1: 'Kitchen remodeling in the Vail Valley',
-    answer: 'Reed Home Solutions remodels kitchens in homes and condos across the Vail Valley, from Vail and Avon to Eagle, Gypsum, Glenwood Springs and Aspen. Jace Reed runs the project personally: design decisions, permits, demolition, framing, plumbing and electrical coordination, cabinets, counters, tile and final punch list, with one point of contact and fast written estimates.',
+    answer: 'Reed Home Solutions remodels kitchens in homes and condos across the Vail Valley, from Vail and Avon to Eagle, Gypsum, Glenwood Springs and Aspen. We run the whole project: design decisions, permits, demolition, framing, plumbing and electrical coordination, cabinets, counters, tile and final punch list, with one point of contact and fast written estimates.',
     sections: [
       {
         h2: 'What a kitchen remodel with Reed Home Solutions covers',
@@ -42,14 +42,14 @@ export const services: Service[] = [
       },
       {
         h2: 'Working with designers and your own selections',
-        html: '<p>Bring your own designer, work from a plan you already have, or make selections with us. Jace has worked alongside local designers and is comfortable building from their drawings. If you are choosing cabinets, counters and tile yourself, we give you the lead times and measurements you need so materials arrive before the crew needs them.</p>',
+        html: '<p>Bring your own designer, work from a plan you already have, or make selections with us. We work alongside local designers and are comfortable building from their drawings. If you are choosing cabinets, counters and tile yourself, we give you the lead times and measurements you need so materials arrive before the crew needs them.</p>',
       },
     ],
     includes: ['Site visit, measurements and written estimate', 'Permit applications and inspections', 'HOA and condo association coordination', 'Demolition and debris removal', 'Framing, drywall and wall removal (with engineering when load-bearing)', 'Plumbing, gas and electrical by licensed trades', 'Cabinet and countertop installation', 'Tile backsplash and flooring', 'Lighting, paint and trim', 'Final walkthrough and punch list'],
     faqs: [
       { q: 'How much does a kitchen remodel cost in the Vail Valley?', a: 'It depends on scope more than square footage: whether the layout changes, cabinet and counter choices, appliance package, and what we find behind the walls. Mountain-town labor and material delivery also add cost compared with the Front Range. We give a written, line-item estimate after a site visit so you can see where the money goes and adjust selections before work starts.' },
       { q: 'How long does a kitchen remodel take?', a: 'A surface refresh can take a couple of weeks. A full remodel with new cabinets usually runs several weeks to a few months, and the biggest variable is material lead time, especially custom cabinets and stone counters. We order long-lead items before demolition so your kitchen is not torn apart while you wait on deliveries.' },
-      { q: 'Do I need a permit to remodel my kitchen?', a: 'Usually yes if you move plumbing, gas or electrical, remove walls, or replace more than cosmetic finishes. Requirements vary between the Town of Vail, Avon, Eagle County, Garfield County, Pitkin County and other jurisdictions. Jace is certified to pull permits and handles the application and inspections for you.' },
+      { q: 'Do I need a permit to remodel my kitchen?', a: 'Usually yes if you move plumbing, gas or electrical, remove walls, or replace more than cosmetic finishes. Requirements vary between the Town of Vail, Avon, Eagle County, Garfield County, Pitkin County and other jurisdictions. We pull the permits and handle the application and inspections for you.' },
       { q: 'Can you remodel a condo kitchen with HOA rules?', a: 'Yes. We review the association’s remodeling rules before we price the job, submit any required applications, and schedule work around allowed hours, elevator reservations and parking limits.' },
       { q: 'Who provides kitchen remodeling in Eagle County?', a: 'Reed Home Solutions is a Gypsum-based remodeling contractor serving all of Eagle County, plus Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat Springs as the schedule allows. Call or request a free estimate online.' },
     ],
@@ -64,11 +64,11 @@ export const services: Service[] = [
     title: 'Bathroom Remodeling in the Vail Valley | Reed Home Solutions',
     description: 'Bathroom remodels, tub-to-shower conversions and tile showers in Vail, Eagle, Avon and Aspen. Waterproofed right, permitted and managed locally. Free estimate.',
     h1: 'Bathroom remodeling in the Vail Valley',
-    answer: 'Reed Home Solutions remodels bathrooms across Eagle County and the Roaring Fork Valley, from powder-room updates to full primary-bath renovations and tub-to-shower conversions. Because Jace Reed comes from water-damage restoration, waterproofing, ventilation and leak prevention are built into every bathroom we do.',
+    answer: 'Reed Home Solutions remodels bathrooms across Eagle County and the Roaring Fork Valley, from powder-room updates to full primary-bath renovations and tub-to-shower conversions. Because our background is water-damage restoration, waterproofing, ventilation and leak prevention are built into every bathroom we do.',
     sections: [
       {
         h2: 'Bathroom remodels built by someone who has seen the leaks',
-        html: '<p>Before starting Reed Home Solutions, Jace spent years in restoration, opening up walls and floors after water losses. A large share of those losses start in bathrooms: failed shower pans, unsealed tile, poorly vented fans and supply lines that freeze in exterior walls. That experience shapes how we build.</p><p>Every tiled shower gets a continuous waterproofing system under the tile, sloped correctly to the drain, with properly sealed niches and benches. Exhaust fans are sized for the room and vented outside, not into the attic.</p>',
+        html: '<p>Our background is water-damage restoration: years of opening up walls and floors after water losses. A large share of those losses start in bathrooms: failed shower pans, unsealed tile, poorly vented fans and supply lines that freeze in exterior walls. That experience shapes how we build.</p><p>Every tiled shower gets a continuous waterproofing system under the tile, sloped correctly to the drain, with properly sealed niches and benches. Exhaust fans are sized for the room and vented outside, not into the attic.</p>',
       },
       {
         h2: 'Common bathroom projects',
@@ -84,7 +84,7 @@ export const services: Service[] = [
       { q: 'How much does a bathroom remodel cost in Vail or Eagle County?', a: 'Cost depends on size, whether fixtures move, tile choices, glass, and condition of the subfloor and framing behind the old surround. A tub-to-shower conversion costs far less than a primary bath with relocated plumbing. We give a line-item written estimate after seeing the space.' },
       { q: 'How long does a bathroom remodel take?', a: 'Many bathroom remodels take two to five weeks of active work once materials are on site. Tile, glass and custom vanities drive the schedule, so we confirm lead times before demolition.' },
       { q: 'Can you convert a bathtub to a walk-in shower?', a: 'Yes. Tub-to-shower conversions are one of our most common projects. We check drain location and floor framing, then build a waterproofed tile shower or install a quality shower base, with glass sized to the opening.' },
-      { q: 'Why does shower waterproofing matter so much?', a: 'Tile and grout are not waterproof. Without a continuous membrane underneath, water slowly reaches the framing and subfloor, which leads to rot and mold that often is not visible until it is expensive. Jace has repaired many of these losses in restoration, so we do not skip this step.' },
+      { q: 'Why does shower waterproofing matter so much?', a: 'Tile and grout are not waterproof. Without a continuous membrane underneath, water slowly reaches the framing and subfloor, which leads to rot and mold that often is not visible until it is expensive. We have repaired many of these losses in restoration work, so we do not skip this step.' },
       { q: 'Do you remodel bathrooms in Aspen and Steamboat Springs?', a: 'Yes. Our primary area is Eagle County, and we take bathroom projects in Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat Springs as the schedule allows.' },
     ],
     related: ['kitchen-remodeling', 'basement-lock-off-remodeling', 'water-damage-insurance-repair'],
@@ -98,11 +98,11 @@ export const services: Service[] = [
     title: 'Basement & Lock-Off Remodeling, Vail Valley | Reed Home Solutions',
     description: 'Finish a basement, add bedrooms or convert a lock-off into a rental unit in the Vail Valley. Code compliance, egress and permits handled. Free estimate.',
     h1: 'Basement finishing and lock-off conversions in the Vail Valley',
-    answer: 'Reed Home Solutions finishes basements, adds bedrooms and converts lock-offs into separate living or rental units across Eagle County and nearby mountain towns. Jace Reed handles the code side: egress windows, fire separation, ceiling heights, smoke and CO alarms, and permits, so the added space is legal, insurable and counts when you sell.',
+    answer: 'Reed Home Solutions finishes basements, adds bedrooms and converts lock-offs into separate living or rental units across Eagle County and nearby mountain towns. We handle the code side: egress windows, fire separation, ceiling heights, smoke and CO alarms, and permits, so the added space is legal, insurable and counts when you sell.',
     sections: [
       {
         h2: 'Adding usable, legal space',
-        html: '<p>In a market where square footage is expensive, the space under your main floor is often the cheapest place to grow. A finished basement can add a bedroom, a family room, a bunk room for guests, a gear room or a home office.</p><p>Jace has done this on his own projects. On a permitted home renovation in Edwards, his team added rooms and had to meet every code requirement that comes with creating new bedrooms. That experience is exactly what basement and lock-off projects need.</p>',
+        html: '<p>In a market where square footage is expensive, the space under your main floor is often the cheapest place to grow. A finished basement can add a bedroom, a family room, a bunk room for guests, a gear room or a home office.</p><p>We have done this before. On a permitted home renovation in Edwards, our team added rooms and had to meet every code requirement that comes with creating new bedrooms. That experience is exactly what basement and lock-off projects need.</p>',
       },
       {
         h2: 'What makes a lock-off conversion different',
@@ -119,7 +119,7 @@ export const services: Service[] = [
       { q: 'Does a basement bedroom need an egress window?', a: 'Yes. Under the International Residential Code, which Colorado mountain jurisdictions generally adopt, every sleeping room needs an emergency escape and rescue opening, which in a basement usually means a code-sized egress window with a window well. We install these as part of the project.' },
       { q: 'How much does it cost to finish a basement?', a: 'The biggest cost drivers are whether you add a bathroom or kitchenette, how many egress openings you need, moisture or radon mitigation, and finish level. We itemize each so you can phase the work if needed.' },
       { q: 'Will a finished basement add value to my home?', a: 'Permitted, code-compliant living space is generally counted by appraisers and buyers; unpermitted space can create problems at sale or with insurance. That is why we build it permitted from day one.' },
-      { q: 'Do you handle permits for basement remodels?', a: 'Yes. Jace is certified to pull permits and manages the application, inspections and final sign-off with your town or county building department.' },
+      { q: 'Do you handle permits for basement remodels?', a: 'Yes. We pull the permits and manage the application, inspections and final sign-off with your town or county building department.' },
     ],
     related: ['home-renovation-general-contracting', 'bathroom-remodeling', 'window-replacement'],
   },
@@ -132,8 +132,8 @@ export const services: Service[] = [
     title: 'Flooring Installation in the Vail Valley | Reed Home Solutions',
     description: 'Hardwood, LVP, tile and carpet installation in Vail, Eagle County and nearby towns, coordinated with your remodel by one local contractor. Free estimate.',
     h1: 'Flooring installation in the Vail Valley',
-    answer: 'Reed Home Solutions installs hardwood, luxury vinyl plank, tile and carpet in homes and condos across Eagle County and nearby mountain towns. Carpet and most flooring is installed by a long-time local flooring partner, with Jace Reed coordinating subfloor prep, scheduling and the rest of the remodel so trades are not tripping over each other.',
-    partner: 'Carpet and most flooring is installed by an established local flooring company Jace has worked with for years. Tile is set by our tile crew.',
+    answer: 'Reed Home Solutions installs hardwood, luxury vinyl plank, tile and carpet in homes and condos across Eagle County and nearby mountain towns. Carpet and most flooring is installed by a long-time local flooring partner, with our team coordinating subfloor prep, scheduling and the rest of the remodel so trades are not tripping over each other.',
+    partner: 'Carpet and most flooring is installed by an established local flooring company we have worked with for years. Tile is set by our tile crew.',
     sections: [
       {
         h2: 'Choosing flooring for a mountain home',
@@ -147,7 +147,7 @@ export const services: Service[] = [
     includes: ['Measurements and written estimate', 'Removal and disposal of old flooring', 'Subfloor repair, leveling and moisture testing', 'Underlayment and transitions', 'Hardwood, LVP, laminate, tile or carpet installation', 'Baseboard and trim reinstallation', 'Coordination with other remodel trades'],
     faqs: [
       { q: 'What is the best flooring for a Vail Valley home?', a: 'For entries, basements and rentals, luxury vinyl plank and tile hold up best to snow, gravel and water. For living areas, engineered hardwood tends to handle our dry winter air better than solid hardwood. We help you match material to each room.' },
-      { q: 'Do you install carpet?', a: 'Yes, through a local flooring company Jace has worked with for years. We coordinate the measure, install and any subfloor repair as part of your project.' },
+      { q: 'Do you install carpet?', a: 'Yes, through a local flooring company we have worked with for years. We coordinate the measure, install and any subfloor repair as part of your project.' },
       { q: 'How much does flooring installation cost?', a: 'Material choice is the biggest factor, followed by square footage, stairs, subfloor repair and removal of old flooring. We provide a written estimate after measuring.' },
       { q: 'Can you install flooring over radiant heat?', a: 'Tile and many engineered and vinyl products are rated for radiant heat. We confirm the manufacturer’s requirements before recommending a product.' },
     ],
@@ -180,7 +180,7 @@ export const services: Service[] = [
     includes: ['Inspection of existing framing, ledger and footings', 'Design and written estimate', 'Permits and inspections', 'Footings and framing sized for local snow loads', 'Ledger flashing and waterproofing', 'Composite, PVC or wood decking', 'Railings, stairs and gates', 'Under-deck debris removal and cleanup'],
     faqs: [
       { q: 'How much does a new deck cost in the Vail Valley?', a: 'Size, height off the ground, decking material, railing style, stairs and access for equipment all drive cost. Composite costs more upfront than wood but saves on maintenance. We give a written estimate with material options side by side.' },
-      { q: 'Do I need a permit to build a deck?', a: 'In most mountain jurisdictions, yes, especially for decks attached to the house or more than about 30 inches above grade. Jace is certified to pull permits and handles the application and inspections.' },
+      { q: 'Do I need a permit to build a deck?', a: 'In most mountain jurisdictions, yes, especially for decks attached to the house or more than about 30 inches above grade. We pull the permits and handle the application and inspections.' },
       { q: 'When is the best time to build a deck in the mountains?', a: 'Late spring through fall, once the ground thaws. Good contractors book up early, so the best time to plan and price a deck is winter or early spring.' },
       { q: 'Should I repair or replace my old deck?', a: 'If the framing, ledger and footings are sound, repairing boards and railings is usually enough. Rot at the ledger, soft joists or moving footings point to a rebuild. We inspect and explain what we find.' },
       { q: 'Who builds decks in Eagle County?', a: 'Reed Home Solutions builds and repairs decks throughout Eagle County, including Vail, Avon, Edwards, Eagle and Gypsum, plus Summit County, Glenwood Springs, Carbondale, Aspen and Steamboat Springs.' },
@@ -229,8 +229,8 @@ export const services: Service[] = [
     title: 'Roof Replacement & Repair | Vail Valley | Reed Home Solutions',
     description: 'Roof repair, replacement and flat-roof systems for homes and condos in Vail, Eagle County and nearby towns. Ice dams, snow load and insurance claims.',
     h1: 'Roof replacement and roof repair in the Vail Valley',
-    answer: 'Reed Home Solutions manages roof repairs, full replacements and flat-roof systems for homes and condo buildings across Eagle County and nearby mountain towns. Installation is done by a trusted local roofing crew Jace works with regularly, including a recent flat-roof system on a condo building in Vail, with Reed Home Solutions handling scope, permits, insurance paperwork and any interior repairs from leaks.',
-    partner: 'Roofing is installed by an established local roofing crew Jace works with regularly. Reed Home Solutions manages the project, permits and any related interior repairs.',
+    answer: 'Reed Home Solutions manages roof repairs, full replacements and flat-roof systems for homes and condo buildings across Eagle County and nearby mountain towns. Installation is done by a trusted local roofing crew we work with regularly, including a recent flat-roof system on a condo building in Vail, with Reed Home Solutions handling scope, permits, insurance paperwork and any interior repairs from leaks.',
+    partner: 'Roofing is installed by an established local roofing crew we work with regularly. Reed Home Solutions manages the project, permits and any related interior repairs.',
     sections: [
       {
         h2: 'Mountain roofing problems we see',
@@ -238,7 +238,7 @@ export const services: Service[] = [
       },
       {
         h2: 'Roof leaks and the damage inside',
-        html: '<p>A roof leak rarely stops at the roof. Wet insulation, stained drywall and mold in the attic are common by the time a leak is noticed. Because Jace comes from water-damage restoration, Reed Home Solutions can handle both sides: the roof and the interior repairs, under one estimate.</p>',
+        html: '<p>A roof leak rarely stops at the roof. Wet insulation, stained drywall and mold in the attic are common by the time a leak is noticed. Because we come from water-damage restoration, Reed Home Solutions can handle both sides: the roof and the interior repairs, under one estimate.</p>',
       },
       {
         h2: 'Roofing and insurance claims',
@@ -247,7 +247,7 @@ export const services: Service[] = [
     ],
     includes: ['Roof inspection and photo documentation', 'Written estimate with material options', 'Insurance claim documentation and adjuster communication', 'Permits and inspections', 'Tear-off and disposal', 'Ice-and-water underlayment at eaves and valleys', 'Shingle, metal or flat-roof membrane installation', 'Flashing, vents and gutters', 'Interior leak repairs (drywall, insulation, paint)'],
     faqs: [
-      { q: 'Do you install roofs yourselves?', a: 'Roofing is installed by an established local roofing crew Jace works with regularly. Reed Home Solutions manages the scope, permits, schedule, insurance paperwork and any interior repairs, so you have one contractor accountable for the whole job.' },
+      { q: 'Do you install roofs yourselves?', a: 'Roofing is installed by an established local roofing crew we work with regularly. Reed Home Solutions manages the scope, permits, schedule, insurance paperwork and any interior repairs, so you have one contractor accountable for the whole job.' },
       { q: 'How do I stop ice dams?', a: 'Short term, careful snow and ice removal at the eaves. Long term, ice dams are a heat-loss problem: improving attic insulation and ventilation and installing ice-and-water underlayment during reroofing are the lasting fixes.' },
       { q: 'Will insurance pay for my roof?', a: 'Insurance typically covers sudden damage such as hail or wind, not wear and age. We document damage and prepare an estimate for your adjuster, but coverage decisions are your insurer’s. We never offer to waive or cover a deductible, which Colorado law prohibits for roofing contractors.' },
       { q: 'Can you repair a flat roof on a condo building?', a: 'Yes. We recently managed a flat-roof system on a condo building in Vail and can work with HOAs and property managers on scope, access and scheduling.' },
@@ -297,15 +297,15 @@ export const services: Service[] = [
     title: 'General Contractor in the Vail Valley | Reed Home Solutions',
     description: 'General contractor for home renovations, additions and multi-room remodels in Vail, Eagle County and nearby towns. One point of contact. Free estimate.',
     h1: 'General contractor for home renovations in the Vail Valley',
-    answer: 'Reed Home Solutions is a general contractor for home renovations, additions and multi-room remodels across Eagle and Summit counties, the Roaring Fork Valley and Steamboat Springs. Jace Reed manages the whole job, including permits, scheduling, framing, tile, flooring, insulation, drywall and paint through a vetted local subcontractor network, so you have one accountable point of contact.',
+    answer: 'Reed Home Solutions is a general contractor for home renovations, additions and multi-room remodels across Eagle and Summit counties, the Roaring Fork Valley and Steamboat Springs. We manage the whole job, including permits, scheduling, framing, tile, flooring, insulation, drywall and paint through a vetted local subcontractor network, so you have one accountable point of contact.',
     sections: [
       {
         h2: 'What a general contractor does for you',
-        html: '<p>A renovation touches many trades: framing, plumbing, electrical, HVAC, insulation, drywall, tile, flooring, cabinets, paint and trim. Each depends on the one before it. The general contractor’s job is to price the whole project, pull permits, schedule each trade in the right order, keep inspections on track and make sure the finished work meets the plan and the code.</p><p>Jace has built a strong subcontractor base for framing, tile, flooring, carpet, insulation, drywall and paint over his years in local construction and restoration. We use people we have worked with, not whoever is available that week.</p>',
+        html: '<p>A renovation touches many trades: framing, plumbing, electrical, HVAC, insulation, drywall, tile, flooring, cabinets, paint and trim. Each depends on the one before it. The general contractor’s job is to price the whole project, pull permits, schedule each trade in the right order, keep inspections on track and make sure the finished work meets the plan and the code.</p><p>We have built a strong subcontractor base for framing, tile, flooring, carpet, insulation, drywall and paint over years in local construction and restoration. We use people we have worked with, not whoever is available that week.</p>',
       },
       {
         h2: 'Projects we take on',
-        html: '<ul><li>Whole-home and multi-room renovations, including fix-and-flip and pre-sale renovations.</li><li>Additions and added bedrooms.</li><li>Kitchen, bath and basement projects combined into one schedule.</li><li>Condo renovations under HOA rules.</li><li>Rental and second-home updates between seasons.</li><li>Custom building projects, by discussion.</li></ul><p>Jace recently completed a fully permitted renovation of a home in Edwards, adding rooms and bringing the house up to current code.</p>',
+        html: '<ul><li>Whole-home and multi-room renovations, including fix-and-flip and pre-sale renovations.</li><li>Additions and added bedrooms.</li><li>Kitchen, bath and basement projects combined into one schedule.</li><li>Condo renovations under HOA rules.</li><li>Rental and second-home updates between seasons.</li><li>Custom building projects, by discussion.</li></ul><p>We recently completed a fully permitted renovation of a home in Edwards, adding rooms and bringing the house up to current code.</p>',
       },
       {
         h2: 'Fast answers and clear estimates',
@@ -315,8 +315,8 @@ export const services: Service[] = [
     includes: ['Site visit and scope review', 'Line-item written estimate', 'Permits, inspections and code compliance', 'HOA and design review coordination', 'Scheduling of all trades', 'Framing, insulation, drywall and paint', 'Plumbing, electrical and HVAC through licensed trades', 'Tile, flooring, cabinets and trim', 'Change orders in writing before work proceeds', 'Final walkthrough and punch list'],
     faqs: [
       { q: 'Do I need a general contractor for my renovation?', a: 'If the project involves more than one trade, structural changes or permits, a general contractor saves time and reduces risk by coordinating trades, inspections and code compliance. For a single small job, you may not need one.' },
-      { q: 'Are you licensed and insured?', a: 'Reed Home Solutions is insured, and Jace Reed is certified to pull building permits. Contractor licensing in Colorado is handled by individual towns and counties; we register where each project requires and can provide proof of insurance on request.' },
-      { q: 'Do you do custom homes?', a: 'Our focus is remodels and renovations. Jace can take on custom building projects, and we are happy to talk through yours.' },
+      { q: 'Are you licensed and insured?', a: 'Reed Home Solutions is insured, and owner Jace Reed is certified to pull building permits. Contractor licensing in Colorado is handled by individual towns and counties; we register where each project requires and can provide proof of insurance on request.' },
+      { q: 'Do you do custom homes?', a: 'Our focus is remodels and renovations. We can take on custom building projects, and we are happy to talk through yours.' },
       { q: 'How quickly can I get an estimate?', a: 'Fast estimates are a priority. After a site visit, we aim to deliver a written estimate quickly, and sooner for simple projects. Call to schedule a visit.' },
       { q: 'Who is a good general contractor in the Vail Valley?', a: 'Look for someone who answers the phone, gives written line-item estimates, pulls permits, is insured and can show completed work. Reed Home Solutions is a Gypsum-based general contractor serving Eagle County and nearby mountain towns.' },
     ],
@@ -331,11 +331,11 @@ export const services: Service[] = [
     title: 'Water Damage Repair & Insurance Claims | Reed Home Solutions',
     description: 'Rebuild after water, frozen-pipe or storm damage in the Vail Valley. Insurance-ready estimates and direct adjuster communication from a restoration pro.',
     h1: 'Water damage repair and insurance rebuilds in the Vail Valley',
-    answer: 'Reed Home Solutions rebuilds homes and condos after water, frozen-pipe and storm damage across Eagle County and nearby mountain towns. Jace Reed spent years in water-damage restoration, so he can write detailed, insurance-ready repair estimates, talk directly with your adjuster, and handle the rebuild: drywall, insulation, cabinets, flooring, tile and paint.',
+    answer: 'Reed Home Solutions rebuilds homes and condos after water, frozen-pipe and storm damage across Eagle County and nearby mountain towns. Our team comes from water-damage restoration, so we write detailed, insurance-ready repair estimates, talk directly with your adjuster, and handle the rebuild: drywall, insulation, cabinets, flooring, tile and paint.',
     sections: [
       {
         h2: 'Why a restoration background matters',
-        html: '<p>After a water loss, two things decide how smoothly the claim goes: how well the damage is documented and how clearly the repair scope is written. Most general contractors are not used to writing estimates the way insurance adjusters review them. Jace is, from years of creating estimates for water losses and communicating with insurers, property managers and homeowners.</p><p>That means fewer back-and-forth rounds with your insurer, and a rebuild that matches what was approved.</p>',
+        html: '<p>After a water loss, two things decide how smoothly the claim goes: how well the damage is documented and how clearly the repair scope is written. Most general contractors are not used to writing estimates the way insurance adjusters review them. We are, from years of creating estimates for water losses and communicating with insurers, property managers and homeowners.</p><p>That means fewer back-and-forth rounds with your insurer, and a rebuild that matches what was approved.</p>',
       },
       {
         h2: 'Common losses in mountain homes',
@@ -399,7 +399,7 @@ export const services: Service[] = [
     title: 'Home Additions & ADUs in the Vail Valley | Reed Home Solutions',
     description: 'Room additions, bump-outs, garage conversions and accessory dwelling units in Eagle and Summit counties. Zoning, permits and code handled. Free estimate.',
     h1: 'Home additions and ADUs in the Vail Valley and Summit County',
-    answer: 'Reed Home Solutions builds room additions, bump-outs, garage conversions and accessory dwelling units (ADUs) in Eagle and Summit counties. We start with what your zoning, HOA and lot allow, then handle design coordination, permits, foundations, framing, mechanical trades and finishes. Jace recently added rooms to a home in Edwards on a fully permitted job.',
+    answer: 'Reed Home Solutions builds room additions, bump-outs, garage conversions and accessory dwelling units (ADUs) in Eagle and Summit counties. We start with what your zoning, HOA and lot allow, then handle design coordination, permits, foundations, framing, mechanical trades and finishes. We recently added rooms to a home in Edwards on a fully permitted job.',
     sections: [
       {
         h2: 'Start with what your lot allows',
@@ -452,7 +452,7 @@ export const services: Service[] = [
       { q: 'Can you finish inspection repairs before closing?', a: 'In most cases, yes, if the scope fits the timeline. We tell you up front whether the dates work. If they do not, we say so and suggest which items to complete now and which to credit at closing.' },
       { q: 'Can my agent share your estimate with the other side?', a: 'Yes. Our estimates are written and itemized so they can be attached to an inspection objection, resolution or credit negotiation.' },
       { q: 'Do you work with property managers on rental turnovers?', a: 'Yes. We schedule around tenant moves and guest bookings, coordinate access, and send photos and invoices when the work is done.' },
-      { q: 'Can you fix unpermitted work found during an inspection?', a: 'Often yes. Jace is certified to pull permits. We assess what was done, what needs to change to meet code, and what it will take to get it permitted.' },
+      { q: 'Can you fix unpermitted work found during an inspection?', a: 'Often yes. We pull permits for this work. We assess what was done, what needs to change to meet code, and what it will take to get it permitted.' },
     ],
     related: ['deck-building-repair', 'water-damage-insurance-repair', 'home-renovation-general-contracting'],
   },

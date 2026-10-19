@@ -17,6 +17,9 @@ homeowner's intelligence, explain the "why" behind the work, never oversell.
 | Accountable | Say what we'll do, then do it. Own timelines, decisions and mistakes. | "That took us two days longer than I quoted. Here's why, and what it means for the finish date." | "Unforeseen circumstances have impacted our deliverables." |
 | On your side | (Section not yet received.) | | |
 
+## Point of view (Todd, 2026-10-19)
+Write as the company ("we", "our team"), not "he". The USP doc's "finishes what he starts" is reworded on the site as "we finish the punch list". Jace appears by name only as the owner: About, owner bio, credentials, guide byline. Headlines are plain: what we do and where. No slogans.
+
 ## USP
 **One-liner:** Reed Home Solutions is the Colorado mountain-town contractor who finishes what he starts, keeps you
 in the loop daily, and works your insurance claim alongside you so your remodel is fully funded — not just

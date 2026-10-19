@@ -21,6 +21,8 @@ Content lives in `src/data/`, not in templates:
 - `llms.txt.ts`, `robots.txt.ts` — generated endpoints; `sitemap.xml` written by the hook in `astro.config.mjs`
 
 ## Rules
+- Write as the company: "we", "our team", "Reed Home Solutions". Never "he"/"Jace does X" in sales copy, it reads as a one-man shop. Name Jace only as owner: About page, owner bio, credentials (certified to pull permits, restoration background), guide byline.
+- Headlines say what and where in plain words. No slogans, wordplay or cheesy taglines.
 - Never invent reviews, prices, warranties, licenses, project photos or stats. Unknowns are `TODO` in `site.ts`.
 - Roofing, windows and most flooring are installed by trade partners Reed manages. Say so honestly.
 - Reed is a contractor, not a public adjuster, and never waives deductibles.
