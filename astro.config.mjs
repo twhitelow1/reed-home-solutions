@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import { writeFile } from 'node:fs/promises';
 import { site } from './src/data/site.ts';
+import vercel from '@astrojs/vercel';
 
 const SITE = site.url;
 
@@ -30,4 +31,8 @@ export default defineConfig({
   trailingSlash: 'never',
   build: { format: 'file', inlineStylesheets: 'auto' },
   integrations: [plainSitemap],
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+  }),
 });
