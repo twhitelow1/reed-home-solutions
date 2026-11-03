@@ -1,5 +1,6 @@
 ---
 import Attribution from '../components/Attribution.astro';
+import Analytics from '@vercel/analytics/astro';
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/inter';
 import '../styles/global.css';
@@ -95,5 +96,6 @@ const ld = graph(organization(), website(), ...schema);
         if (window.dataLayer) window.dataLayer.push(Object.assign({ event: name }, p));
       });
     </script>
+    <Analytics />
   </body>
 </html>
