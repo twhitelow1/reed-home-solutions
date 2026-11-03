@@ -11,8 +11,8 @@ export const site = {
   // website, with reedhomesolutionsco.com redirecting to it and carrying email. Canonicals, sitemap and
   // schema all read this one value, so change it here when the domain is bought.
   url: 'https://vailhomeremodeling.com',
-  phone: '(970) 471-6627', // TODO swap for the Lead Alchemist 970 VoIP number once it is approved
-  phoneE164: '+19704716627',
+  phone: '(970) 431-6734', // Lead Alchemist VoIP number (tracks calls/texts in GHL)
+  phoneE164: '+19704316734',
   email: 'reedhomesolutions@gmail.com', // TODO switch to the branded address on reedhomesolutionsco.com
   // Service-area business: no street address published (matches a hidden-address GBP).
   address: { locality: 'Gypsum', region: 'CO', postalCode: '81637', country: 'US' }, // TODO confirm home base town

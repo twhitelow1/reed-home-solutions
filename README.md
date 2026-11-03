@@ -29,7 +29,7 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 
 ## Launch TODOs (from `src/data/site.ts`)
 - [ ] **Domain:** buy/confirm the primary domain and update `site.url` (currently the planned `vailhomeremodeling.com`). Point `reedhomesolutionsco.com` at it.
-- [ ] **Phone:** swap `(970) 471-6627` (Jace's number from ClientsOS) for the Lead Alchemist 970 VoIP number.
+- [x] **Phone:** Lead Alchemist VoIP number `(970) 431-6734` is live site-wide (was Jace's cell). Use the same number on the Google Business Profile and all citations.
 - [ ] **Email:** switch from `reedhomesolutions@gmail.com` to the branded address.
 - [ ] **Home base:** confirm Gypsum, CO 81637 for the service-area NAP.
 - [ ] **Legal name** (LLC?), **business hours**, **license/registration numbers**.
