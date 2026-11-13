@@ -24,6 +24,9 @@ export const site = {
   // Free-estimate form posts to /api/estimate (api/estimate.ts, a Vercel Function), which upserts the contact in
   // Reed's Lead Alchemist sub-account, fills custom fields and enrolls it in the estimate workflow.
   // Needs GHL_PRIVATE_TOKEN in Vercel env vars; IDs live in api/estimate.ts.
+  // Lead Alchemist calendar shown after the estimate form submits, so the lead can book a call back.
+  // Paste the calendar's booking widget URL (…/widget/booking/<id>). Blank = thank-you message only.
+  callbackCalendarUrl: '', // TODO calendar widget URL from Jace's Lead Alchemist calendar
   tracking: {
     ga4Id: '', // TODO
     gtmId: '',

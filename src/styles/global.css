@@ -350,3 +350,4 @@ tbody th { color: var(--ink); width: 34%; }
 .consent label { display: grid; grid-template-columns: 20px 1fr; gap: .6rem; align-items: start; font-size: .82rem; line-height: 1.45; color: var(--muted); font-weight: 400; }
 .consent input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--green); }
 .consent .meta { font-size: .78rem; margin: 0; }
+.callback-cal { display: block; width: 100%; min-height: 720px; border: 0; margin-top: .8rem; background: #fff; border-radius: var(--radius-sm); }

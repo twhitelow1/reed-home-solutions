@@ -113,7 +113,14 @@ const propertyTypes: [string, string][] = [['Single Family Home', 'Single-family
         <p class="meta" id="planner-err" role="alert" hidden>Please add your name and a phone number or email so we can reach you.</p>
         <div class="planner-out planner-done" id="planner-done" hidden aria-live="polite" tabindex="-1">
           <b>Thanks, your request is in.</b>
-          <p>We'll call or text you to schedule a site visit. Want to add photos of the space? Text them to <a href={`sms:${site.phoneE164}`}>{site.phone}</a>.</p>
+          {site.callbackCalendarUrl ? (
+            <>
+              <p>Pick a time for a quick call back and we'll go over your project. Want to add photos? Text them to <a href={`sms:${site.phoneE164}`}>{site.phone}</a>.</p>
+              <iframe id="callback-cal" class="callback-cal" data-src={site.callbackCalendarUrl} title="Schedule a call back with Reed Home Solutions" loading="lazy"></iframe>
+            </>
+          ) : (
+            <p>We'll call or text you to schedule a site visit. Want to add photos of the space? Text them to <a href={`sms:${site.phoneE164}`}>{site.phone}</a>.</p>
+          )}
         </div>
         <div class="planner-out" id="planner-out" hidden aria-live="polite">
           <b>We couldn't send that automatically. Send it in one tap instead:</b>
@@ -182,6 +189,16 @@ const propertyTypes: [string, string][] = [['Single Family Home', 'Single-family
           if (!ok) return fallback();
           f.querySelectorAll('fieldset, .field-row, .field, .hp, #planner-submit').forEach(function (el) { el.hidden = true; });
           out.hidden = true; done.hidden = false; done.focus();
+          var cal = document.getElementById('callback-cal');
+          if (cal) {
+            // Prefill the booking widget with what they just typed, and carry the lead's source.
+            var u = new URL(cal.dataset.src), parts = v('name').split(/\s+/);
+            var pre = { first_name: parts[0] || '', last_name: parts.slice(1).join(' '), phone: v('phone'), email: v('email'), utm_source: la.utm_source || '', utm_medium: la.utm_medium || '', utm_campaign: la.utm_campaign || '' };
+            Object.keys(pre).forEach(function (k) { if (pre[k]) u.searchParams.set(k, pre[k]); });
+            cal.src = u.toString();
+            if (!document.getElementById('ghl-embed')) { var sc = document.createElement('script'); sc.id = 'ghl-embed'; sc.src = 'https://link.msgsndr.com/js/form_embed.js'; document.body.appendChild(sc); }
+            if (window.dataLayer) window.dataLayer.push({ event: 'callback_calendar_shown' });
+          }
           done.scrollIntoView({ behavior: 'smooth', block: 'center' });
           if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', form: 'free_estimate', project: v('project'), town: v('town') });
           if (window.gtag) window.gtag('event', 'generate_lead', { form: 'free_estimate' });
