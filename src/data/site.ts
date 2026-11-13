@@ -21,7 +21,9 @@ export const site = {
   // GoHighLevel (Lead Alchemist). Leave blank and every CTA falls back to /free-estimate + phone.
   bookingUrl: '', // TODO GHL calendar URL for estimate visits
   formEmbedUrl: '', // TODO GHL estimate form embed src
-  estimateWebhookUrl: '', // TODO GHL inbound webhook for the project planner (Automation > Workflow > Inbound Webhook)
+  // Free-estimate form posts to /api/estimate (api/estimate.ts, a Vercel Function), which upserts the contact in
+  // Reed's Lead Alchemist sub-account, fills custom fields and enrolls it in the estimate workflow.
+  // Needs GHL_PRIVATE_TOKEN in Vercel env vars; IDs live in api/estimate.ts.
   tracking: {
     ga4Id: '', // TODO
     gtmId: '',

@@ -32,7 +32,7 @@ body { margin: 0; font-family: var(--font); font-size: 1.0625rem; line-height: 1
 img, svg { display: block; max-width: 100%; height: auto; }
 a { color: var(--green-2); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { color: var(--copper); }
-a[href^="tel:"] { white-space: nowrap; }
+a[href^="tel:"], a[href^="sms:"] { white-space: nowrap; }
 :focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; border-radius: 4px; }
 h1, h2, h3, h4 { color: var(--ink); line-height: 1.15; margin: 0 0 .6em; }
 h1, h2 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; font-variation-settings: 'SOFT' 50, 'opsz' 96; }
@@ -340,3 +340,9 @@ tbody th { color: var(--ink); width: 34%; }
 
 /* Estimate prompt tile that fills the last slot of a service group */
 .card-cta { background: var(--sage); border-style: dashed; }
+
+/* Estimate form: honeypot hidden from people, thank-you state */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.planner-done { border-color: var(--green-2); }
+.planner-done:focus { outline: none; }
+.planner [hidden] { display: none !important; }

@@ -22,7 +22,8 @@ python3 tools/preview_bundle.py dist preview.html   # single-file clickable prev
 | `src/data/services.ts` + `serviceExtras.ts` | The 10 service pages (`/<slug>`) |
 | `src/data/locations.ts` | The 10 town pages (`/remodeling-contractor-<town>-co`) |
 | `src/pages/[slug].astro` | Template for service and town pages |
-| `src/pages/free-estimate.astro` | Project planner lead magnet (text/email + optional GHL webhook) |
+| `src/pages/free-estimate.astro` | Free-estimate form → `/api/estimate` (Lead Alchemist contact + custom fields + workflow); text/email fallback |
+| `api/estimate.ts`, `api/_lib/leadAlchemist.ts` (Vercel Function, outside Astro) | Server function: upsert contact, map custom fields by name, tag, note, enroll in workflow. Env: `GHL_PRIVATE_TOKEN` |
 
 ## Preview gating
 Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_INDEXABLE=true`. Set that **only** on the production deployment once the real domain is live. Canonicals always use `site.url`.
@@ -34,7 +35,7 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 - [ ] **Home base:** confirm Gypsum, CO 81637 for the service-area NAP.
 - [ ] **Legal name** (LLC?), **business hours**, **license/registration numbers**.
 - [ ] **Google Business Profile:** add place ID, review link and maps URL; add `sameAs` social links.
-- [ ] **GoHighLevel:** calendar URL, estimate form embed, planner webhook.
+- [ ] **GoHighLevel:** add `GHL_PRIVATE_TOKEN` (Private Integration token for sub-account Dm7QrepHDIle2yDgZlev; scopes: contacts read/write, custom fields read, workflows read) in Vercel env vars, then send a test lead. Calendar URL still TODO.
 - [ ] **GA4 / Clarity** IDs.
 - [x] **Logo:** Jace's logo is in `public/` (`logo-horizontal.webp` header/footer, `logo-stacked.webp` + `logo.png` schema, `mark.webp`, favicons, `og-default.png`). Open question: shift the site palette from green/copper toward the logo's navy/gold?
 - [x] **Edwards renovation photos:** 33 photos in `public/images/projects/edwards/`, wired up via `src/data/projects.ts` (project page, home, About, service and Edwards pages).
