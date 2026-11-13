@@ -122,6 +122,12 @@ export async function sendEstimateLead(lead: EstimateLead, cfg: { token: string;
     console.error('[estimate] custom fields lookup failed; values go to the note only:', (e as Error).message);
   }
   const { customFields, matched } = mapCustomFields(lead, fields);
+  const unmatched = (['project', 'insurance_claim', 'timeline', 'town', 'details'] as const).filter((k) => lead[k] && !matched[k]);
+  if (unmatched.length) {
+    // Field names only (no contact data), so mapping gaps can be fixed from the Vercel logs.
+    console.log('[estimate] unmatched form values:', unmatched.join(', '), '| contact custom fields:',
+      fields.map((f) => `${f.name} [${f.fieldKey || ''}|${f.dataType || ''}${f.picklistOptions?.length ? '|' + f.picklistOptions.join('/') : ''}]`).join('; '));
+  }
   const [firstName, ...rest] = lead.name.trim().split(/\s+/);
   const tags = ['website lead', 'free estimate request', ...(/^yes/i.test(lead.insurance_claim) ? ['insurance claim'] : [])];
 
