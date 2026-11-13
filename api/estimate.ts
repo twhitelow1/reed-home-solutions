@@ -29,9 +29,13 @@ export async function POST(request: Request): Promise<Response> {
     lead_campaign: str(body.lead_campaign, 150), first_channel: str(body.first_channel, 60), landing_page: str(body.landing_page, 300),
     gclid: str(body.gclid, 200), page: str(body.page, 300),
   };
-  const emailOk = !lead.email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email);
-  const phoneOk = !lead.phone || lead.phone.replace(/\D/g, '').length >= 10;
-  if (!lead.name || (!lead.phone && !lead.email) || !emailOk || !phoneOk) return json(422, { ok: false, error: 'missing_contact' });
+  // Keep whichever contact method is valid; reject only when neither is.
+  if (lead.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) lead.email = '';
+  if (lead.phone && lead.phone.replace(/\D/g, '').length < 10) lead.phone = '';
+  if (!lead.name || (!lead.phone && !lead.email)) {
+    console.warn('[estimate] rejected: needs a name and a valid phone or email');
+    return json(422, { ok: false, error: 'missing_contact' });
+  }
 
   const token = process.env.GHL_PRIVATE_TOKEN;
   if (!token) {

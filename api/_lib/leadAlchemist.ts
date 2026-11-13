@@ -30,14 +30,14 @@ export type EstimateLead = {
 export const FIELD_CANDIDATES: Record<keyof EstimateLead, string[]> = {
   project: ['project type', 'type of project', 'project', 'service', 'service type', 'service needed', 'service requested'],
   insurance_claim: ['insurance claim', 'is this an insurance claim', 'insurance', 'claim'],
-  timeline: ['timeline', 'project timeline', 'start date', 'when do you want to start', 'start timeline'],
+  timeline: ['project timeline', 'timeline', 'start date', 'when do you want to start', 'start timeline'],
   town: ['property location', 'project location', 'property town', 'town', 'location', 'service area'],
   details: ['project details', 'details', 'project description', 'description', 'message', 'additional details', 'notes'],
   lead_channel: ['lead channel', 'channel'],
   lead_source: ['lead source', 'utm source'],
   lead_medium: ['utm medium', 'lead medium'],
   lead_campaign: ['utm campaign', 'campaign'],
-  first_channel: ['first channel', 'first touch channel'],
+  first_channel: ['first touch channel', 'first channel'],
   landing_page: ['landing page'],
   gclid: ['gclid', 'google click id'],
   page: ['form page', 'submitted from'],
@@ -47,6 +47,25 @@ export const FIELD_CANDIDATES: Record<keyof EstimateLead, string[]> = {
 };
 
 type CustomField = { id: string; name: string; fieldKey?: string; dataType?: string; picklistOptions?: string[] };
+
+// The contact custom fields the estimate form fills. Any that don't exist yet (no field matches
+// its candidates above) are created in the sub-account on the next submission. Fields created
+// through the API with no folder land in the contact's default "Additional Info" section.
+// All plain text so new services, towns or timelines never get rejected by a picklist.
+export const FIELD_SPECS: { key: keyof EstimateLead; name: string; dataType: 'TEXT' | 'LARGE_TEXT'; placeholder: string }[] = [
+  { key: 'project', name: 'Project Type', dataType: 'TEXT', placeholder: 'Kitchen Remodeling' },
+  { key: 'insurance_claim', name: 'Insurance Claim', dataType: 'TEXT', placeholder: 'No / Yes, claim filed / Not sure yet' },
+  { key: 'timeline', name: 'Project Timeline', dataType: 'TEXT', placeholder: 'Within 1–3 months' },
+  { key: 'town', name: 'Property Location', dataType: 'TEXT', placeholder: 'Edwards' },
+  { key: 'details', name: 'Project Details', dataType: 'LARGE_TEXT', placeholder: 'What the customer wrote on the estimate form' },
+  { key: 'lead_channel', name: 'Lead Channel', dataType: 'TEXT', placeholder: 'organic_search, paid_search, ai_assistant…' },
+  { key: 'lead_source', name: 'Lead Source', dataType: 'TEXT', placeholder: 'google' },
+  { key: 'lead_medium', name: 'UTM Medium', dataType: 'TEXT', placeholder: 'cpc' },
+  { key: 'lead_campaign', name: 'UTM Campaign', dataType: 'TEXT', placeholder: 'spring-kitchens' },
+  { key: 'gclid', name: 'GCLID', dataType: 'TEXT', placeholder: 'Google Ads click ID' },
+  { key: 'first_channel', name: 'First Touch Channel', dataType: 'TEXT', placeholder: 'How they first found the site' },
+  { key: 'landing_page', name: 'Landing Page', dataType: 'TEXT', placeholder: '/kitchen-remodeling-vail-co' },
+];
 
 const norm = (s = '') => s.toLowerCase().replace(/^contact\./, '').replace(/[^a-z0-9]/g, '');
 
@@ -63,11 +82,42 @@ async function call<T>(token: string, path: string, init: RequestInit = {}): Pro
 
 let fieldCache: { at: number; fields: CustomField[] } | null = null;
 
+let provisionBlockedUntil = 0;
+
+const hasField = (fields: CustomField[], key: keyof EstimateLead) =>
+  FIELD_CANDIDATES[key].some((c) => fields.some((f) => norm(f.name) === norm(c) || norm(f.fieldKey) === norm(c)));
+
+// Creates any FIELD_SPECS field the sub-account is missing. Needs the "Edit Custom Fields"
+// scope on the token; without it this logs once per 10 minutes and the values stay in the note.
+async function ensureFields(token: string, locationId: string, fields: CustomField[]) {
+  if (Date.now() < provisionBlockedUntil) return fields;
+  const missing = FIELD_SPECS.filter((spec) => !hasField(fields, spec.key));
+  const created: CustomField[] = [];
+  for (const spec of missing) {
+    try {
+      const r = await call<{ customField?: CustomField & { parentId?: string } }>(token, `/locations/${locationId}/customFields`, {
+        method: 'POST',
+        body: JSON.stringify({ name: spec.name, dataType: spec.dataType, placeholder: spec.placeholder, model: 'contact' }),
+      });
+      if (r.customField?.id) {
+        created.push(r.customField);
+        console.log('[estimate] created custom field', JSON.stringify({ name: r.customField.name, fieldKey: r.customField.fieldKey, folder: r.customField.parentId || 'default (Additional Info)' }));
+      }
+    } catch (e) {
+      provisionBlockedUntil = Date.now() + 10 * 60_000;
+      console.error('[estimate] could not create custom field', spec.name, '- give the Private Integration the "Edit Custom Fields" scope:', (e as Error).message);
+      break;
+    }
+  }
+  return created.length ? [...fields, ...created] : fields;
+}
+
 async function contactFields(token: string, locationId: string): Promise<CustomField[]> {
   if (fieldCache && Date.now() - fieldCache.at < 10 * 60_000) return fieldCache.fields;
   const data = await call<{ customFields?: CustomField[] }>(token, `/locations/${locationId}/customFields?model=contact`);
-  fieldCache = { at: Date.now(), fields: data.customFields || [] };
-  return fieldCache.fields;
+  const fields = await ensureFields(token, locationId, data.customFields || []);
+  fieldCache = { at: Date.now(), fields };
+  return fields;
 }
 
 const OPTION_TYPES = new Set(['SINGLE_OPTIONS', 'MULTIPLE_OPTIONS', 'RADIO', 'CHECKBOX']);
