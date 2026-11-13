@@ -35,7 +35,7 @@ Pages ship `noindex` and `robots.txt` disallows everything unless `PUBLIC_SITE_I
 - [ ] **Home base:** confirm Gypsum, CO 81637 for the service-area NAP.
 - [ ] **Legal name** (LLC?), **business hours**, **license/registration numbers**.
 - [ ] **Google Business Profile:** add place ID, review link and maps URL; add `sameAs` social links.
-- [ ] **GoHighLevel:** add `GHL_PRIVATE_TOKEN` (Private Integration token for sub-account Dm7QrepHDIle2yDgZlev; scopes: View/Edit Contacts, View/Edit Custom Fields, View/Edit Workflows; missing estimate fields are auto-created under Additional Info on the next submission) in Vercel env vars, then send a test lead. Calendar URL still TODO.
+- [ ] **GoHighLevel:** add `GHL_PRIVATE_TOKEN` (Private Integration token for sub-account Dm7QrepHDIle2yDgZlev; scopes: View/Edit Contacts, View Custom Fields, View/Edit Workflows). Form → field mapping is FIELD_MAP in `api/_lib/leadAlchemist.ts`, keyed to the sub-account's field keys; skipped values are logged in Vercel in Vercel env vars, then send a test lead. Calendar URL still TODO.
 - [ ] **GA4 / Clarity** IDs.
 - [x] **Logo:** Jace's logo is in `public/` (`logo-horizontal.webp` header/footer, `logo-stacked.webp` + `logo.png` schema, `mark.webp`, favicons, `og-default.png`). Open question: shift the site palette from green/copper toward the logo's navy/gold?
 - [x] **Edwards renovation photos:** 33 photos in `public/images/projects/edwards/`, wired up via `src/data/projects.ts` (project page, home, About, service and Edwards pages).

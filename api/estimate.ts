@@ -24,7 +24,9 @@ export async function POST(request: Request): Promise<Response> {
   const lead: EstimateLead = {
     name: str(body.name, 120), phone: str(body.phone, 40), email: str(body.email, 160),
     project: str(body.project, 120), insurance_claim: str(body.insurance_claim, 60), timeline: str(body.timeline, 60),
-    town: str(body.town, 80), details: str(body.details, 2000),
+    property_type: str(body.property_type, 60), homeowner: str(body.homeowner, 10), town: str(body.town, 80),
+    contact_method: str(body.contact_method, 20), details: str(body.details, 2000),
+    sms_consent: body.sms_consent === true, marketing_consent: body.marketing_consent === true,
     lead_channel: str(body.lead_channel, 60), lead_source: str(body.lead_source, 150), lead_medium: str(body.lead_medium, 150),
     lead_campaign: str(body.lead_campaign, 150), first_channel: str(body.first_channel, 60), landing_page: str(body.landing_page, 300),
     gclid: str(body.gclid, 200), page: str(body.page, 300),

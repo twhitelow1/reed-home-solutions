@@ -21,7 +21,10 @@ const faqs = [
   { q: 'Do you charge for insurance estimates?', a: 'No. We prepare repair estimates for insurance projects as part of quoting the rebuild.' },
 ];
 const webApp = { '@type': 'WebApplication', name: 'Remodeling project planner', url: `${site.url}${path}`, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, provider: { '@id': `${site.url}/#organization` } };
-const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months', 'Just planning'];
+// Choice values match the options of Reed's Lead Alchemist dropdown fields exactly (labels can differ).
+const timelines: [string, string][] = [['Urgent', 'Urgent (active damage)'], ['ASAP', 'As soon as possible'], ['1-3 Months', 'Within 1–3 months'], ['3-6 Months', '3–6 months'], ['Planning Phase', 'Just planning']];
+const claims: [string, string][] = [['No', 'No'], ['Yes - Water/Freeze Damage', 'Yes, water or freeze damage'], ['Yes - Storm/Roof Damage', 'Yes, storm or roof damage'], ['Not sure yet', 'Not sure yet']];
+const propertyTypes: [string, string][] = [['Single Family Home', 'Single-family home'], ['Condo-Townhome', 'Condo or townhome'], ['Commercial-HOA', 'Commercial or HOA']];
 ---
 <Base title={title} description={description} path={path} schema={[webPage(path, title, description), webApp, breadcrumbs(crumbs), faqPage(faqs, path)]}>
   <header class="page-head"><div class="wrap">
@@ -43,27 +46,38 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
         <fieldset>
           <legend>2. Is this an insurance claim?</legend>
           <div class="choices">
-            <label><input type="radio" name="insurance" value="No" checked /><span>No</span></label>
-            <label><input type="radio" name="insurance" value="Yes, claim filed" /><span>Yes, claim filed</span></label>
-            <label><input type="radio" name="insurance" value="Not sure yet" /><span>Not sure yet</span></label>
+            {claims.map(([v, l], i) => <label><input type="radio" name="insurance" value={v} checked={i === 0} /><span>{l}</span></label>)}
           </div>
         </fieldset>
         <fieldset>
           <legend>3. When do you want to start?</legend>
           <div class="choices">
-            {timelines.map((t, i) => <label><input type="radio" name="timeline" value={t} checked={i === 1} /><span>{t}</span></label>)}
+            {timelines.map(([v, l], i) => <label><input type="radio" name="timeline" value={v} checked={i === 2} /><span>{l}</span></label>)}
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>4. What type of property?</legend>
+          <div class="choices">
+            {propertyTypes.map(([v, l], i) => <label><input type="radio" name="property_type" value={v} checked={i === 0} /><span>{l}</span></label>)}
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>5. Are you the homeowner?</legend>
+          <div class="choices">
+            <label><input type="radio" name="homeowner" value="Yes" checked /><span>Yes</span></label>
+            <label><input type="radio" name="homeowner" value="No" /><span>No (agent, manager, tenant)</span></label>
           </div>
         </fieldset>
         <div class="field-row">
           <div class="field">
-            <label for="town">4. Where is the property?</label>
+            <label for="town">6. Where is the property?</label>
             <select id="town" name="town">
               {locations.map((l) => <option>{l.town}</option>)}
               <option>Other</option>
             </select>
           </div>
           <div class="field">
-            <label for="name">5. Your name</label>
+            <label for="name">7. Your name</label>
             <input id="name" name="name" autocomplete="name" required />
           </div>
         </div>
@@ -77,9 +91,22 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
             <input id="email" name="email" type="email" autocomplete="email" />
           </div>
         </div>
+        <fieldset>
+          <legend>Best way to reach you?</legend>
+          <div class="choices">
+            <label><input type="radio" name="contact_method" value="Phone" checked /><span>Call</span></label>
+            <label><input type="radio" name="contact_method" value="Text" /><span>Text</span></label>
+            <label><input type="radio" name="contact_method" value="Email" /><span>Email</span></label>
+          </div>
+        </fieldset>
         <div class="field">
           <label for="details">Anything else? (optional)</label>
           <textarea id="details" name="details" rows="3" placeholder="Size of the space, what you want to change, HOA, claim number…"></textarea>
+        </div>
+        <div class="consent">
+          <label><input type="checkbox" name="sms_consent" value="yes" /><span>I agree to receive text messages from Reed Home Solutions about my estimate request, including scheduling and project updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help.</span></label>
+          <label><input type="checkbox" name="marketing_consent" value="yes" /><span>I agree to receive occasional marketing and promotional text messages from Reed Home Solutions. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span></label>
+          <p class="meta">Optional. Consent is not a condition of any purchase. See our <a href="/privacy-policy">privacy policy</a>.</p>
         </div>
         <div class="hp" aria-hidden="true"><label>Company website <input name="company_website" tabindex="-1" autocomplete="off" /></label></div>
         <button class="btn btn-copper" type="submit" id="planner-submit" data-track="planner_complete"><Icon name="clipboard" />Send my estimate request</button>
@@ -130,13 +157,13 @@ const timelines = ['As soon as possible', 'Within 1–3 months', '3–6 months',
         err.hidden = false; err.scrollIntoView({ behavior: 'smooth', block: 'center' }); return;
       }
       err.hidden = true;
-      var lines = ['Project: ' + v('project'), 'Insurance claim: ' + v('insurance'), 'Timeline: ' + v('timeline'), 'Location: ' + v('town'), 'Name: ' + v('name')];
+      var lines = ['Project: ' + v('project'), 'Insurance claim: ' + v('insurance'), 'Timeframe: ' + v('timeline'), 'Property: ' + v('property_type') + (v('homeowner') === 'No' ? ' (not the owner)' : ''), 'Location: ' + v('town'), 'Name: ' + v('name'), 'Best way to reach me: ' + v('contact_method')];
       if (v('phone')) lines.push('Phone: ' + v('phone'));
       if (v('email')) lines.push('Email: ' + v('email'));
       if (v('details')) lines.push('Details: ' + v('details'));
       var at = window.rhsAttribution || {}, la = at.last || {}, fi = at.first || {};
-      var payload = { name: v('name'), phone: v('phone'), email: v('email'), project: v('project'), insurance_claim: v('insurance'), timeline: v('timeline'), town: v('town'), details: v('details'), company_website: v('company_website'),
-        lead_channel: la.channel || '', lead_source: la.utm_source || '', lead_medium: la.utm_medium || '', lead_campaign: la.utm_campaign || '', gclid: la.gclid || '', first_channel: fi.channel || '', landing_page: fi.landing_page || '', page: location.pathname };
+      var payload = { name: v('name'), phone: v('phone'), email: v('email'), project: v('project'), insurance_claim: v('insurance'), timeline: v('timeline'), property_type: v('property_type'), homeowner: v('homeowner'), town: v('town'), contact_method: v('contact_method'), details: v('details'), sms_consent: !!d.get('sms_consent'), marketing_consent: !!d.get('marketing_consent'), company_website: v('company_website'),
+        lead_channel: la.channel || '', lead_source: la.utm_source || '', lead_medium: la.utm_medium || '', lead_campaign: la.utm_campaign || '', gclid: la.gclid || '', first_channel: fi.channel || '', landing_page: fi.landing_page ? location.origin + fi.landing_page : '', page: location.pathname };
       var label = btn.innerHTML; btn.disabled = true; btn.textContent = 'Sending…';
       if (window.dataLayer) window.dataLayer.push({ event: 'planner_complete', project: v('project'), town: v('town'), insurance: v('insurance') });
       function fallback() {

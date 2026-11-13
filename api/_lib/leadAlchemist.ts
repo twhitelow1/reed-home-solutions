@@ -12,8 +12,13 @@ export type EstimateLead = {
   project: string;
   insurance_claim: string;
   timeline: string;
+  property_type: string;
+  homeowner: string;
   town: string;
+  contact_method: string;
   details: string;
+  sms_consent: boolean;
+  marketing_consent: boolean;
   lead_channel: string;
   lead_source: string;
   lead_medium: string;
@@ -24,50 +29,44 @@ export type EstimateLead = {
   page: string;
 };
 
-// Form value → the names a matching custom field is likely to have in the sub-account.
-// Matching ignores case, spaces and punctuation and checks both the field name and its key
-// (contact.project_type). A value with no matching field still lands in the contact note.
-export const FIELD_CANDIDATES: Record<keyof EstimateLead, string[]> = {
-  project: ['project type', 'type of project', 'project', 'service', 'service type', 'service needed', 'service requested'],
-  insurance_claim: ['insurance claim', 'is this an insurance claim', 'insurance', 'claim'],
-  timeline: ['project timeline', 'timeline', 'start date', 'when do you want to start', 'start timeline'],
-  town: ['property location', 'project location', 'property town', 'town', 'location', 'service area'],
-  details: ['project details', 'details', 'project description', 'description', 'message', 'additional details', 'notes'],
-  lead_channel: ['lead channel', 'channel'],
-  lead_source: ['lead source', 'utm source'],
-  lead_medium: ['utm medium', 'lead medium'],
-  lead_campaign: ['utm campaign', 'campaign'],
-  first_channel: ['first touch channel', 'first channel'],
-  landing_page: ['landing page'],
-  gclid: ['gclid', 'google click id'],
-  page: ['form page', 'submitted from'],
-  name: [],
-  phone: [],
-  email: [],
+// Website service name → Reed's "Project Type" dropdown option.
+export const PROJECT_TYPE: Record<string, string> = {
+  'Kitchen Remodeling': 'Kitchen Remodel',
+  'Bathroom Remodeling': 'Bathroom Remodel',
+  'Basement & Lock-Off Remodeling': 'Basement/Lock-Off',
+  'Deck Building & Repair': 'Deck Building & Repair',
+  'Water Damage & Insurance Repair': 'Water Damage Repair',
+  'Home Renovation & General Contracting': 'Whole Home Renovation',
+  'Siding & Exterior Painting': 'Exterior/Siding/Roof',
+  'Roof Replacement & Repair': 'Exterior/Siding/Roof',
+  'Window & Door Replacement': 'Exterior/Siding/Roof',
 };
+
+// Form value → Reed's existing contact custom fields (Settings > Custom Fields, by field key).
+// Dropdown/checkbox values are matched to the field's options ignoring case and punctuation;
+// a value with no matching option is skipped (logged) and kept in the contact note.
+export const FIELD_MAP: { fieldKey: string; value: (l: EstimateLead) => string }[] = [
+  { fieldKey: 'contact.project_type', value: (l) => (l.project ? PROJECT_TYPE[l.project] || 'Other Custom Repair' : '') },
+  { fieldKey: 'contact.insurance_claim', value: (l) => l.insurance_claim },
+  { fieldKey: 'contact.timeframe', value: (l) => l.timeline },
+  { fieldKey: 'contact.property_type', value: (l) => l.property_type },
+  { fieldKey: 'contact.are_you_the_home_owner', value: (l) => l.homeowner },
+  { fieldKey: 'contact.project_town', value: (l) => l.town },
+  { fieldKey: 'contact.project_location_town', value: (l) => l.town },
+  { fieldKey: 'contact.preferred_contact_method', value: (l) => l.contact_method },
+  { fieldKey: 'contact.project_details', value: (l) => l.details },
+  { fieldKey: 'contact.sms_consent', value: (l) => (l.sms_consent ? 'Yes' : '') },
+  { fieldKey: 'contact.a2p_second_checkbox', value: (l) => (l.marketing_consent ? '*first-option*' : '') },
+  { fieldKey: 'contact.utm_source', value: (l) => l.lead_source },
+  { fieldKey: 'contact.utm_medium', value: (l) => l.lead_medium },
+  { fieldKey: 'contact.utm_campaign', value: (l) => l.lead_campaign },
+  { fieldKey: 'contact.page_url__lead_page', value: (l) => l.landing_page },
+  { fieldKey: 'contact.lead_channel', value: (l) => l.lead_channel },
+];
 
 type CustomField = { id: string; name: string; fieldKey?: string; dataType?: string; picklistOptions?: string[] };
 
-// The contact custom fields the estimate form fills. Any that don't exist yet (no field matches
-// its candidates above) are created in the sub-account on the next submission. Fields created
-// through the API with no folder land in the contact's default "Additional Info" section.
-// All plain text so new services, towns or timelines never get rejected by a picklist.
-export const FIELD_SPECS: { key: keyof EstimateLead; name: string; dataType: 'TEXT' | 'LARGE_TEXT'; placeholder: string }[] = [
-  { key: 'project', name: 'Project Type', dataType: 'TEXT', placeholder: 'Kitchen Remodeling' },
-  { key: 'insurance_claim', name: 'Insurance Claim', dataType: 'TEXT', placeholder: 'No / Yes, claim filed / Not sure yet' },
-  { key: 'timeline', name: 'Project Timeline', dataType: 'TEXT', placeholder: 'Within 1–3 months' },
-  { key: 'town', name: 'Property Location', dataType: 'TEXT', placeholder: 'Edwards' },
-  { key: 'details', name: 'Project Details', dataType: 'LARGE_TEXT', placeholder: 'What the customer wrote on the estimate form' },
-  { key: 'lead_channel', name: 'Lead Channel', dataType: 'TEXT', placeholder: 'organic_search, paid_search, ai_assistant…' },
-  { key: 'lead_source', name: 'Lead Source', dataType: 'TEXT', placeholder: 'google' },
-  { key: 'lead_medium', name: 'UTM Medium', dataType: 'TEXT', placeholder: 'cpc' },
-  { key: 'lead_campaign', name: 'UTM Campaign', dataType: 'TEXT', placeholder: 'spring-kitchens' },
-  { key: 'gclid', name: 'GCLID', dataType: 'TEXT', placeholder: 'Google Ads click ID' },
-  { key: 'first_channel', name: 'First Touch Channel', dataType: 'TEXT', placeholder: 'How they first found the site' },
-  { key: 'landing_page', name: 'Landing Page', dataType: 'TEXT', placeholder: '/kitchen-remodeling-vail-co' },
-];
-
-const norm = (s = '') => s.toLowerCase().replace(/^contact\./, '').replace(/[^a-z0-9]/g, '');
+const norm = (s = '') => s.toLowerCase().replace(/[^a-z0-9]/g, '');
 
 function headers(token: string) {
   return { Authorization: `Bearer ${token}`, Version: VERSION, 'Content-Type': 'application/json', Accept: 'application/json' };
@@ -82,69 +81,36 @@ async function call<T>(token: string, path: string, init: RequestInit = {}): Pro
 
 let fieldCache: { at: number; fields: CustomField[] } | null = null;
 
-let provisionBlockedUntil = 0;
-
-const hasField = (fields: CustomField[], key: keyof EstimateLead) =>
-  FIELD_CANDIDATES[key].some((c) => fields.some((f) => norm(f.name) === norm(c) || norm(f.fieldKey) === norm(c)));
-
-// Creates any FIELD_SPECS field the sub-account is missing. Needs the "Edit Custom Fields"
-// scope on the token; without it this logs once per 10 minutes and the values stay in the note.
-async function ensureFields(token: string, locationId: string, fields: CustomField[]) {
-  if (Date.now() < provisionBlockedUntil) return fields;
-  const missing = FIELD_SPECS.filter((spec) => !hasField(fields, spec.key));
-  const created: CustomField[] = [];
-  for (const spec of missing) {
-    try {
-      const r = await call<{ customField?: CustomField & { parentId?: string } }>(token, `/locations/${locationId}/customFields`, {
-        method: 'POST',
-        body: JSON.stringify({ name: spec.name, dataType: spec.dataType, placeholder: spec.placeholder, model: 'contact' }),
-      });
-      if (r.customField?.id) {
-        created.push(r.customField);
-        console.log('[estimate] created custom field', JSON.stringify({ name: r.customField.name, fieldKey: r.customField.fieldKey, folder: r.customField.parentId || 'default (Additional Info)' }));
-      }
-    } catch (e) {
-      provisionBlockedUntil = Date.now() + 10 * 60_000;
-      console.error('[estimate] could not create custom field', spec.name, '- give the Private Integration the "Edit Custom Fields" scope:', (e as Error).message);
-      break;
-    }
-  }
-  return created.length ? [...fields, ...created] : fields;
-}
-
 async function contactFields(token: string, locationId: string): Promise<CustomField[]> {
   if (fieldCache && Date.now() - fieldCache.at < 10 * 60_000) return fieldCache.fields;
   const data = await call<{ customFields?: CustomField[] }>(token, `/locations/${locationId}/customFields?model=contact`);
-  const fields = await ensureFields(token, locationId, data.customFields || []);
-  fieldCache = { at: Date.now(), fields };
-  return fields;
+  fieldCache = { at: Date.now(), fields: data.customFields || [] };
+  return fieldCache.fields;
 }
 
-const OPTION_TYPES = new Set(['SINGLE_OPTIONS', 'MULTIPLE_OPTIONS', 'RADIO', 'CHECKBOX']);
+const MULTI = new Set(['MULTIPLE_OPTIONS', 'CHECKBOX']);
+const OPTIONS = new Set(['SINGLE_OPTIONS', 'RADIO', ...MULTI]);
 
-// Picks the custom field for each form value and returns the API payload plus what matched.
+// Builds the customFields payload from FIELD_MAP and reports what was set and what was skipped.
 export function mapCustomFields(lead: EstimateLead, fields: CustomField[]) {
-  const used = new Set<string>();
   const out: { id: string; field_value: string | string[] }[] = [];
-  const matched: Record<string, string> = {};
-  for (const [key, candidates] of Object.entries(FIELD_CANDIDATES) as [keyof EstimateLead, string[]][]) {
-    const value = (lead[key] || '').trim();
-    if (!value || !candidates.length) continue;
-    const field = candidates
-      .map((c) => fields.find((f) => !used.has(f.id) && (norm(f.name) === norm(c) || norm(f.fieldKey) === norm(c))))
-      .find(Boolean);
-    if (!field) continue;
+  const set: Record<string, string> = {};
+  const skipped: string[] = [];
+  for (const m of FIELD_MAP) {
+    const value = m.value(lead).trim();
+    if (!value) continue;
+    const field = fields.find((f) => f.fieldKey === m.fieldKey);
+    if (!field) { skipped.push(`${m.fieldKey} (field not found)`); continue; }
     let v: string | string[] = value;
-    if (OPTION_TYPES.has(field.dataType || '') && field.picklistOptions?.length) {
-      const opt = field.picklistOptions.find((o) => norm(o) === norm(value));
-      if (!opt) continue; // the API rejects values that aren't one of the field's options; the note keeps it
-      v = field.dataType === 'MULTIPLE_OPTIONS' || field.dataType === 'CHECKBOX' ? [opt] : opt;
+    if (OPTIONS.has(field.dataType || '') && field.picklistOptions?.length) {
+      const opt = value === '*first-option*' ? field.picklistOptions[0] : field.picklistOptions.find((o) => norm(o) === norm(value));
+      if (!opt) { skipped.push(`${m.fieldKey} ("${value}" is not an option)`); continue; }
+      v = MULTI.has(field.dataType || '') ? [opt] : opt;
     }
-    used.add(field.id);
     out.push({ id: field.id, field_value: v });
-    matched[key] = field.name;
+    set[m.fieldKey] = Array.isArray(v) ? v.join(', ').slice(0, 60) : v.slice(0, 60);
   }
-  return { customFields: out, matched };
+  return { customFields: out, set, skipped };
 }
 
 export function toE164(phone: string) {
@@ -156,9 +122,11 @@ export function toE164(phone: string) {
 
 export function noteBody(lead: EstimateLead) {
   const rows: [string, string][] = [
-    ['Project', lead.project], ['Insurance claim', lead.insurance_claim], ['Timeline', lead.timeline], ['Property location', lead.town],
-    ['Details', lead.details], ['Lead channel', lead.lead_channel], ['Source / medium', [lead.lead_source, lead.lead_medium].filter(Boolean).join(' / ')],
-    ['Campaign', lead.lead_campaign], ['First channel', lead.first_channel], ['Landing page', lead.landing_page], ['Submitted from', lead.page],
+    ['Project', lead.project], ['Insurance claim', lead.insurance_claim], ['Timeframe', lead.timeline], ['Property type', lead.property_type],
+    ['Homeowner', lead.homeowner], ['Property location', lead.town], ['Preferred contact', lead.contact_method], ['Details', lead.details],
+    ['SMS consent', lead.sms_consent ? 'Yes' : 'No'], ['Marketing SMS consent', lead.marketing_consent ? 'Yes' : 'No'],
+    ['Lead channel', lead.lead_channel], ['Source / medium', [lead.lead_source, lead.lead_medium].filter(Boolean).join(' / ')],
+    ['Campaign', lead.lead_campaign], ['GCLID', lead.gclid], ['First channel', lead.first_channel], ['Landing page', lead.landing_page], ['Submitted from', lead.page],
   ];
   return ['Free estimate request (website form)', ...rows.filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`)].join('\n');
 }
@@ -171,13 +139,8 @@ export async function sendEstimateLead(lead: EstimateLead, cfg: { token: string;
   } catch (e) {
     console.error('[estimate] custom fields lookup failed; values go to the note only:', (e as Error).message);
   }
-  const { customFields, matched } = mapCustomFields(lead, fields);
-  const unmatched = (['project', 'insurance_claim', 'timeline', 'town', 'details'] as const).filter((k) => lead[k] && !matched[k]);
-  if (unmatched.length) {
-    // Field names only (no contact data), so mapping gaps can be fixed from the Vercel logs.
-    console.log('[estimate] unmatched form values:', unmatched.join(', '), '| contact custom fields:',
-      fields.map((f) => `${f.name} [${f.fieldKey || ''}|${f.dataType || ''}${f.picklistOptions?.length ? '|' + f.picklistOptions.join('/') : ''}]`).join('; '));
-  }
+  const { customFields, set, skipped } = mapCustomFields(lead, fields);
+  if (skipped.length) console.warn('[estimate] fields skipped:', skipped.join('; '));
   const [firstName, ...rest] = lead.name.trim().split(/\s+/);
   const tags = ['website lead', 'free estimate request', ...(/^yes/i.test(lead.insurance_claim) ? ['insurance claim'] : [])];
 
@@ -209,6 +172,6 @@ export async function sendEstimateLead(lead: EstimateLead, cfg: { token: string;
     console.error('[estimate] WORKFLOW ENROLL FAILED for contact', contactId, '-', e.message);
   });
 
-  console.log('[estimate] contact', contactId, upsert.new ? 'created' : 'updated', '| workflow:', workflow, '| fields matched:', JSON.stringify(matched));
-  return { contactId, created: !!upsert.new, workflow, matched };
+  console.log('[estimate] contact', contactId, upsert.new ? 'created' : 'updated', '| workflow:', workflow, '| fields set:', JSON.stringify(set));
+  return { contactId, created: !!upsert.new, workflow, set };
 }

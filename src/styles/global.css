@@ -346,3 +346,7 @@ tbody th { color: var(--ink); width: 34%; }
 .planner-done { border-color: var(--green-2); }
 .planner-done:focus { outline: none; }
 .planner [hidden] { display: none !important; }
+.consent { margin: 1.2rem 0; display: grid; gap: .6rem; }
+.consent label { display: grid; grid-template-columns: 20px 1fr; gap: .6rem; align-items: start; font-size: .82rem; line-height: 1.45; color: var(--muted); font-weight: 400; }
+.consent input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--green); }
+.consent .meta { font-size: .78rem; margin: 0; }
