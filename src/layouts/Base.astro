@@ -70,6 +70,9 @@ const ld = graph(organization(), website(), ...schema);
         <script is:inline define:vars={{ id: t.ga4Id }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());var at=window.rhsAttribution||{},f=at.first||{},l=at.last||{};gtag('set','user_properties',{first_channel:f.channel||'',first_source:f.utm_source||''});gtag('config',id,{lead_channel:l.channel||'',first_channel:f.channel||''});</script>
       </>
     )}
+    {prod && t.leadAlchemistTrackingId && (
+      <script is:inline async src="https://api.leadalchemist.io/js/external-tracking.js" data-tracking-id={t.leadAlchemistTrackingId} data-api-endpoint="https://backend.leadconnectorhq.com"></script>
+    )}
     {prod && t.clarityId && (
       <script is:inline define:vars={{ id: t.clarityId }}>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",id);</script>
     )}

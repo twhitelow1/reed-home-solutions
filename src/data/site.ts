@@ -31,6 +31,8 @@ export const site = {
     ga4Id: '', // TODO
     gtmId: '',
     clarityId: '',
+    // Lead Alchemist external tracking (page views + attribution on contacts), from the AI Studio build.
+    leadAlchemistTrackingId: 'tk_c549bc863d38431894bec9874c1f5a74',
     googleSiteVerification: '',
     bingSiteVerification: '',
   },
